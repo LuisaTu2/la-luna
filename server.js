@@ -11,7 +11,7 @@ const request = require('request');
 // Creating the server
 // *********************************************************************** //
 const app = express();
-app.use( express.static(path.join(__dirname, 'public')));
+app.use( express.static(path.join(__dirname, 'client')));
 app.use(bodyParser.json());
 
 
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
             console.log('body:', //body
             ); 
         });
-        res.sendFile(path.join(__dirname, 'public/html/index.html'));
+        res.sendFile(path.join(__dirname, 'client/index.html'));
     }
 );
 
