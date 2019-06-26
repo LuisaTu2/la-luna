@@ -1,7 +1,6 @@
 {
   "name": "shopping-luisatu",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "request": "^2.88.0"
-  }
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.4.5",
+    "nodemon": "^1.19.1"
+  },
+  "keywords": [],
+  "description": ""
 }
