@@ -20,22 +20,22 @@ app.use(bodyParser.json());
 // *********************************************************************** //
 // Setting up connection to MongoDB Atlas Database
 // *********************************************************************** //
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://LuisaMongoDBUser:shoppingMDBU@shopping-luisatu-eczui.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect((err, db) => {
-//   const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  const dbs = client.db("sample_weatherdata");
-  const collection = dbs.collection("data");
-  const docsWind9 = collection.find({"wind.type":"9"}).toArray(function(err, docs) {
-    // console.log(JSON.stringify(docs));
-    console.log(docs.length);
-  });
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://LuisaMongoDBUser:shoppingMDBU@shopping-luisatu-eczui.mongodb.net/test?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect((err, db) => {
+// //   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   const dbs = client.db("sample_weatherdata");
+//   const collection = dbs.collection("data");
+//   const docsWind9 = collection.find({"wind.type":"9"}).toArray(function(err, docs) {
+//     // console.log(JSON.stringify(docs));
+//     console.log(docs.length);
+//   });
 
-  console.log("Retrieved data:\n");
-//   client.close();
-});
+//   console.log("Retrieved data:\n");
+// //   client.close();
+// });
 
 
 // *********************************************************************** //
