@@ -23,23 +23,31 @@ app.use(bodyParser.json());
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://LuisaMongoDBUser:shoppingMDBU@shopping-luisatu-eczui.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri || "mongodb://localhost:27017/test", { useNewUrlParser: true });
-client.connect((err, db) => {
-//   const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  if(err){
-      console.log(err);
-      return 
-  }
-  const dbs = client.db("sample_weatherdata");
-  const collection = dbs.collection("data");
-  const docsWind9 = collection.find({"wind.type":"9"}).toArray(function(err, docs) {
-    // console.log(JSON.stringify(docs));
-    console.log(docs.length);
-  });
 
-  console.log("Retrieved data:\n");
-//   client.close();
-});
+function connectDB(uri, cli, data){
+    client.connect((err, db) => {
+        if(err){
+            console.log(err);
+            return 
+        }
+        const dbs = client.db("shopping");
+        const collection = dbs.collection("listings");
+        // const document = collection.find().toArray(function(err, docs) {
+        //     console.log(JSON.stringify(docs));
+        //     console.log("Retrieved data:\n");
+        //     // console.log("listings: ", docs);
+        // });
+        collection.insertMany(data, (err, res) =>{
+            if(err){
+                console.log(err);
+            } else {
+                console.log("SUCCESSFULLY UPDATED DATABASE COLLECTION!");
+                console.log(res);
+            }
+        });
+        //   client.close();
+    });
+}
 
 
 // *********************************************************************** //
@@ -47,18 +55,21 @@ client.connect((err, db) => {
 // *********************************************************************** //
 app.get('/home', (req, res) => {
         console.log("Hello there!");
-       
-        let categories = {};
-        let categoriesList = []
+
+        let url = "https://openapi.etsy.com/v2/listings/active?page="+1+"&api_key=dvb11s3or2x3v911bdfef9vg";  
+        request(url, function (error, response, body) {
+            // console.log('error:', error); // Print the error if one occurred
+            // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+            let listings = JSON.parse(body).results;  
+            // console.log('listings:', listings);
+            connectDB(uri, client, listings);
+
+        });
 
         for(let page=1; page < (totPages+1); page++){
-            processingRequest(page, categoriesList);           
+            // processingRequest(page, categoriesList);           
             // request(url, function (error, response, body) {
             //     let listings = JSON.parse(body).results;
-            //     // console.log(response);
-            //     // console.log('error:', error); // Print the error if one occurred
-            //     // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-            //     // // console.log('body:', body); 
             //     listings.forEach( listing => {
             //         let listingCategories = listing.category_path;
             //         listingCategories.forEach( lc => {
@@ -69,7 +80,6 @@ app.get('/home', (req, res) => {
             // }) 
         }
         
-        console.log()
         res.sendFile(path.join(__dirname, 'client/index.html'));
 
         // filter URI criteria
