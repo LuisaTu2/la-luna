@@ -25,7 +25,7 @@ const uri = "mongodb+srv://LuisaMongoDBUser:shoppingMDBU@shopping-luisatu-eczui.
 const client = new MongoClient(uri || "mongodb://localhost:27017/test", { useNewUrlParser: true });
 
 // function connectDB(uri, cli, data){
-let data = [{"_id":"there"}];
+let data = [{"_id":"thereee"}];
 client.connect((err, db) => {
     if(err){
         console.log(err);
