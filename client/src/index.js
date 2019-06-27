@@ -14,7 +14,7 @@ class LikeButton extends Component {
   }
   render() {
     return (
-        <button> Like </button>
+        <button> Like Button</button>
     );
   }
 }
