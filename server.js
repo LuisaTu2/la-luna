@@ -25,30 +25,30 @@ const uri = "mongodb+srv://LuisaMongoDBUser:shoppingMDBU@shopping-luisatu-eczui.
 const client = new MongoClient(uri || "mongodb://localhost:27017/test", { useNewUrlParser: true });
 
 // function connectDB(uri, cli, data){
-    let data = [];
-    client.connect((err, db) => {
+let data = [{"_id":"there"}];
+client.connect((err, db) => {
+    if(err){
+        console.log(err);
+        return 
+    }
+    const dbs = client.db("shopping");
+    const collection = dbs.collection("listings");
+    // const document = collection.find().toArray(function(err, docs) {
+    //     console.log(JSON.stringify(docs));
+    //     console.log("Retrieved data:\n");
+    //     // console.log("listings: ", docs);
+    // });
+    collection.insertMany(data, (err, res) =>{
         if(err){
             console.log(err);
-            return 
+        } else {
+            console.log("SUCCESSFULLY UPDATED DATABASE COLLECTION!");
+            console.log(res);
         }
-        const dbs = client.db("shopping");
-        const collection = dbs.collection("listings");
-        // const document = collection.find().toArray(function(err, docs) {
-        //     console.log(JSON.stringify(docs));
-        //     console.log("Retrieved data:\n");
-        //     // console.log("listings: ", docs);
-        // });
-        collection.insertMany(data, (err, res) =>{
-            if(err){
-                console.log(err);
-            } else {
-                console.log("SUCCESSFULLY UPDATED DATABASE COLLECTION!");
-                console.log(res);
-            }
-        });
-        //   client.close();
-
     });
+    //   client.close();
+
+});
 // }
 
 
@@ -69,19 +69,19 @@ app.get('/home', (req, res) => {
 
         });
 
-        for(let page=1; page < (totPages+1); page++){
-            // processingRequest(page, categoriesList);           
-            // request(url, function (error, response, body) {
-            //     let listings = JSON.parse(body).results;
-            //     listings.forEach( listing => {
-            //         let listingCategories = listing.category_path;
-            //         listingCategories.forEach( lc => {
-            //             // console.log(lc, categories);
-            //             catDictionary(categories, lc);
-            //         });                    
-            //     });
-            // }) 
-        }
+        // for(let page=1; page < (totPages+1); page++){
+        //     // processingRequest(page, categoriesList);           
+        //     // request(url, function (error, response, body) {
+        //     //     let listings = JSON.parse(body).results;
+        //     //     listings.forEach( listing => {
+        //     //         let listingCategories = listing.category_path;
+        //     //         listingCategories.forEach( lc => {
+        //     //             // console.log(lc, categories);
+        //     //             catDictionary(categories, lc);
+        //     //         });                    
+        //     //     });
+        //     // }) 
+        // }
         
         res.sendFile(path.join(__dirname, 'client/index.html'));
 
