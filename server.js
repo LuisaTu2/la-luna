@@ -55,7 +55,7 @@ function connectDB(uri, cli, data){
 // *********************************************************************** //
 // Routing
 // *********************************************************************** //
-app.get('/home', (req, res) => {
+app.get('/shopping-luisatu.herokuapp.com/home', (req, res) => {
         console.log("Hello there!");
 
         let url = "https://openapi.etsy.com/v2/listings/active?page="+1+"&api_key=dvb11s3or2x3v911bdfef9vg";  
