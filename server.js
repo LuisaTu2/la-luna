@@ -24,8 +24,8 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://LuisaMongoDBUser:shoppingMDBU@shopping-luisatu-eczui.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri || "mongodb://localhost:27017/test", { useNewUrlParser: true });
 
-function connectDB(uri, cli, data){
-    console.log("HAVE I BEEN CALLED?");
+// function connectDB(uri, cli, data){
+    let data = [];
     client.connect((err, db) => {
         if(err){
             console.log(err);
@@ -49,7 +49,7 @@ function connectDB(uri, cli, data){
         //   client.close();
 
     });
-}
+// }
 
 
 
@@ -65,7 +65,7 @@ app.get('/home', (req, res) => {
             // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
             let listings = JSON.parse(body).results;  
             // console.log('listings:', listings);
-            connectDB(uri, client, listings);
+            // connectDB(uri, client, listings);
 
         });
 
