@@ -7,7 +7,10 @@ const bodyParser = require('body-parser');
 const port =  process.env.PORT || 8080;
 const request = require('request');
 const totPages = 5;
-
+let isFirstRender = true;
+let limitPages = 100;
+let apiKey = "dvb11s3or2x3v911bdfef9vg";
+let categories = [];
 
 // *********************************************************************** //
 // Creating the server
@@ -24,34 +27,21 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://LuisaMongoDBUser:shoppingMDBU@shopping-luisatu-eczui.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri || "mongodb://localhost:27017/test", { useNewUrlParser: true });
 
-// function connectDB(uri, cli, data){
-let data = [{"_id":"here is to you"}];
-client.connect((err, db) => {
-    if(err){
-        console.log(err);
-        return 
-    }
-    const dbs = client.db("shopping");
-    const collection = dbs.collection("listings");
-    // const document = collection.find().toArray(function(err, docs) {
-    //     console.log(JSON.stringify(docs));
-    //     console.log("Retrieved data:\n");
-    //     // console.log("listings: ", docs);
-    // });
-    collection.insertMany(data, (err, res) =>{
-        if(err){
-            console.log(err);
-        } else {
-            console.log("SUCCESSFULLY UPDATED DATABASE COLLECTION!");
-            console.log(res);
-        }
-    });
-    //   client.close();
 
-});
+// *********************************************************************** //
+// Building Database
+// *********************************************************************** //
+// if(isFirstRender){
+//     isFirstRender = false;
+//     for(let page=1; page < 100; page++){
+//         // let urlFR = "https://openapi.etsy.com/v2/listings/active?includes=Images(url_fullxfull)&limit="+limitPages+"&page="+page+"&api_key="+apiKey;
+//         let urlFR = "https://openapi.etsy.com/v2/listings/active?fields=category_path&includes=Images(url_fullxfull)&page="+page+"&api_key=dvb11s3or2x3v911bdfef9vg";
+//         console.log(page, urlFR);
+//         let batch = Math.floor(page/10);
+//         setTimeout( () => { makeRequestDB(urlFR)}, batch*2000 );
+//     }
+//     // FYI last was page 89
 // }
-
-
 
 // *********************************************************************** //
 // Routing
@@ -59,29 +49,42 @@ client.connect((err, db) => {
 app.get('/home', (req, res) => {
         console.log("Hello there!");
 
-        let url = "https://openapi.etsy.com/v2/listings/active?page="+1+"&api_key=dvb11s3or2x3v911bdfef9vg";  
-        request(url, function (error, response, body) {
-            // console.log('error:', error); // Print the error if one occurred
-            // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-            let listings = JSON.parse(body).results;  
-            // console.log('listings:', listings);
-            // connectDB(uri, client, listings);
+        client.connect((err, db) => {
+            if(err){
+                console.log(err);
+                exit;
+            }
+            const dbs = client.db("shopping");
+            const collection = dbs.collection("listings");
+          
+            let categories = [];
+            let categoriesUnique = {};
 
+            collection.find().project({  
+                _id: 0, 
+                taxonomy_path: 1
+            }).toArray(function(err, cat) {
+                    //console.log(JSON.stringify(cat));
+                    if(err){
+                        console.log(err);
+                    }
+                    categories = cat;
+                    // console.log(categories);
+                    categories.forEach( categoryArr => {
+                        // let categoryList = categoryArr.category_path;
+                        let categoryList = categoryArr.taxonomy_path;
+                        categoryList.forEach( category => {
+                            if(categoriesUnique[category]){
+                                categoriesUnique[category] += 1;
+                            } else {
+                                categoriesUnique[category] = 1;
+                            }
+                        })
+                    })
+                    console.log(categoriesUnique);
+            });
+            
         });
-
-        // for(let page=1; page < (totPages+1); page++){
-        //     // processingRequest(page, categoriesList);           
-        //     // request(url, function (error, response, body) {
-        //     //     let listings = JSON.parse(body).results;
-        //     //     listings.forEach( listing => {
-        //     //         let listingCategories = listing.category_path;
-        //     //         listingCategories.forEach( lc => {
-        //     //             // console.log(lc, categories);
-        //     //             catDictionary(categories, lc);
-        //     //         });                    
-        //     //     });
-        //     // }) 
-        // }
         
         res.sendFile(path.join(__dirname, 'client/index.html'));
 
@@ -93,6 +96,38 @@ app.get('/home', (req, res) => {
 // *********************************************************************** //
 // Defining Functions
 // *********************************************************************** //
+
+function insertDB(uri, cli, data){
+    console.log("INSERTING INTO DB!");
+    // console.log(data);
+    client.connect((err, db) => {
+        if(err){
+            console.log(err);
+            // client.close();
+            exit;
+        }
+        const dbs = client.db("shopping");
+        const collection = dbs.collection("listings");
+
+        collection.insertMany(data, (err, res) =>{
+            if(err){
+                console.log(err);
+            } else {
+                console.log("SUCCESSFULLY UPDATED DATABASE COLLECTION!");
+            }
+        });
+        //   client.close();
+
+    });
+}
+
+function makeRequestDB(u){
+    console.log("MAKING A REQUEST!", u);
+    request(u, function (error, response, body) {
+        let listings = JSON.parse(body).results;  
+        insertDB(u, client, listings);
+    });
+}
 
 function processingRequest(ix, arr){
     let url = "https://openapi.etsy.com/v2/listings/active?page="+ix+"&api_key=dvb11s3or2x3v911bdfef9vg";  
@@ -130,3 +165,27 @@ app.listen(port, () => {
 // *********************************************************************** //
 // End of File
 // *********************************************************************** //
+
+
+
+        // for(let page=1; page < (totPages+1); page++){
+        //     // processingRequest(page, categoriesList);           
+        //     // request(url, function (error, response, body) {
+        //     //     let listings = JSON.parse(body).results;
+        //     //     listings.forEach( listing => {
+        //     //         let listingCategories = listing.category_path;
+        //     //         listingCategories.forEach( lc => {
+        //     //             // console.log(lc, categories);
+        //     //             catDictionary(categories, lc);
+        //     //         });                    
+        //     //     });
+        //     // }) 
+        // }
+
+        // _id: 0, 
+        // category_path: 1, 
+        // taxonomy_id: 0,
+        // taxonomy_path: 0, 
+        // used_manufacturer:0, 
+        // sku: 0,                
+        // Images: 0
