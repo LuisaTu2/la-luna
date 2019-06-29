@@ -20,7 +20,7 @@ class LikeButton extends Component {
 }
 
 
-console.log("WHATSUP!" + " " + namejs.name + ". I miss you <3");
+console.log("WHATSUP!" + " " + namejs.name + ". I miss you <3. A lot a lot a lot. ");
 
 
 // window.onload = function(){
