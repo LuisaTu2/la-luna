@@ -93,6 +93,52 @@ app.get('/home', (req, res) => {
     }
 );
 
+
+app.post("/data", (req, res) =>{
+    let taxonomyJSON = req.body.taxonomy;
+    let taxonomyLookup;
+
+    switch(taxonomyJSON){
+        case "craft_suppplies":
+            taxonomyLookup = 'Craft Supplies & Tools';
+            break;
+        case "jewelry":
+            taxonomyLookup = 'Jewelry';
+            break;
+        case "clothing":
+            taxonomyLookup = 'Clothing';
+            break;
+        case "home_living":
+            taxonomyLookup = 'Home & Living';
+            break;
+        case "art_collectibles":
+            taxonomyLookup = 'Art & Collectibles';
+            break;
+        case "accessories":
+            taxonomyLookup = 'Accessories';
+            break;     
+    }
+
+    console.log("DATA RECEIVED VIA POST AJAX CALL: ", taxonomyJSON, taxonomyLookup);
+
+    client.connect((err, db) => {
+        if(err){
+            console.log(err);
+            exit;
+        }
+        const dbs = client.db("shopping");
+        const collection = dbs.collection("listings");
+       
+        collection.find({"taxonomy_path": taxonomyLookup}).toArray(function(err, taxonomy) {
+                if(err){
+                    console.log(err);
+                }
+                console.log("FINAL JSON? ", taxonomy);
+                res.json(JSON.stringify(taxonomy));
+        });
+    }) // end of client connect
+}); // end of app.post
+
 // *********************************************************************** //
 // Defining Functions
 // *********************************************************************** //

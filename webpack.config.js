@@ -6,6 +6,7 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'client/dist')
   },
+  mode: "production",
   module: {
     rules: [
       {

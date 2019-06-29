@@ -55,6 +55,7 @@ html, body, #app {
 
     .contentImageContainer{
         position: relative;
+        z-index: -1;
     }
 
     .contentImage{
@@ -70,7 +71,7 @@ html, body, #app {
         display: block;
     }
       
-      .contentImageMiddle {
+    .contentImageMiddle {
         transition: .5s ease;
         opacity: 0;
         position: absolute;
@@ -78,21 +79,21 @@ html, body, #app {
         left: 50%;
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%)
-      }
-      
-      .contentImageContainer:hover .contentImage {
-        opacity: 0.3;
-      }
-      .contentImageContainer:hover .contentImageMiddle {
+    }
+    
+    .contentImageContainer:hover .contentImage {
+        opacity: 0.3;   
+    }
+    .contentImageContainer:hover .contentImageMiddle {
         opacity: 1;
-      }
-            
-      .contentImageMiddleText {
+    }
+        
+    .contentImageMiddleText {
         background-color: #4CAF50;
         color: white;
         font-size: 16px;
         padding: 16px 32px;
-      }
+    }
 
 
     /* Hamburger button styling */
@@ -102,13 +103,13 @@ html, body, #app {
         flex-grow: 1;
     }
 
-    a {
+    .menuItem {
         text-decoration: none;
         color: #3a3737;
         transition: color 0.3s ease;
     }
 
-    a:hover {
+    .menuItem:hover{
         color: rgb(211, 13, 96);
     }
 
