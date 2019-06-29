@@ -1,6 +1,21 @@
 window.onload = function(){
     console.log("La gatta nera");
 
+    // class LikeButton extends Component {
+    //   constructor() {
+    //     super();
+    //     this.state = {
+    //       title: ""
+    //     };
+    //   }
+    //   render() {
+    //     return (
+    //         <button> Like Button</button>
+    //     );
+    //   }
+    // }
+
+
     $("a").click(submitData);
 
     function submitData(){
@@ -15,9 +30,25 @@ window.onload = function(){
             dataType: "json",
             success: function(data, status, jqXHR){
                 console.log("RETRIEVED DATA: ", data, status, jqXHR);
+                // processData(data);
+                document.getElementById("content").innerHTML = "HELLO";
             }           
         }) // End of $.ajax call  
-    }
+    } // end of submitData function
+
+
+    function processData(dataJSON){
+        let listings = JSON.parse(dataJSON);
+        let imagesURL = [];
+        listings.forEach( listing => {
+            let imgArr = listing.Images;
+            imagesURL.push(imgArr[0]);
+        });
+
+        let contentHTML = document.getElementById("content").innerHTML;
+        contentHTML = dataJSON;
+
+    }; // end of processData function
 
 
 
@@ -32,19 +63,6 @@ window.onload = function(){
 // import React, { Component } from "react";
 // import ReactDOM from "react-dom";
 
-// class LikeButton extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       title: ""
-//     };
-//   }
-//   render() {
-//     return (
-//         <button> Like Button</button>
-//     );
-//   }
-// }
 
 
 // console.log("WHATSUP!" + " " + namejs.name + ". I miss you <3. A lot a lot a lot. ");
