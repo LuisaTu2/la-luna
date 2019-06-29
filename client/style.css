@@ -14,9 +14,10 @@ html, body, #app {
 
 #pageTitle{
     font-family: 'Dancing Script', cursive;
-    background-color: rgb(241, 139, 139);
+    /* background-color: rgb(241, 139, 139); */
     color: rgb(19, 14, 14);
-    text-align: center;
+    /* text-align: left; */
+    padding-left: 10%;
     height: 100%;
 }
 
@@ -36,8 +37,8 @@ html, body, #app {
     #content{
         /* height: 83.5%; */
         height: 150%;
-        background-color: rgb(240, 110, 160);
-        overflow: auto;
+        /* background-color: rgb(240, 110, 160); */
+        /* overflow: auto; */
     }
 
     #footer{
@@ -45,17 +46,65 @@ html, body, #app {
         background-color: rgb(241, 166, 138);
     }
 
+    /* PICTURES */
+    #contentImages{
+        display: flex;
+        flex-direction: column;
+        padding-top: 70px;
+    }
+
+    .contentImageContainer{
+        position: relative;
+    }
+
+    .contentImage{
+        width: 70%;
+        height: 170px;
+        margin: auto;
+        padding: 2%;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: .5s ease;
+        backface-visibility: hidden;
+        opacity: 1;
+        display: block;
+    }
+      
+      .contentImageMiddle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%)
+      }
+      
+      .contentImageContainer:hover .contentImage {
+        opacity: 0.3;
+      }
+      .contentImageContainer:hover .contentImageMiddle {
+        opacity: 1;
+      }
+            
+      .contentImageMiddleText {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        padding: 16px 32px;
+      }
+
+
     /* Hamburger button styling */
 
     #pageTitle{
         font-size: 2.5em;
-        /* width: 80%; */
         flex-grow: 1;
     }
 
     a {
         text-decoration: none;
-        color: #232323;
+        color: #3a3737;
         transition: color 0.3s ease;
     }
 
@@ -64,8 +113,8 @@ html, body, #app {
     }
 
     nav{
-        background-color: rgb(83, 168, 140);
-        width: 20%;
+        /* background-color: rgb(83, 168, 140); */
+        width: 18%;
     }
     #menuToggle{
         display: block;
@@ -84,10 +133,8 @@ html, body, #app {
         width: 40px;
         height: 32px;
         position: absolute;
-        /* padding-top: 5%;
-        padding-left: 5%; */
         top: -8px;
-        left: 7px;
+        left: 4.5px;
         cursor: pointer;
         opacity: 0; /* hide this */
         z-index: 2; /* and place it over the hamburger */
@@ -100,7 +147,7 @@ html, body, #app {
         height: 3px;
         margin-bottom: 5px;
         position: relative;
-        background: #974497;
+        background: #eb2eeb;
         border-radius: 2px;
         z-index: 1;
         transform-origin: 4px 0px;
@@ -120,6 +167,7 @@ html, body, #app {
     #menuToggle input:checked ~ span {
         opacity: 1;
         transform: rotate(45deg) translate(-2px, -1px);
+        /* transform: rotate(45deg) translate(0px, 0px); */
         background: #bbb6b6;
     }
 
@@ -130,6 +178,7 @@ html, body, #app {
 
     #menuToggle input:checked ~ span:nth-last-child(2) {
         transform: rotate(-45deg) translate(0, -1px);
+        /* transform: rotate(-45deg) translate(0, -6px); */
     }
 
     #menu {
@@ -139,7 +188,7 @@ html, body, #app {
         padding: 50px;
         padding-top: 95px;
         /* background: #ededed; */
-        background: #f3e0f5;
+        background: #f7dbee;
         list-style-type: none;
         -webkit-font-smoothing: antialiased;
         /* to stop flickering of text in safari */
