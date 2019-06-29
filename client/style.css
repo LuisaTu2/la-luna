@@ -19,7 +19,7 @@ html, body, #app {
     padding-top: 3%;
 }
 
-@media (max-width:340px){
+@media (max-width:360px){
 
     #header {
         height: 8%;
