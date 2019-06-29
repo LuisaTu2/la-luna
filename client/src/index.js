@@ -21,6 +21,6 @@ class LikeButton extends Component {
 
 // export default FormContainer;
 const likeBtn = document.getElementById("likeBtn");
-ReactDOM.render( <LikeButton />, likeBtn);
+// ReactDOM.render( <LikeButton />, likeBtn);
 
 console.log("WHATSUP!" + " " + namejs.name + ". I miss you <3");

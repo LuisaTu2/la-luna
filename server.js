@@ -81,7 +81,7 @@ app.get('/home', (req, res) => {
                             }
                         })
                     })
-                    console.log(categoriesUnique);
+                    // console.log(categoriesUnique);
             });
             
         });
