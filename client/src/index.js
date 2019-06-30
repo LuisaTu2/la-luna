@@ -6,10 +6,10 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            imagesURL: ["../images/lavender.jpg", "../images/lavender.jpg", "../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg"],
+            imagesURL: ["../images/lavender.jpg", "../images/lavender.jpg"], // "../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg"],
             images:[],
-            itemsPerPage:10,
-            selection:"",
+            isWelcomePage: true,
+            isLastPage: false,
             firstPageIx: 1,
             checkbox: false,
             values:[["craft_supplies","Craft Supplies and Tools"], 
@@ -17,7 +17,7 @@ class App extends Component {
                     ["clothing","Clothing"],
                     ["home_living","Home and Living"],
                     ["art_collectibles","Art and Collectibles"], 
-                    ["accessories","Accessories"]]
+                    ["accessories","Accessories"]],
         };
 
         this.submitData = this.submitData.bind(this);
@@ -35,37 +35,41 @@ class App extends Component {
     }
 
     paginationHandler(v){
-        console.log("PAGINATION HJANDLER");
-        let newPageIx = this.state.firstPageIx + 10;
+        let newPageIx = v === "next" ? Math.min(this.state.firstPageIx + 10, this.state.images.length) : Math.max(this.state.firstPageIx - 10, 1);
+        // if(v === "next"){
+        //     newPageIx = Math.min(this.state.firstPageIx + 10, this.state.images.length);
+        // } else if(v === "previous"){
+        //     newPageIx = Math.max(this.state.firstPageIx - 10, 1);
+        // }  
         this.setState({
             firstPageIx: newPageIx
         }, this.updateImages);
     }
 
     updateImages(){
-        console.log("UPDATING IMAGES");
+        let isLastPageFlag = false; 
         let firstPage = this.state.firstPageIx;
-        let lastPage = firstPage + 10;
-        let imagesURLs =  this.state.images;
-        let imagesURLUpdated = imagesURLs.slice(firstPage, lastPage);
-        console.log(firstPage, lastPage, imagesURLUpdated);
+        let lastPage = Math.min(firstPage + 10, this.state.images.length);
+        let imagesURLUpdated = this.state.images.slice(firstPage, lastPage);
+        if(imagesURLUpdated.length === 0){
+            imagesURLUpdated = ["../images/cat_yarn.jpg"];
+            isLastPageFlag = true;
+        }
         this.setState({
             firstPageIx: firstPage,
-            imagesURL: imagesURLUpdated
+            imagesURL: imagesURLUpdated,
+            isLastPage : isLastPageFlag
         })    
     }
 
-    submitData(s){
-        console.log("SUBMITTING DATA");
+    submitData(selection){
         this.checkboxHandler();
-        let taxonomy = s;
         this.setState({
-            selection:taxonomy,
-            firstPageIx: 1
-        })
-        let userData = {"taxonomy": taxonomy};
+            firstPageIx: 1,
+            isWelcomePage: false
+        });
+        let userData = {"taxonomy": selection};
         let self = this;
-        console.log(userData);
         $.ajax({
             type: "POST",
             url: "/data",
@@ -81,7 +85,6 @@ class App extends Component {
 
 
     processData(dataJSON){
-        console.log("PROCESSING DATA");
         let listings = JSON.parse(dataJSON);
         let imagesAll = [];
         listings.forEach( listing => {
@@ -93,6 +96,8 @@ class App extends Component {
                 images:imagesAll
             }, this.updateImages)
     }; // end of processData function
+
+
 
     render() {
 
@@ -106,8 +111,7 @@ class App extends Component {
                             <span></span>
                             <span></span>
                             <ul id="menu">
-                                {
-                                    this.state.values.map( v => {
+                                {   this.state.values.map( v => {
                                         let val = v[0]; let menuItemHTML = v[1];
                                         return  <a href="#" onClick={this.submitData.bind(this, val)} className="menuItem"><li>{menuItemHTML}</li></a>
                                     })
@@ -119,13 +123,14 @@ class App extends Component {
                 </div>
 
                 <div id="content">
-                    <Images imagesURLArr={this.state.imagesURL} />
+                    { this.state.isLastPage ? <div className="lastPageText"> You have reached the last page! </div> : null }
+                    <Images imagesURLArr={this.state.imagesURL} isWelcomePageImages={this.state.isWelcomePage} isLastPageImages={this.state.isLastPage}/>
                     <div id="footer">
                         <div className="paginationContainer">
-                            <a href="#" className="paginationBtn previous round" onClick={this.paginationHandler} >&#8249;</a>
-                            <a href="#" className="paginationBtn next round" onClick={this.paginationHandler}>&#8250;</a>
-                            <p className="footerText"> Crafted by LuisaTu2 </p>
+                            <a href="#" className="paginationBtn previous round" onClick={this.paginationHandler.bind(this, "previous")} >&#8249;</a>
+                            <a href="#" className="paginationBtn next round" onClick={this.paginationHandler.bind(this, "next")}>&#8250;</a>
                         </div>
+                        <div className="footerText"> Crafted by LuisaTu2 </div>
                     </div> 
                 </div>
 

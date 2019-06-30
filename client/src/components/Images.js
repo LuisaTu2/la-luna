@@ -9,20 +9,11 @@ class Images extends Component {
     
     render() {
         let imagesURL = this.props.imagesURLArr;
-        // let firstPage = this.props.firstPageIx;
-        // let lastPage = firstPage + 10;
-        // let images = [];
-    
-        // for(let i = firstPage; i <= lastPage; i++){
-        //     if(i < images.length){
-        //         images.push(imagesURL[i]);
-        //     }
-        // }
 
         return (
-            <div> 
+            <div className="contentImages"> 
                 {   imagesURL.map( (imgURL, ix) => {
-                    return <Image imageURL={imgURL} />
+                    return <Image imageURL={imgURL} isWelcomePageImage={this.props.isWelcomePageImages} isLastPageImage={this.props.isLastPageImages} />
                 })}
             </div>
         )
