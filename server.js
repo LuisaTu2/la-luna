@@ -95,11 +95,13 @@ app.get('/home', (req, res) => {
 
 
 app.post("/data", (req, res) =>{
-    let taxonomyJSON = req.body.taxonomy;
+
+    console.log(req.body);
+    let taxonomyJSON = req.body;
     let taxonomyLookup;
 
-    switch(taxonomyJSON){
-        case "craft_suppplies":
+    switch(taxonomyJSON.taxonomy){
+        case "craft_supplies":
             taxonomyLookup = 'Craft Supplies & Tools';
             break;
         case "jewelry":
