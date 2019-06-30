@@ -19,8 +19,6 @@ class Images extends Component {
             }
         }
 
-        console.log("RENDER THESE IMAGES: ", images );
-
         return (
             <div> 
                 {   imagesURL.map( (imgURL, ix) => {

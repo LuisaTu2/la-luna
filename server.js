@@ -35,7 +35,8 @@ const client = new MongoClient(uri || "mongodb://localhost:27017/test", { useNew
 //     isFirstRender = false;
 //     for(let page=1; page < 100; page++){
 //         // let urlFR = "https://openapi.etsy.com/v2/listings/active?includes=Images(url_fullxfull)&limit="+limitPages+"&page="+page+"&api_key="+apiKey;
-//         let urlFR = "https://openapi.etsy.com/v2/listings/active?fields=category_path&includes=Images(url_fullxfull)&page="+page+"&api_key=dvb11s3or2x3v911bdfef9vg";
+//         // let urlFR = "https://openapi.etsy.com/v2/listings/active?fields=category_path&includes=Images(url_fullxfull)&page="+page+"&api_key=dvb11s3or2x3v911bdfef9vg";
+//         let urlFR = "https://openapi.etsy.com/v2/listings/active?fields=category_path,title,price,currency_code&limit=100&includes=Images(url_fullxfull)&"+page+"&api_key=dvb11s3or2x3v911bdfef9vg"
 //         console.log(page, urlFR);
 //         let batch = Math.floor(page/10);
 //         setTimeout( () => { makeRequestDB(urlFR)}, batch*2000 );

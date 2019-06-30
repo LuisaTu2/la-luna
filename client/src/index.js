@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Images from "./components/Images"
+import Images from "./components/Images";
 
 class App extends Component {
     constructor(props) {
@@ -8,16 +8,38 @@ class App extends Component {
         this.state = { 
             imagesURL: ["../images/lavender.jpg", "../images/lavender.jpg", "../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg"],
             itemsPerPage:10,
-            menuItem:"craft_supplies",
-            firstPageIx: 1
+            selection:"craft_supplies",
+            firstPageIx: 1,
+            checkbox: false,
+            values:[["craft_supplies","Craft Supplies and Tools"], 
+                    ["jewelry","Jewelry"],
+                    ["clothing","Clothing"],
+                    ["home_living","Home and Living"],
+                    ["art_collectibles","Art and Collectibles"], 
+                    ["accessories","Accessories"]]
         };
 
         this.submitData = this.submitData.bind(this);
         this.processData = this.processData.bind(this);
+        this.checkboxHandler = this.checkboxHandler.bind(this);
+        this.paginationHandler = this.paginationHandler.bind(this);
     };
 
-    submitData(){
-        let taxonomy = this.state.menuItem;
+    checkboxHandler(){
+        console.log("FIRED CHECKBOX HANDLER", this.state.checkbox);
+        let isChecked = !this.state.checkbox;
+        this.setState({
+            checkbox: isChecked
+        })
+    }
+
+    paginationHandler(v){
+        alert("Hello! ", v);
+    }
+
+    submitData(d){
+        this.checkboxHandler();
+        let taxonomy = d;
         let userData = {"taxonomy": taxonomy};
         let self = this;
         console.log(userData);
@@ -28,7 +50,7 @@ class App extends Component {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data, status, jqXHR){
-                console.log("RETRIEVED DATA: ", data, status, jqXHR);
+                // console.log("RETRIEVED DATA: ", data, status, jqXHR);
                 self.processData(data);
             }           
         }); // End of $.ajax call  
@@ -42,7 +64,6 @@ class App extends Component {
             let imgArr = listing.Images;
             images.push(imgArr[0].url_fullxfull);
         });
-        console.log("PROCESSED DATA: ", images);
         let lastPageIx = this.state.firstPageIx + 11;
         let imagesURLUpdated =  images.slice(this.state.firstPageIx, lastPageIx);
         this.setState({
@@ -57,18 +78,17 @@ class App extends Component {
                 <div id="header">            
                     <nav role="navigation">
                         <div id="menuToggle">
-                            <input type="checkbox" />
+                            <input type="checkbox" checked={this.state.checkbox} onChange={this.checkboxHandler}/>       
                             <span></span>
                             <span></span>
                             <span></span>
-                            
                             <ul id="menu">
-                                <a href="#" onClick={this.submitData} value={this.state.menuItem} className="menuItem"><li>Craft Supplies and Tools</li></a>
-                                <a href="#" onClick={this.submitData} value="jewelry" className="menuItem"><li>Jewelry</li></a>
-                                <a href="#" onClick={this.submitData} value="clothing" className="menuItem"><li>Clothing</li></a>
-                                <a href="#" onClick={this.submitData} value="home_living" className="menuItem"><li>Home and Living</li></a>
-                                <a href="#" onClick={this.submitData} value="art_collectibles" className="menuItem"><li>Art and Collectibles</li></a>
-                                <a href="#" onClick={this.submitData} value="accessories" className="menuItem"><li>Accessories</li></a>
+                                {
+                                    this.state.values.map( v => {
+                                        let val = v[0]; let menuItemHTML = v[1];
+                                        return  <a href="#" onClick={this.submitData.bind(this, val)} className="menuItem"><li>{menuItemHTML}</li></a>
+                                    })
+                                }
                             </ul>
                         </div>
                     </nav>
@@ -78,7 +98,11 @@ class App extends Component {
                 <div id="content">
                     <Images imagesURL={this.state.imagesURL} firstPageIx={this.state.firstPageIx}/>
                     <div id="footer">
-                        Crafted by LuisaTu2
+                        <div className="paginationContainer">
+                            <a href="#" className="paginationBtn previous round" onClick={this.paginationHandler.bind(this, -1)} >&#8249;</a>
+                            <a href="#" className="paginationBtn next round" onClick={this.paginationHandler.bind(this, 1)}>&#8250;</a>
+                            <p className="footerText"> Crafted by LuisaTu2 </p>
+                        </div>
                     </div> 
                 </div>
 
