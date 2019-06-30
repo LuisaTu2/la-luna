@@ -5,8 +5,9 @@ import Images from "./components/Images"
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            imagesURL:"../images/lavender.jpg",
+        this.state = { 
+            imagesURL: ["../images/lavender.jpg", "../images/lavender.jpg", "../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg"],
+            itemsPerPage:10,
             menuItem:"craft_supplies"
         };
 
@@ -41,16 +42,15 @@ class App extends Component {
             images.push(imgArr[0].url_fullxfull);
         });
 
-        console.log(images[0]);
         this.setState({
-            imagesURL: images[0]
+            imagesURL: images
         })
     }; // end of processData function
 
     render() {
+
         return (
             <div id="app">
-
                 <div id="header">            
                     <nav role="navigation">
                         <div id="menuToggle">
@@ -73,12 +73,16 @@ class App extends Component {
                 </div>
 
                 <div id="content">
+                    {/* { this.state.imagesURL.map( (imgURL, ix) => {
+                        console.log(imgURL, ix);
+                        return <Image imageURL={imgURL} />
+                    })} */}
                     <Images imagesURL={this.state.imagesURL}/>
                 </div>
-
+{/* 
                 <div id="footer">
                     Crafted by LuisaTu2
-                </div>
+                </div> */}
 
             </div>
         )
