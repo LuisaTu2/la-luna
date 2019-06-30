@@ -6,7 +6,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            imagesURL: ["../images/lavender.jpg", "../images/lavender.jpg"], // "../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg"],
+            imagesURL: [["../images/lavender.jpg", "lavender"], ["../images/lavender.jpg", "another lavender"]], // "../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg"],
             images:[],
             isWelcomePage: true,
             isLastPage: false,
@@ -36,11 +36,6 @@ class App extends Component {
 
     paginationHandler(v){
         let newPageIx = v === "next" ? Math.min(this.state.firstPageIx + 10, this.state.images.length) : Math.max(this.state.firstPageIx - 10, 1);
-        // if(v === "next"){
-        //     newPageIx = Math.min(this.state.firstPageIx + 10, this.state.images.length);
-        // } else if(v === "previous"){
-        //     newPageIx = Math.max(this.state.firstPageIx - 10, 1);
-        // }  
         this.setState({
             firstPageIx: newPageIx
         }, this.updateImages);
@@ -52,7 +47,7 @@ class App extends Component {
         let lastPage = Math.min(firstPage + 10, this.state.images.length);
         let imagesURLUpdated = this.state.images.slice(firstPage, lastPage);
         if(imagesURLUpdated.length === 0){
-            imagesURLUpdated = ["../images/cat_yarn.jpg"];
+            imagesURLUpdated = [["../images/cat_yarn.jpg", "yarn cat"]];
             isLastPageFlag = true;
         }
         this.setState({
@@ -89,7 +84,10 @@ class App extends Component {
         let imagesAll = [];
         listings.forEach( listing => {
             let imgArr = listing.Images;
-            imagesAll.push(imgArr[0].url_fullxfull);
+            // let imgTitle = listing.title.toLowerCase().split(" ").slice(0, 2).join(" ");
+            let imgTitle = listing.title.toLowerCase().split(" ").slice(0, 1).join(" ");
+            let img = [imgArr[0].url_fullxfull, imgTitle];
+            imagesAll.push(img);
         });
         console.log(imagesAll.length);
         this.setState({

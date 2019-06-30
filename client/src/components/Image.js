@@ -8,13 +8,12 @@ class Image extends Component {
     
     render() {
         let conditional = !this.props.isWelcomePageImage && !this.props.isLastPageImage;
-        console.log(this.props.isWelcomePageImage,this.props.isLastPageImage, conditional);
         return (
                 <div className="contentImageContainer"> 
                     <img src={this.props.imageURL} alt="lavender" className={"contentImage" + (conditional ? " shadow" : "" ) }/> 
                     { conditional ? 
                         <div className="contentImageMiddle">
-                            <div className="contentImageMiddleText"> La Bicicleta </div>
+                            <div className="contentImageMiddleText"> {this.props.title} </div>
                         </div> :
                          ""}
   

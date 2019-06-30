@@ -9,11 +9,10 @@ class Images extends Component {
     
     render() {
         let imagesURL = this.props.imagesURLArr;
-
         return (
             <div className="contentImages"> 
                 {   imagesURL.map( (imgURL, ix) => {
-                    return <Image imageURL={imgURL} isWelcomePageImage={this.props.isWelcomePageImages} isLastPageImage={this.props.isLastPageImages} />
+                    return <Image imageURL={imgURL[0]} isWelcomePageImage={this.props.isWelcomePageImages} isLastPageImage={this.props.isLastPageImages} title={imgURL[1]}/>
                 })}
             </div>
         )
