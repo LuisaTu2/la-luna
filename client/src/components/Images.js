@@ -5,16 +5,25 @@ import Image from "./Image"
 class Images extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-         
-        // }
     }
     
     render() {
+        let imagesURL = this.props.imagesURL;
+        let firstPage = this.props.firstPageIx;
+        let lastPage = firstPage + 10;
+        let images = [];
+    
+        for(let i = firstPage; i <= lastPage; i++){
+            if(i < images.length){
+                images.push(imagesURL[i]);
+            }
+        }
+
+        console.log("RENDER THESE IMAGES: ", images );
+
         return (
             <div> 
-                { this.props.imagesURL.map( (imgURL, ix) => {
-                    console.log(imgURL, ix);
+                {   imagesURL.map( (imgURL, ix) => {
                     return <Image imageURL={imgURL} />
                 })}
             </div>

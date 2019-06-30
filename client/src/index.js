@@ -8,7 +8,8 @@ class App extends Component {
         this.state = { 
             imagesURL: ["../images/lavender.jpg", "../images/lavender.jpg", "../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg"],
             itemsPerPage:10,
-            menuItem:"craft_supplies"
+            menuItem:"craft_supplies",
+            firstPageIx: 1
         };
 
         this.submitData = this.submitData.bind(this);
@@ -41,9 +42,11 @@ class App extends Component {
             let imgArr = listing.Images;
             images.push(imgArr[0].url_fullxfull);
         });
-
+        console.log("PROCESSED DATA: ", images);
+        let lastPageIx = this.state.firstPageIx + 11;
+        let imagesURLUpdated =  images.slice(this.state.firstPageIx, lastPageIx);
         this.setState({
-            imagesURL: images
+            imagesURL: imagesURLUpdated
         })
     }; // end of processData function
 
@@ -73,16 +76,11 @@ class App extends Component {
                 </div>
 
                 <div id="content">
-                    {/* { this.state.imagesURL.map( (imgURL, ix) => {
-                        console.log(imgURL, ix);
-                        return <Image imageURL={imgURL} />
-                    })} */}
-                    <Images imagesURL={this.state.imagesURL}/>
+                    <Images imagesURL={this.state.imagesURL} firstPageIx={this.state.firstPageIx}/>
+                    <div id="footer">
+                        Crafted by LuisaTu2
+                    </div> 
                 </div>
-{/* 
-                <div id="footer">
-                    Crafted by LuisaTu2
-                </div> */}
 
             </div>
         )
