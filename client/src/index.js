@@ -7,8 +7,9 @@ class App extends Component {
         super(props);
         this.state = { 
             imagesURL: ["../images/lavender.jpg", "../images/lavender.jpg", "../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg"],
+            images:[],
             itemsPerPage:10,
-            selection:"craft_supplies",
+            selection:"",
             firstPageIx: 1,
             checkbox: false,
             values:[["craft_supplies","Craft Supplies and Tools"], 
@@ -23,10 +24,10 @@ class App extends Component {
         this.processData = this.processData.bind(this);
         this.checkboxHandler = this.checkboxHandler.bind(this);
         this.paginationHandler = this.paginationHandler.bind(this);
+        this.updateImages = this.updateImages.bind(this);
     };
 
     checkboxHandler(){
-        console.log("FIRED CHECKBOX HANDLER", this.state.checkbox);
         let isChecked = !this.state.checkbox;
         this.setState({
             checkbox: isChecked
@@ -34,12 +35,34 @@ class App extends Component {
     }
 
     paginationHandler(v){
-        alert("Hello! ", v);
+        console.log("PAGINATION HJANDLER");
+        let newPageIx = this.state.firstPageIx + 10;
+        this.setState({
+            firstPageIx: newPageIx
+        }, this.updateImages);
     }
 
-    submitData(d){
+    updateImages(){
+        console.log("UPDATING IMAGES");
+        let firstPage = this.state.firstPageIx;
+        let lastPage = firstPage + 10;
+        let imagesURLs =  this.state.images;
+        let imagesURLUpdated = imagesURLs.slice(firstPage, lastPage);
+        console.log(firstPage, lastPage, imagesURLUpdated);
+        this.setState({
+            firstPageIx: firstPage,
+            imagesURL: imagesURLUpdated
+        })    
+    }
+
+    submitData(s){
+        console.log("SUBMITTING DATA");
         this.checkboxHandler();
-        let taxonomy = d;
+        let taxonomy = s;
+        this.setState({
+            selection:taxonomy,
+            firstPageIx: 1
+        })
         let userData = {"taxonomy": taxonomy};
         let self = this;
         console.log(userData);
@@ -58,17 +81,17 @@ class App extends Component {
 
 
     processData(dataJSON){
+        console.log("PROCESSING DATA");
         let listings = JSON.parse(dataJSON);
-        let images = [];
+        let imagesAll = [];
         listings.forEach( listing => {
             let imgArr = listing.Images;
-            images.push(imgArr[0].url_fullxfull);
+            imagesAll.push(imgArr[0].url_fullxfull);
         });
-        let lastPageIx = this.state.firstPageIx + 11;
-        let imagesURLUpdated =  images.slice(this.state.firstPageIx, lastPageIx);
+        console.log(imagesAll.length);
         this.setState({
-            imagesURL: imagesURLUpdated
-        })
+                images:imagesAll
+            }, this.updateImages)
     }; // end of processData function
 
     render() {
@@ -96,11 +119,11 @@ class App extends Component {
                 </div>
 
                 <div id="content">
-                    <Images imagesURL={this.state.imagesURL} firstPageIx={this.state.firstPageIx}/>
+                    <Images imagesURLArr={this.state.imagesURL} />
                     <div id="footer">
                         <div className="paginationContainer">
-                            <a href="#" className="paginationBtn previous round" onClick={this.paginationHandler.bind(this, -1)} >&#8249;</a>
-                            <a href="#" className="paginationBtn next round" onClick={this.paginationHandler.bind(this, 1)}>&#8250;</a>
+                            <a href="#" className="paginationBtn previous round" onClick={this.paginationHandler} >&#8249;</a>
+                            <a href="#" className="paginationBtn next round" onClick={this.paginationHandler}>&#8250;</a>
                             <p className="footerText"> Crafted by LuisaTu2 </p>
                         </div>
                     </div> 

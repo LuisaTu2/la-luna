@@ -8,16 +8,16 @@ class Images extends Component {
     }
     
     render() {
-        let imagesURL = this.props.imagesURL;
-        let firstPage = this.props.firstPageIx;
-        let lastPage = firstPage + 10;
-        let images = [];
+        let imagesURL = this.props.imagesURLArr;
+        // let firstPage = this.props.firstPageIx;
+        // let lastPage = firstPage + 10;
+        // let images = [];
     
-        for(let i = firstPage; i <= lastPage; i++){
-            if(i < images.length){
-                images.push(imagesURL[i]);
-            }
-        }
+        // for(let i = firstPage; i <= lastPage; i++){
+        //     if(i < images.length){
+        //         images.push(imagesURL[i]);
+        //     }
+        // }
 
         return (
             <div> 
