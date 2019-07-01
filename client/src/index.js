@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Images from "./components/Images";
+import Analytics from "./components/Analytics";
 
 class App extends Component {
     constructor(props) {
@@ -11,13 +12,15 @@ class App extends Component {
             isWelcomePage: true,
             isLastPage: false,
             firstPageIx: 1,
+            isAnalytics: false, 
             checkbox: false,
             values:[["craft_supplies","Craft Supplies and Tools"], 
                     ["jewelry","Jewelry"],
                     ["clothing","Clothing"],
                     ["home_living","Home and Living"],
                     ["art_collectibles","Art and Collectibles"], 
-                    ["accessories","Accessories"]],
+                    ["accessories","Accessories"],
+                    ["analytics", "Analytics"]],
         };
 
         this.submitData = this.submitData.bind(this);
@@ -63,19 +66,28 @@ class App extends Component {
             firstPageIx: 1,
             isWelcomePage: false
         });
-        let userData = {"taxonomy": selection};
-        let self = this;
-        $.ajax({
-            type: "POST",
-            url: "/data",
-            data: JSON.stringify(userData),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function(data, status, jqXHR){
-                // console.log("RETRIEVED DATA: ", data, status, jqXHR);
-                self.processData(data);
-            }           
-        }); // End of $.ajax call  
+        if(selection === "analytics"){
+            this.setState({
+                isAnalytics: true
+            })
+        } else {
+            this.setState({
+                isAnalytics: false
+            })
+            let userData = {"taxonomy": selection};
+            let self = this;
+            $.ajax({
+                type: "POST",
+                url: "/data",
+                data: JSON.stringify(userData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data, status, jqXHR){
+                    // console.log("RETRIEVED DATA: ", data, status, jqXHR);
+                    self.processData(data);
+                }           
+            }); // End of $.ajax call  
+        }
     }; // end of submitData function
 
 
@@ -101,6 +113,7 @@ class App extends Component {
 
         return (
             <div id="app">
+
                 <div id="header">            
                     <nav role="navigation">
                         <div id="menuToggle">
@@ -110,8 +123,9 @@ class App extends Component {
                             <span></span>
                             <ul id="menu">
                                 {   this.state.values.map( v => {
-                                        let val = v[0]; let menuItemHTML = v[1];
-                                        return  <a href="#" onClick={this.submitData.bind(this, val)} className="menuItem"><li>{menuItemHTML}</li></a>
+                                        let val = v[0]; let menuItemHTML = v[1]; 
+                                        let analyticsStyle = v[0] === "analytics" ? ".menuItemAnalytics" : "";
+                                        return  <a href="#" onClick={this.submitData.bind(this, val)} className={"menuItem " + analyticsStyle }><li>{menuItemHTML}</li></a>
                                     })
                                 }
                             </ul>
@@ -122,14 +136,16 @@ class App extends Component {
 
                 <div id="content">
                     { this.state.isLastPage ? <div className="lastPageText"> You have reached the last page! </div> : null }
-                    <Images imagesURLArr={this.state.imagesURL} isWelcomePageImages={this.state.isWelcomePage} isLastPageImages={this.state.isLastPage}/>
+                    { this.state.isAnalytics ? 
+                        <Analytics /> : 
+                        <Images imagesURLArr={this.state.imagesURL} isWelcomePageImages={this.state.isWelcomePage} isLastPageImages={this.state.isLastPage}/> }
                     <div id="footer">
                         <div className="paginationContainer">
                             <a href="#" className="paginationBtn previous round" onClick={this.paginationHandler.bind(this, "previous")} >&#8249;</a>
                             <a href="#" className="paginationBtn next round" onClick={this.paginationHandler.bind(this, "next")}>&#8250;</a>
                         </div>
                         <div className="footerText"> Crafted by LuisaTu2 </div>
-                    </div> 
+                    </div>  
                 </div>
 
             </div>

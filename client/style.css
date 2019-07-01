@@ -287,6 +287,42 @@ html, body, #root, #app {
         padding-right: 20%;
     }
 
+
+    /* Analytics Section */
+    .analyticsStyle{
+        color: greenyellow !important; 
+        background-color: #504d4d !important;
+    }
+
+    .analyticsContainer{
+        width: 100%;
+        min-height: 500px;
+        background-color: #3a3737;
+        color: greenyellow;
+        padding-top: 100px;
+    }
+
+    .taxonomyColorContainer{
+        width: 80%;
+        padding-left: 10%;
+        padding-top: 10%;
+        display: flex;
+        flex-direction: column;
+
+    }
+    .taxonomyColorLabel{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .colorDot{
+        width: 20px;
+        height: 20px; 
+        margin: 0%; 
+        padding: 0%;
+        display: block;
+    }
+
 }
 /* @media (min-width:851px) and (max-width:1300px)  */
 /* @media (min-width:851px) and (max-width:1300px)  */

@@ -19,6 +19,8 @@ let taxonomyMapping = { "craft_supplies":'Craft Supplies & Tools',
                         "accessories": "Accessories"     
                     };
 let taxonomyIdMap = {}; 
+let taxonomyIdMap1 = {};
+let users = new Set();
 
 // *********************************************************************** //
 // Creating the server
@@ -44,7 +46,7 @@ const client = new MongoClient(uri || "mongodb://localhost:27017/test", { useNew
 //     for(let page=1; page < 100; page++){
 //         // let urlFR = "https://openapi.etsy.com/v2/listings/active?includes=Images(url_fullxfull)&limit="+limitPages+"&page="+page+"&api_key="+apiKey;
 //         // let urlFR = "https://openapi.etsy.com/v2/listings/active?fields=category_path&includes=Images(url_fullxfull)&page="+page+"&api_key=dvb11s3or2x3v911bdfef9vg";
-//         let urlFR = "https://openapi.etsy.com/v2/listings/active?fields=category_path,title,price,currency_code&limit=100&includes=Images(url_fullxfull)&"+page+"&api_key=dvb11s3or2x3v911bdfef9vg"
+//         let urlFR = "https://openapi.etsy.com/v2/listings/active?fields=category_path,title,user_id,price,currency_code&limit=100&includes=Images(url_fullxfull)&"+page+"&api_key=dvb11s3or2x3v911bdfef9vg"
 //         console.log(page, urlFR);
 //         let batch = Math.floor(page/10);
 //         setTimeout( () => { makeRequestDB(urlFR)}, batch*2000 );
@@ -56,10 +58,8 @@ const client = new MongoClient(uri || "mongodb://localhost:27017/test", { useNew
 // Routing
 // *********************************************************************** //
 app.get('/home', (req, res) => {
-        console.log("Hello there!");
-      
+        console.log("Hello there!");   
         res.sendFile(path.join(__dirname, 'client/index.html'));
-
         // filter URI criteria
         //&fields=tags,category_id,category_path&includes=Images(url_fullxfull,hex_code)&api_key=dvb11s3or2x3v911bdfef9vg
     }
@@ -67,13 +67,10 @@ app.get('/home', (req, res) => {
 
 
 app.post("/data", (req, res) =>{
-
-    console.log(req.body);
+    // console.log(req.body);
     let taxonomyJSON = req.body;
     let taxonomyLookup = taxonomyMapping[taxonomyJSON.taxonomy];
-
     console.log("Selection received in 'POST' ajax call: ", taxonomyJSON, taxonomyLookup);
-
     client.connect((err, db) => {
         if(err){
             console.log(err);
@@ -88,14 +85,34 @@ app.post("/data", (req, res) =>{
                 }
                 res.json(JSON.stringify(taxonomy));
         });
-    }) // end of client connect
+    }); // end of client connect
 }); // end of app.post
 
+app.post("/data_analytics", (req, res) => {
+    let query = req.body;
+    console.log(query);
+    client.connect((err, db) => {
+        if(err){
+            console.log(err);
+            exit;
+        }
+        const dbs = client.db("shopping");
+        const collection = dbs.collection("listings_users");
+       
+        collection.find().toArray(function(err, listings_users_All) {
+                if(err){
+                    console.log(err);
+                }
+                res.json(JSON.stringify(listings_users_All));
+        });
+    }); // end of client connect
+
+})
 // *********************************************************************** //
-// Defining Functions
+//                             Functions
 // *********************************************************************** //
 
-function insertDB(uri, cli, listings){
+function insertDB(uri, listings){
     console.log("INSERTING data IN DB!");
     client.connect((err, db) => {
         if(err){
@@ -105,67 +122,105 @@ function insertDB(uri, cli, listings){
         }
         const dbs = client.db("shopping");
         const collection = dbs.collection("listings");
-        // console.log("Taxonomy id map: ", taxonomyIdMap);
         // Adding listings with unique taxonomy_id
         listings.forEach( listing => {
-            // console.log("*******************************************");
             let uniqueKey = String(listing.taxonomy_id) + listing.title;
-            // console.log("Taxonomy_id", listing.taxonomy_id, "Is in map?", taxonomyIdMap[uniqueKey]);
-            if(!taxonomyIdMap[listing.taxonomy_id]){
-                taxonomyIdMap[listing.taxonomy_id] = 1;
+            if(!taxonomyIdMap[uniqueKey]){
+                taxonomyIdMap[uniqueKey] = 1;
                 collection.insertOne(listing, (err, res) => {
                     if(err){
                         console.log(err);
                     }
                 });
             } 
-        }); // end of forEach
-        //   client.close();
+        }); 
+    }); // end of client.connect
+} // end of function insertDB
 
-    });
+app.get("/analytics111", (req, res) => {
+    console.log("You requested Analytics!");
+    for(let page=1; page < 100; page++){
+        let urlFR = "https://openapi.etsy.com/v2/listings/active?fields=category_path,title,price,currency_code,user_id,views,num_favorers,images&limit=100&includes=Images&"+page+"&api_key=dvb11s3or2x3v911bdfef9vg";
+        // console.log(page, urlFR);
+        let batch = Math.floor(page/10);
+        setTimeout( () => {
+            request(urlFR, function (error, response, body) {
+                    let listings = JSON.parse(body).results;  
+                    insertDB_ListingsUsers(urlFR, listings);
+                    })
+            }, batch*10000 );
+    }
+});
+
+function insertDB_ListingsUsers(url, data){
+    console.log("DATA REQUESTED ", data.length);
+    client.connect((err, db) => {
+        if(err){
+            console.log(err);
+            exit;
+        }
+        const dbs = client.db("shopping"); const collection = dbs.collection("listings_users");
+
+        data.forEach( d => {
+            let uniqueKey = String(d.taxonomy_id) + d.title;
+            if(!taxonomyIdMap1[uniqueKey]){
+                taxonomyIdMap1[uniqueKey] = 1;
+                users.add(d.user_id);
+                collection.insertOne(d, (err, res) => {
+                    if(err){
+                        console.log(err);
+                    }
+                });
+            } 
+        }); 
+        // collection.insertMany(data, (err, res) => {
+        //     err ? console.log(err) : null;
+        // })
+        console.log("USERS", users);     
+    }) // end of client connect
 }
 
 function makeRequestDB(u){
     console.log("MAKING A REQUEST", u);
     request(u, function (error, response, body) {
         let listings = JSON.parse(body).results;  
-        insertDB(u, client, listings);
+        insertDB(u, listings);
     });
 }
 
-function uniqueTaxonomy(){
-            client.connect((err, db) => {
-            if(err){
-                console.log(err);
-                exit;
-            }
-            const dbs = client.db("shopping");
-            const collection = dbs.collection("listings");     
-            let categories = [];
-            let categoriesUnique = {};
+// function uniqueTaxonomy(){
+//             client.connect((err, db) => {
+//             if(err){
+//                 console.log(err);
+//                 exit;
+//             }
+//             const dbs = client.db("shopping");
+//             const collection = dbs.collection("listings");     
+//             let categories = [];
+//             let categoriesUnique = {};
 
-            collection.find().project({  
-                _id: 0, 
-                taxonomy_path: 1
-            }).toArray(function(err, cat) {
-                    if(err){
-                        console.log(err);
-                    }
-                    categories = cat;
-                    categories.forEach( categoryArr => {
-                        let categoryList = categoryArr.taxonomy_path;
-                        categoryList.forEach( category => {
-                            if(categoriesUnique[category]){
-                                categoriesUnique[category] += 1;
-                            } else {
-                                categoriesUnique[category] = 1;
-                            }
-                        })
-                    })
-                    // console.log(categoriesUnique);
-            });
-        });
-}
+//             collection.find().project({  
+//                 _id: 0, 
+//                 taxonomy_path: 1
+//             }).toArray(function(err, cat) {
+//                     if(err){
+//                         console.log(err);
+//                     }
+//                     categories = cat;
+//                     categories.forEach( categoryArr => {
+//                         let categoryList = categoryArr.taxonomy_path;
+//                         categoryList.forEach( category => {
+//                             if(categoriesUnique[category]){
+//                                 categoriesUnique[category] += 1;
+//                             } else {
+//                                 categoriesUnique[category] = 1;
+//                             }
+//                         })
+//                     })
+//                     // console.log(categoriesUnique);
+//             });
+//         });
+// }
 
 
 // *********************************************************************** //
