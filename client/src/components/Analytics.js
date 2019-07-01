@@ -73,21 +73,17 @@ class Analytics extends Component {
     }
 
     plotTaxonomyViewsLikes(d){
-        console.log(d, typeof(d));
         let plotData = JSON.parse(d);
         let taxonomy = Object.keys(plotData.data[0]).sort();
-        let indexes = [];
         let viewsDataArr = [];
         let likesDataArr = [];
         taxonomy.forEach( (t, ix) => {
             viewsDataArr.push({x: String(ix+1), y: plotData.data[0][t]});
             likesDataArr.push({x: String(ix+1), y: plotData.data[1][t]});
-            indexes.push(String(ix+1));
         });
         let views = viewsDataArr; 
         let likes = likesDataArr;
-        let vl = [views, likes, taxonomy, indexes];
-        console.log(vl);
+        let vl = [views, likes, taxonomy];
         this.setState({
             showTaxonomyViewsLikes: true,
             ViewsLikes: vl
@@ -99,7 +95,6 @@ class Analytics extends Component {
        
         return (
                 <div className="analyticsContainer"> 
-                    Here go the analytics!
                     <button onClick={this.query} value="taxonomy_color"> Taxonomy vs Color </button>
                     <button onClick={this.queryViewsLikes} value="views_likes_taxonomy"> Views and Likes per Category </button>
                     <Chart plottingData={this.state.plotData}/>

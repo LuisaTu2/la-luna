@@ -333,7 +333,7 @@ html, body, #root, #app {
 
     .chartTaxonomyViewsLikesContainer{
         width: 100%;
-        background-color: #c09bc0;
+        background-color: #e2d4e2;
         /* min-height: 500px; */
         display: flex;
         flex-direction: column;
