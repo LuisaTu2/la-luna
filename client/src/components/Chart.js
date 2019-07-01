@@ -17,16 +17,17 @@ class Chart extends Component {
         })
         console.log(data);
         return (
-                <div className="taxonomyColorContainer"> 
+                <div className="taxonomyColorBox"> 
                     { keys.map( k => {
-                        return <div className="taxonomyColorLabel"> {k} {
-                            sortedData[k].map( d => {
-                                let bc = d;
-                                return <div className="colorDot" style={{backgroundColor: bc }}>  </div>
-                            })
-                            } </div>
-                    }) }
-
+                        return (<div className="taxonomyColorContainer"> 
+                                    <div className="taxonomyColorLabel"> {k} </div>
+                                     { sortedData[k].map( c => {
+                                            return <div className="colorDot" style={{backgroundColor: c}}> </div>
+                                        })                
+                                     }   
+                                </div>)
+                        }) 
+                    }
                 </div>
         )
     }

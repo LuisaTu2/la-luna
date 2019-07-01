@@ -302,22 +302,30 @@ html, body, #root, #app {
         padding-top: 100px;
     }
 
-    .taxonomyColorContainer{
-        width: 80%;
-        padding-left: 10%;
-        padding-top: 10%;
-        display: flex;
-        flex-direction: column;
+    .taxonomyColorBox{
+        width: 90%;
+        padding-left: 5%;
+        padding-top: 7%;
+        padding-right: 5%;
 
     }
-    .taxonomyColorLabel{
+
+    .taxonomyColorContainer{
+        width: 100%;
         display: flex;
         flex-direction: row;
+        align-items: center;
+    }
+
+    .taxonomyColorLabel{
+        width: inherit;
+        color: rgb(235, 220, 220);
+        /* padding-top: 8px; */
     }
 
     .colorDot{
-        width: 20px;
-        height: 20px; 
+        width: 12px;
+        height: 40px; 
         margin: 0%; 
         padding: 0%;
         display: block;
