@@ -10,7 +10,7 @@ class Analytics extends Component {
         this.state = {
             plotData: {},
             showTaxonomyViewsLikes: false,
-            taxonomyViewLikes:[]
+            ViewsLikes:[]
         }
         
         this.query = this.query.bind(this);
@@ -76,19 +76,21 @@ class Analytics extends Component {
         console.log(d, typeof(d));
         let plotData = JSON.parse(d);
         let taxonomy = Object.keys(plotData.data[0]).sort();
-        let views = [];
-        let likes = [];
-
+        let indexes = [];
+        let viewsDataArr = [];
+        let likesDataArr = [];
         taxonomy.forEach( (t, ix) => {
-            views[ix] = plotData.data[0][t];
-            likes[ix] = plotData.data[1][t];
+            viewsDataArr.push({x: String(ix+1), y: plotData.data[0][t]});
+            likesDataArr.push({x: String(ix+1), y: plotData.data[1][t]});
+            indexes.push(String(ix+1));
         });
-
-        console.log(taxonomy, views, likes);
-        let tvl = [taxonomy, views, likes];
+        let views = viewsDataArr; 
+        let likes = likesDataArr;
+        let vl = [views, likes, taxonomy, indexes];
+        console.log(vl);
         this.setState({
             showTaxonomyViewsLikes: true,
-            taxonomyViewLikes:tvl
+            ViewsLikes: vl
         })
     }
 
@@ -101,7 +103,7 @@ class Analytics extends Component {
                     <button onClick={this.query} value="taxonomy_color"> Taxonomy vs Color </button>
                     <button onClick={this.queryViewsLikes} value="views_likes_taxonomy"> Views and Likes per Category </button>
                     <Chart plottingData={this.state.plotData}/>
-                    { this.state.showTaxonomyViewsLikes ?  <ChartTaxonomyViewsLikes tvlData={this.state.taxonomyViewLikes}/> : null }
+                    { this.state.showTaxonomyViewsLikes ?  <ChartTaxonomyViewsLikes vlData={this.state.ViewsLikes}/> : null }
                 </div>
         )
     }
