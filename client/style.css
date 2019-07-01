@@ -331,6 +331,13 @@ html, body, #root, #app {
         display: block;
     }
 
+    .chartTaxonomyViewsLikesContainer{
+        width: 100%;
+        padding-top: 5%;
+        background-color: #eb2eeb;
+        min-height: 500px;
+    }
+
 }
 /* @media (min-width:851px) and (max-width:1300px)  */
 /* @media (min-width:851px) and (max-width:1300px)  */

@@ -1,17 +1,22 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Chart from "./Chart";
+import ChartTaxonomyViewsLikes from "./ChartTaxonomyViewsLikes"
 
 class Analytics extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            plotData: {}
+            plotData: {},
+            showTaxonomyViewsLikes: false,
+            taxonomyViewLikes:[]
         }
         
         this.query = this.query.bind(this);
         this.taxonomyColorMapping = this.taxonomyColorMapping.bind(this);
+        this.queryViewsLikes = this.queryViewsLikes.bind(this);
+        this.plotTaxonomyViewsLikes = this.plotTaxonomyViewsLikes.bind(this);
     }
 
     query(){
@@ -43,11 +48,50 @@ class Analytics extends Component {
                 tcmap[taxonomy] = [hexcode];
             }
         });
+        
         this.setState({
             plotData: tcmap
         })
 
     }
+
+    queryViewsLikes(){
+        let queryData = {"selection":event.target.value};
+        console.log(queryData);
+        let self = this;
+        $.ajax({
+            type: "POST",
+            url: "/data_analytics_views",
+            data: JSON.stringify(queryData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data, status, jqXHR){
+                console.log("RETRIEVED DATA: ", data, status, jqXHR);
+                self.plotTaxonomyViewsLikes(data);
+            }           
+        }); // End of $.ajax call 
+    }
+
+    plotTaxonomyViewsLikes(d){
+        console.log(d, typeof(d));
+        let plotData = JSON.parse(d);
+        let taxonomy = Object.keys(plotData.data[0]).sort();
+        let views = [];
+        let likes = [];
+
+        taxonomy.forEach( (t, ix) => {
+            views[ix] = plotData.data[0][t];
+            likes[ix] = plotData.data[1][t];
+        });
+
+        console.log(taxonomy, views, likes);
+        let tvl = [taxonomy, views, likes];
+        this.setState({
+            showTaxonomyViewsLikes: true,
+            taxonomyViewLikes:tvl
+        })
+    }
+
     
     render() {
        
@@ -55,7 +99,9 @@ class Analytics extends Component {
                 <div className="analyticsContainer"> 
                     Here go the analytics!
                     <button onClick={this.query} value="taxonomy_color"> Taxonomy vs Color </button>
+                    <button onClick={this.queryViewsLikes} value="views_likes_taxonomy"> Views and Likes per Category </button>
                     <Chart plottingData={this.state.plotData}/>
+                    { this.state.showTaxonomyViewsLikes ?  <ChartTaxonomyViewsLikes tvlData={this.state.taxonomyViewLikes}/> : null }
                 </div>
         )
     }

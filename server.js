@@ -97,17 +97,40 @@ app.post("/data_analytics", (req, res) => {
             exit;
         }
         const dbs = client.db("shopping");
-        const collection = dbs.collection("listings_users");
-       
+        const collection = dbs.collection("listings_users");       
         collection.find().toArray(function(err, listings_users_All) {
-                if(err){
-                    console.log(err);
-                }
+                err ? console.log(err) : null; 
                 res.json(JSON.stringify(listings_users_All));
         });
     }); // end of client connect
+});
 
-})
+app.post("/data_analytics_views", (req, res) => {
+    let query = req.body;
+    console.log(query);
+    client.connect((err, db) => {
+        if(err){
+            console.log(err);
+            exit;
+        }
+        const dbs = client.db("shopping");
+        const collection = dbs.collection("listings_users");       
+        collection.find().toArray(function(err, listings_users_All) {
+                err ? console.log(err) : null; 
+                let taxonomyViewsMap = {};
+                let taxonomyLikesMap = {};
+                let taxonomyViewsLikes = [];
+                listings_users_All.forEach( listing => {
+                    let t = listing.taxonomy_path[0]; let v = listing.views; let l = listing.num_favorers;
+                    taxonomyViewsMap[t] ? taxonomyViewsMap[t] += v : taxonomyViewsMap[t] = v;
+                    taxonomyLikesMap[t] ? taxonomyLikesMap[t] += l : taxonomyLikesMap[t] = l;
+                });
+                taxonomyViewsLikes = {"data":[taxonomyViewsMap, taxonomyLikesMap]};
+                res.json(JSON.stringify(taxonomyViewsLikes));
+        });
+    }); // end of client connect
+});
+
 // *********************************************************************** //
 //                             Functions
 // *********************************************************************** //
@@ -145,8 +168,8 @@ app.get("/analytics111", (req, res) => {
         let batch = Math.floor(page/10);
         setTimeout( () => {
             request(urlFR, function (error, response, body) {
-                    let listings = JSON.parse(body).results;  
-                    insertDB_ListingsUsers(urlFR, listings);
+                        let listings = JSON.parse(body).results;  
+                        insertDB_ListingsUsers(urlFR, listings);
                     })
             }, batch*10000 );
     }
@@ -159,8 +182,8 @@ function insertDB_ListingsUsers(url, data){
             console.log(err);
             exit;
         }
-        const dbs = client.db("shopping"); const collection = dbs.collection("listings_users");
-
+        const dbs = client.db("shopping"); 
+        const collection = dbs.collection("listings_users");
         data.forEach( d => {
             let uniqueKey = String(d.taxonomy_id) + d.title;
             if(!taxonomyIdMap1[uniqueKey]){
@@ -172,11 +195,7 @@ function insertDB_ListingsUsers(url, data){
                     }
                 });
             } 
-        }); 
-        // collection.insertMany(data, (err, res) => {
-        //     err ? console.log(err) : null;
-        // })
-        console.log("USERS", users);     
+        });    
     }) // end of client connect
 }
 
@@ -187,6 +206,30 @@ function makeRequestDB(u){
         insertDB(u, listings);
     });
 }
+
+
+// *********************************************************************** //
+// Server Listening
+// *********************************************************************** //
+
+app.listen(port, () => {
+    console.log("Server is up on port " + port + ".");
+});
+
+// *********************************************************************** //
+// End of File
+// *********************************************************************** //
+
+
+
+// _id: 0, 
+// category_path: 1, 
+// taxonomy_id: 0,
+// taxonomy_path: 0, 
+// used_manufacturer:0, 
+// sku: 0,                
+// Images: 0
+
 
 // function uniqueTaxonomy(){
 //             client.connect((err, db) => {
@@ -221,26 +264,3 @@ function makeRequestDB(u){
 //             });
 //         });
 // }
-
-
-// *********************************************************************** //
-// Server Listening
-// *********************************************************************** //
-
-app.listen(port, () => {
-    console.log("Server is up on port " + port + ".");
-});
-
-// *********************************************************************** //
-// End of File
-// *********************************************************************** //
-
-
-
-// _id: 0, 
-// category_path: 1, 
-// taxonomy_id: 0,
-// taxonomy_path: 0, 
-// used_manufacturer:0, 
-// sku: 0,                
-// Images: 0
