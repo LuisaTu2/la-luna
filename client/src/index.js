@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import WelcomePage from "./components/Pagination/WelcomePage"
+import LastPage from "./components/Pagination/LastPage"
 import Images from "./components/Images";
 import Analytics from "./components/Analytics";
 
@@ -7,9 +9,10 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            imagesURL: [["../images/lavender.jpg", "lavender"], ["../images/lavender.jpg", "another lavender"]], 
+            imagesURL: [], 
             images:[],
             isWelcomePage: true,
+            isContentActive: false, 
             isLastPage: false,
             firstPageIx: 1,
             isAnalytics: false, 
@@ -38,10 +41,21 @@ class App extends Component {
     }
 
     paginationHandler(v){
-        let newPageIx = v === "next" ? Math.min(this.state.firstPageIx + 10, this.state.images.length) : Math.max(this.state.firstPageIx - 10, 1);
-        this.setState({
-            firstPageIx: newPageIx
-        }, this.updateImages);
+        if(this.state.isAnalytics){
+            return
+        } else {
+            if( v === "previous" && this.state.images.length === 0 ) {
+                this.setState({
+                    isLastPage: false,
+                    isWelcomePage: true                
+                })
+            } else {
+                let newPageIx = v === "next" ? Math.min(this.state.firstPageIx + 10, this.state.images.length) : Math.max(this.state.firstPageIx - 10, 1);
+                this.setState({
+                    firstPageIx: newPageIx
+                }, this.updateImages)
+            };
+        }
     }
 
     updateImages(){
@@ -52,12 +66,24 @@ class App extends Component {
         if(imagesURLUpdated.length === 0){
             imagesURLUpdated = [["../images/cat_yarn.jpg", "yarn cat"]];
             isLastPageFlag = true;
-        }
-        this.setState({
-            firstPageIx: firstPage,
-            imagesURL: imagesURLUpdated,
-            isLastPage : isLastPageFlag
-        })    
+            this.setState({
+                firstPageIx: firstPage,
+                imagesURL: imagesURLUpdated,
+                isLastPage : true,
+                isContentActive:false,
+                isWelcomePage:false, 
+                isAnalytics: false
+            })
+        } else {
+            this.setState({
+                firstPageIx: firstPage,
+                imagesURL: imagesURLUpdated,
+                isLastPage : false,
+                isContentActive: true,
+                isWelcomePage: false, 
+                isAnalytics: false
+            })    
+        } 
     }
 
     submitData(selection){
@@ -68,10 +94,16 @@ class App extends Component {
         });
         if(selection === "analytics"){
             this.setState({
+                isLastPage : false,
+                isContentActive: false,
+                isWelcomePage: false, 
                 isAnalytics: true
             })
         } else {
             this.setState({
+                isLastPage : false,
+                isContentActive: true,
+                isWelcomePage: false, 
                 isAnalytics: false
             })
             let userData = {"taxonomy": selection};
@@ -134,10 +166,11 @@ class App extends Component {
                 </div>
 
                 <div id="content">
-                    { this.state.isLastPage ? <div className="lastPageText"> You have reached the last page! </div> : null }
-                    { this.state.isAnalytics ? 
-                        <Analytics /> : 
-                        <Images imagesURLArr={this.state.imagesURL} isWelcomePageImages={this.state.isWelcomePage} isLastPageImages={this.state.isLastPage}/> }
+                    { this.state.isWelcomePage ? <WelcomePage />  : null}
+                    { this.state.isLastPage ? <LastPage/> : null }
+                    { this.state.isContentActive ?  <Images imagesURLArr={this.state.imagesURL} isWelcomePageImages={this.state.isWelcomePage} isLastPageImages={this.state.isLastPage}/>  : null}
+                    { this.state.isAnalytics ? <Analytics /> : null }
+                   
                     <div id="footer">
                         <div className="paginationContainer">
                             <a href="#" className="paginationBtn previous round" onClick={this.paginationHandler.bind(this, "previous")} >&#8249;</a>
