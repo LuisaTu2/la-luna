@@ -16,13 +16,26 @@ class ChartColors extends Component {
             sortedData[k] = colors;
         })
         console.log(data);
+
+        // Create items array
+        let items = Object.keys(data).map( k => {
+            return [k, data[k].length, data[k]];
+        });
+        
+        // Sort the array based on the second element
+        items.sort(function(first, second) {
+            return second[1] - first[1];
+        });
+  
+        console.log(items);
+
         return (
                 <div className="taxonomyColorBox"> 
-                    { keys.map( k => {
+                    { items.map( item => {
                         return (<div className="taxonomyColorContainer"> 
-                                    <div className="taxonomyColorLabel"> {k} </div>
+                                    <div className="taxonomyColorLabel"> {item[0]} </div>
                                     <div className="taxonomyColorPalette">
-                                        { sortedData[k].map( c => {
+                                        { item[2].map( c => {
                                                 return <div className="taxonomyColorDot" style={{backgroundColor: c}}> </div>
                                             })                
                                         } 
