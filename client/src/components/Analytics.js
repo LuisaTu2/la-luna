@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Chart from "./Chart";
 import ChartTaxonomyViewsLikes from "./ChartTaxonomyViewsLikes"
-import ChartUsersGeo from "./ChartUsersGeo"
+// import ChartUsersGeo from "./ChartUsersGeo"
+import ChartGeo from "./ChartGeo"
 
 class Analytics extends Component {
     constructor(props) {
@@ -101,7 +102,7 @@ class Analytics extends Component {
                     <button value="usersGeo"> Users Geographical distribution </button>
                     <Chart plottingData={this.state.plotData}/>
                     { this.state.showTaxonomyViewsLikes ?  <ChartTaxonomyViewsLikes vlData={this.state.ViewsLikes}/> : null }
-                    <ChartUsersGeo />
+                    <ChartGeo />
                 </div>
         )
     }
