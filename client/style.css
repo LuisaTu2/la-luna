@@ -3,7 +3,7 @@ html, body, #root, #app {
     height: 100%;
     margin: 0%;
     padding: 0%;
-    min-width: 340px;
+    min-width: 360px;
 }
 
 #header, #content, footer {
@@ -357,6 +357,33 @@ html, body, #root, #app {
         display: flex;
         flex-direction: column;
         overflow: scroll;
+    }
+
+    .pieChartLegend{
+        width: 100%;
+        margin: 0%;
+        padding: 5%;
+        /* display: flex;
+        flex-direction: row;
+        justify-content: flex-start; */
+        background-color: #3a3737;
+        color: whitesmoke;
+    }
+
+    .pieChartLegendElt{
+        width: 45%;
+        float: left;
+        margin: 0%;
+        padding-top: 5px;
+
+    }
+
+    .pieDot{
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        margin-right: 5px;
+        display: inline-block;
     }
 
     .chartUsersGeo{

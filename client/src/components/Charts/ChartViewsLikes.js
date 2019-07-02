@@ -23,26 +23,45 @@ class ChartViewsLikes extends Component {
                         ];
         
         let optViews = { 
-                        chart:{ width: 200, height:200, animations: { enabled: true, easing: 'easeinout', speed: 200, animateGradually:{enabled:true, delay:1000} }},
+                        chart:{ width: 100, height:100, animations: { enabled: true, easing: 'easeinout', speed: 100, animateGradually:{enabled:true, delay:5000} }},
                         legend: {show:false}, colors: colors,
                         labels: taxonomy, dataLabels: {enabled: false}, fill:{ colors: colors },
-                        title: { text: "views per category", align:"center", margin: 10, style:{ fontSize: "22px", color:"#0c616e"} }                        
+                        title: { text: "views per category", align:"center", margin: 10, style:{ fontSize: "22px", color:"#0c616e"} },
+                        responsive: [{
+                            breakpoint: 200, 
+                            options: {chart: { width: 200 }},
+                        }]                        
         };
 
         let optLikes = { 
-                        chart:{ width: 200, height:200, animations: { enabled: true, easing: 'easeinout', speed: 200, animateGradually:{enabled:true, delay:1000} }},
+                        chart:{ width: 100, height:100, animations: { enabled: true, easing: 'easeinout', speed: 100, animateGradually:{enabled:true, delay:5000} }},
                         legend: {show: false}, colors: colors,
                         labels: taxonomy,
                         dataLabels: {enabled: false}, fill:{ colors: colors },
-                        title: { text: "likes per category", align:"center", margin: 10, style:{ fontSize: "22px", color:"#0c616e"} }
+                        title: { text: "likes per category", align:"center", margin: 10, style:{ fontSize: "22px", color:"#0c616e"} },
+                        responsive: [{
+                            breakpoint: 200, 
+                            options: {chart: { width: 200 }},
+                        }]   
         };
 
 
         return (
             <div className="chartViewsLikesContainer"> 
+
                 <ReactApexChart options={ optViews } series={ views } type="pie" />
                 <ReactApexChart options={ optLikes } series={ likes } type="pie" />
-  
+
+                <div className="pieChartLegend" >
+
+                    { taxonomy.map( (t, ix) => {
+                            return (<div className="pieChartLegendElt"> 
+                                        <span className="pieDot"  style={{backgroundColor: colors[ix]}}></span>
+                                        {t.toLowerCase()} 
+                                    </div>)
+                        }) 
+                    }
+                </div>
                 {/* <PieChart   data={views} label={"hello"} labelStyle={{ fontSize: "5px", fontFamily:"sans-serif", fill:"#121212" }} 
                             radius={42} labelPosition={112}
                             style={{width:"90%"}}

@@ -123,7 +123,7 @@ class Analytics extends Component {
                 <div className="analyticsContainer"> 
                     <div className="analyticsButtonsContainer" >
                         <button onClick={this.queryColors} value="taxonomy_color" className="analyticsButton"> category by color </button>
-                        <button onClick={this.queryViewsLikes} value="views_likes_taxonomy" className="analyticsButton"> views {String.fromCharCode( "f00f" )} likes </button>
+                        <button onClick={this.queryViewsLikes} value="views_likes_taxonomy" className="analyticsButton"> views and likes </button>
                         <button onClick={this.queryGeo} value="usersGeo" className="analyticsButton"> users geographical distribution </button>
                     </div>
                     { this.state.showTaxonomyColor ? <ChartColors plottingData={this.state.plotData}/> : null }
