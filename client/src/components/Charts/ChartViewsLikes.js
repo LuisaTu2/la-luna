@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import {VictoryPie, VictoryLegend, VictoryTooltip} from 'victory';
+// import {VictoryPie, VictoryLegend, VictoryTooltip} from 'victory';
+import PieChart from 'react-minimal-pie-chart';
 
 
 class ChartViewsLikes extends Component {
@@ -26,13 +27,25 @@ class ChartViewsLikes extends Component {
 
         return (
             <div className="chartTaxonomyViewsLikesContainer"> 
-                <VictoryPie data={views} colorScale={colors} style={{ labels:{fontSize:20}} }/>
+                <PieChart data={[ { title: 'One', value: 10, color: '#E38627' },
+                                { title: 'Two', value: 15, color: '#C13C37' },
+                                { title: 'Three', value: 20, color: '#6A2135' },
+                                ]}
+                            label
+                            labelStyle={{
+                                fontSize: '5px',
+                                fontFamily: 'sans-serif',
+                                fill: '#121212'
+                            }}      
+                                />;
+                {/* <PieChart data={views}/>; */}
+                {/* <VictoryPie data={views} colorScale={colors} style={{ labels:{fontSize:20}} }/>
                 <VictoryPie data={likes} colorScale={colors} style={{ labels:{fontSize:20}} }/>
                 <VictoryLegend title="Views and Likes" 
                                centerTitle x={10} y={10} 
                                itemsPerRow={2} orientation={"horizontal"} 
                                style={{ title: {fontSize:32 }, labels:{fontSize:18} }} 
-                               data={legendData} />
+                               data={legendData} /> */}
             </div>
         )
     }

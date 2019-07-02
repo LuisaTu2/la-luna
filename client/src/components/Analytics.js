@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import ChartColors from "./Charts/ChartColors";
 import ChartViewsLikes from "./Charts/ChartViewsLikes";
-import ChartGeo from "./ChartGeo";
+import ChartGeo from "./Charts/ChartGeo";
 
 class Analytics extends Component {
     constructor(props) {
