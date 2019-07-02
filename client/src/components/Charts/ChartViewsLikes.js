@@ -21,31 +21,46 @@ class ChartViewsLikes extends Component {
                          "#78BC61", "#79D507", "#FFEDE1"
                         ];
         
-        let opt = { labels: taxonomy, dataLabels: {enabled: false}, fill:{ colors: colors },
-                    title: { text: "", align:"center", margin: 10, style:{ fontSize: "22px", color:"#0c616e"} },
+        let optViews = { chart:{ width: 300, height:300, animations: { enabled: true, easing: 'easeinout', speed: 800} },
+                    labels: taxonomy, dataLabels: {enabled: false}, fill:{ colors: colors },
+                    title: { text: "views per category", align:"center", margin: 10, style:{ fontSize: "22px", color:"#0c616e"} },
                     colors: colors,
-                    responsive: [{  breakpoint: 480, 
-                                    options: {  chart: { width: 500} }
+                    responsive: [{  
+                                    breakpoint: 300, 
+                                    options: {  chart: { width: 400}, legend:{ show: false} }
                                 }]
         };
+
+        let optLikes = {
+                        chart:{ width: 300, height:300, animations: { enabled: true, easing: 'easeinout', speed: 800} },
+                        labels: taxonomy, dataLabels: {enabled: false}, fill:{ colors: colors },
+                        title: { text: "likes per category", align:"center", margin: 10, style:{ fontSize: "22px", color:"#0c616e"} },
+                        colors: colors,
+                        responsive: [{  
+                                        breakpoint: 300, 
+                                        options: {  chart: { width: 400}, 
+                                        legend: {fontSize:"16px", position: 'bottom', onItemClick: {toggleDataSeries: true},  horizontalAlign: 'left', itemMargin:{horizontal:5, vertical:10}} }
+                                    }]
+        };
+
         
-        let legendViews = {show: false};
-        let legendLikes = { fontSize:"16px", position: 'bottom', onItemClick: {toggleDataSeries: true},  horizontalAlign: 'left', itemMargin:{horizontal:5, vertical:10}};
         
-        let optViews = JSON.parse(JSON.stringify(opt));
-        let optLikes = JSON.parse(JSON.stringify(opt));
+        // let legendViews = { show: false};
+        // let legendLikes = { show:true,  fontSize:"16px", position: 'bottom', onItemClick: {toggleDataSeries: true},  horizontalAlign: 'left', itemMargin:{horizontal:5, vertical:10}};
         
-        optViews.title.text = "views per category";
-        // optViews.dataLabels.enabled = false;      
-        optViews.responsive[0].options.legend = legendViews; 
-        optLikes.title.text = "likes per category";
-        optLikes.responsive[0].options.legend = legendLikes;
+        // let optViews = JSON.parse(JSON.stringify(opt));
+        // let optLikes = JSON.parse(JSON.stringify(opt));
+
+        // optViews.title.text = "views per category";     
+        // optViews.responsive[0].options.legend = legendViews; 
+        // optLikes.title.text = "likes per category";
+        // optLikes.responsive[0].options.legend = legendLikes;
 
 
         return (
             <div className="chartViewsLikesContainer"> 
-                <ReactApexChart options={ optViews } series={ views } type="pie" width="360" classname="pieChart"/>
-                <ReactApexChart options={ optLikes } series={ likes } type="pie" width="360" classname="pieChart"/>
+                <ReactApexChart options={ optViews } series={ views } type="pie" width="360" />
+                <ReactApexChart options={ optLikes } series={ likes } type="pie" width="360" />
   
                 {/* <PieChart   data={views} label={"hello"} labelStyle={{ fontSize: "5px", fontFamily:"sans-serif", fill:"#121212" }} 
                             radius={42} labelPosition={112}

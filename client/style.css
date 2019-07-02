@@ -358,11 +358,6 @@ html, body, #root, #app {
         flex-direction: column;
         overflow: scroll;
     }
-    
-    .pieChart{
-        background-color: orange;
-        padding: 5%;
-    }
 
     .chartUsersGeo{
         height:700px;
