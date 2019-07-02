@@ -62,19 +62,6 @@ class ChartViewsLikes extends Component {
                         }) 
                     }
                 </div>
-                {/* <PieChart   data={views} label={"hello"} labelStyle={{ fontSize: "5px", fontFamily:"sans-serif", fill:"#121212" }} 
-                            radius={42} labelPosition={112}
-                            style={{width:"90%"}}
-                            className="pieChart"
-                            />;
-                <PieChart data={likes}/>;
-                <VictoryPie data={views} colorScale={colors} style={{ labels:{fontSize:20}} }/>
-                <VictoryPie data={likes} colorScale={colors} style={{ labels:{fontSize:20}} }/>
-                <VictoryLegend title="Views and Likes" 
-                               centerTitle x={10} y={10} 
-                               itemsPerRow={2} orientation={"horizontal"} 
-                               style={{ title: {fontSize:32 }, labels:{fontSize:18} }} 
-                               data={legendData} /> */}
             </div>
         )
     }

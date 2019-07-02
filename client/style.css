@@ -19,6 +19,7 @@ html, body, #root, #app {
     /* text-align: left; */
     padding-left: 12%;
     height: 100%;
+    min-width: 200px;
 }
 
 #content{
@@ -295,11 +296,11 @@ html, body, #root, #app {
 
     .analyticsContainer{
         width: 95%;
-        min-height: 500px;
+        min-height: 630px;
         background-color: #3a3737;
         color: greenyellow;
         padding-top: 100px;
-        padding-bottom: 10%;
+        padding-bottom: 12%;
         padding-left: 2.5%;
         padding-right: 2.5%;
     }
@@ -322,32 +323,44 @@ html, body, #root, #app {
     }
 
     .taxonomyColorBox{
-        width: 90%;
+        width: 95%;
         padding-left: 5%;
         padding-top: 7%;
-        padding-right: 5%;
-
+        display: flex;
+        flex-direction: column;
     }
 
     .taxonomyColorContainer{
         width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
     }
 
     .taxonomyColorLabel{
-        width: inherit;
-        color: rgb(235, 220, 220);
-        /* padding-top: 8px; */
+        width: 92%;
+        /* color: rgb(235, 220, 220); */
+        /* color: "#f38d06"; */
+        color: white;
+        padding-top: 15px;
+        padding-left: 14px;
+        margin: 0%;
+        height: 60px;
+        /* display: none; */
+        position: absolute;
+        font-size: 1.5em;
     }
 
-    .colorDot{
+    .taxonomyColorPalette{
+        width: 90%;
+        padding: 0%;
+        margin: 0%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .taxonomyColorDot{
         width: 12px;
-        height: 40px; 
+        height: 60px; 
         margin: 0%; 
         padding: 0%;
-        display: block;
     }
 
     .chartViewsLikesContainer{

@@ -12,7 +12,7 @@ class ChartColors extends Component {
         let sortedData = {};
         keys.forEach(k => {
             let colors = data[k] ;
-            colors.sort().reverse();
+            colors.sort();
             sortedData[k] = colors;
         })
         console.log(data);
@@ -21,10 +21,12 @@ class ChartColors extends Component {
                     { keys.map( k => {
                         return (<div className="taxonomyColorContainer"> 
                                     <div className="taxonomyColorLabel"> {k} </div>
-                                     { sortedData[k].map( c => {
-                                            return <div className="colorDot" style={{backgroundColor: c}}> </div>
-                                        })                
-                                     }   
+                                    <div className="taxonomyColorPalette">
+                                        { sortedData[k].map( c => {
+                                                return <div className="taxonomyColorDot" style={{backgroundColor: c}}> </div>
+                                            })                
+                                        } 
+                                    </div>  
                                 </div>)
                         }) 
                     }
