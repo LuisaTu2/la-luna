@@ -76,7 +76,7 @@ class Analytics extends Component {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data, status, jqXHR){
-                console.log("RETRIEVED DATA: ", data, status, jqXHR);
+                // console.log("RETRIEVED DATA: ", data, status, jqXHR);
                 self.plotTaxonomyViewsLikes(data);
             }           
         }); // End of $.ajax call 
@@ -87,15 +87,18 @@ class Analytics extends Component {
         let taxonomy = Object.keys(plotData.data[0]).sort();
         let views = []; let likes = []; let indexColor = {};
         taxonomy.forEach( (t, ix) => {
-            // viewsDataArr.push({x: String(ix+1), y: plotData.data[0][t]});
-            // likesDataArr.push({x: String(ix+1), y: plotData.data[1][t]});
             let index = ix + 1; let c = this.state.colors[ix];
-            views.push({ title: index, value: plotData.data[0][t], color: c });
-            likes.push({ title: index, value: plotData.data[1][t], color: c });
+            // viewsDataArr.push({x: String(ix+1), y: plotData.data[0][t]});
+            // likesDataArr.push({x: String(ix+1), y: plotData.data[1][t]}); 
+            // views.push({ title: String(index), value: plotData.data[0][t], color: c });
+            // likes.push({ title: String(index), value: plotData.data[1][t], color: c });
+            views.push(plotData.data[0][t]);
+            likes.push(plotData.data[1][t]);
             indexColor[index] = [c, t];
         });
 
         let vl = [views, likes, taxonomy];
+        console.log(vl);
         this.setState({
             showTaxonomyColor: false, 
             showTaxonomyViewsLikes: true,

@@ -350,13 +350,18 @@ html, body, #root, #app {
         display: block;
     }
 
-    .chartTaxonomyViewsLikesContainer{
+    .chartViewsLikesContainer{
         width: 100%;
         background-color: #e2d4e2;
         /* min-height: 500px; */
         display: flex;
         flex-direction: column;
         overflow: scroll;
+    }
+    
+    .pieChart{
+        background-color: orange;
+        padding: 5%;
     }
 
     .chartUsersGeo{
@@ -372,10 +377,7 @@ html, body, #root, #app {
         padding-top: 10%;
     }
 
-    .pieChart{
-        background-color: orange;
-        padding: 5%;
-    }
+
 
 }
 /* @media (min-width:851px) and (max-width:1300px)  */
