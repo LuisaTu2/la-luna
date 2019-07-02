@@ -35,7 +35,7 @@ class ChartViewsLikes extends Component {
                         labels: taxonomy,
                         dataLabels: {enabled: false}, fill:{ colors: colors },
                         title: { text: "likes per category", align:"center", margin: 10, style:{ fontSize: "22px", color:"#0c616e"} }
-        s};
+        };
 
 
         return (
