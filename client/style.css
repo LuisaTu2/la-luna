@@ -303,7 +303,7 @@ html, body, #root, #app {
         padding-left: 2.5%;
         padding-right: 2.5%;
     }
-    
+
     .analyticsButtonsContainer{
         height: 20%;
         display: flex;
@@ -370,6 +370,11 @@ html, body, #root, #app {
         background-color: rgb(215, 236, 216);
         overflow: scroll;
         padding-top: 10%;
+    }
+
+    .pieChart{
+        background-color: orange;
+        padding: 5%;
     }
 
 }

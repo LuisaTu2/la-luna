@@ -27,18 +27,12 @@ class ChartViewsLikes extends Component {
 
         return (
             <div className="chartTaxonomyViewsLikesContainer"> 
-                <PieChart data={[ { title: 'One', value: 10, color: '#E38627' },
-                                { title: 'Two', value: 15, color: '#C13C37' },
-                                { title: 'Three', value: 20, color: '#6A2135' },
-                                ]}
-                            label
-                            labelStyle={{
-                                fontSize: '5px',
-                                fontFamily: 'sans-serif',
-                                fill: '#121212'
-                            }}      
-                                />;
-                {/* <PieChart data={views}/>; */}
+                <PieChart   data={views} label labelStyle={{ fontSize: "5px", fontFamily:"sans-serif", fill:"#121212" }} 
+                            radius={42} labelPosition={112}
+                            style={{height: '100px', width:"90%"}}
+                            className="pieChart"
+                            />;
+                <PieChart data={likes}/>;
                 {/* <VictoryPie data={views} colorScale={colors} style={{ labels:{fontSize:20}} }/>
                 <VictoryPie data={likes} colorScale={colors} style={{ labels:{fontSize:20}} }/>
                 <VictoryLegend title="Views and Likes" 

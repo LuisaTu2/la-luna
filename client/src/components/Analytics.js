@@ -13,7 +13,11 @@ class Analytics extends Component {
             showTaxonomyViewsLikes: false,
             showGeo :false, 
             ViewsLikes:[],
-            plotData: {}
+            plotData: {},
+            colors: [ "#EFBCD5", "#4B4644", "#38B3A2", "#0795C7", "#F8E963", 
+                         "#FF8B4C", "#FF4255", "#2E294E","#E63DCF","#131200",
+                         "#78BC61", "#79D507", "#FFEDE1"
+                        ]
         }
         
         this.queryColors = this.queryColors.bind(this);
@@ -81,14 +85,16 @@ class Analytics extends Component {
     plotTaxonomyViewsLikes(d){
         let plotData = JSON.parse(d);
         let taxonomy = Object.keys(plotData.data[0]).sort();
-        let viewsDataArr = [];
-        let likesDataArr = [];
+        let views = []; let likes = []; let indexColor = {};
         taxonomy.forEach( (t, ix) => {
-            viewsDataArr.push({x: String(ix+1), y: plotData.data[0][t]});
-            likesDataArr.push({x: String(ix+1), y: plotData.data[1][t]});
+            // viewsDataArr.push({x: String(ix+1), y: plotData.data[0][t]});
+            // likesDataArr.push({x: String(ix+1), y: plotData.data[1][t]});
+            let index = ix + 1; let c = this.state.colors[ix];
+            views.push({ title: index, value: plotData.data[0][t], color: c });
+            likes.push({ title: index, value: plotData.data[1][t], color: c });
+            indexColor[index] = [c, t];
         });
-        let views = viewsDataArr; 
-        let likes = likesDataArr;
+
         let vl = [views, likes, taxonomy];
         this.setState({
             showTaxonomyColor: false, 
