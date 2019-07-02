@@ -120,7 +120,7 @@ html, body, #root, #app {
     /* PAGINATION */
     .welcomePageContainer{
         width: 100%;
-        min-height: 670px;
+        min-height: 500px;
         padding-top: 100px;  
     }
 
@@ -134,7 +134,7 @@ html, body, #root, #app {
 
     .lastPageContainer{
         width: 100%;
-        min-height: 670px;
+        min-height: 500px;
         padding-top: 100px;  
     }
 
