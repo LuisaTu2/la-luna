@@ -41,7 +41,7 @@ class ChartGeo extends Component {
     render() {
         return (
             <div className="chartGeo" >
-                <svg width={ 600 } height={ 300 } viewBox="0 0 600 300">
+                <svg width={ 600 } height={ 300 } viewBox="0 0 400 300">
                     <g className="countries">
                     {
                         this.state.worldData.map((d,i) => (
