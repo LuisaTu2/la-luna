@@ -29,7 +29,6 @@ class ChartGeo extends Component {
             }
 
             response.json().then(worldData => {
-                // console.log("SUCCESS! \n", worldData);
                 let feat =  feature(worldData, worldData.objects.countries);
                 this.setState({
                     worldData: feat.features,
@@ -50,7 +49,6 @@ class ChartGeo extends Component {
                             d={ geoPath().projection(this.projection())(d) }
                             className="country"
                             // fill={ `rgba(38,50,56,${1 / this.state.worldData.length * i})` }
-                            // fill={"1E3F8E"}
                             fill={"rgb(16, 98, 230)"}
                             stroke="#CB5E54"
                             strokeWidth={ 0.6 }

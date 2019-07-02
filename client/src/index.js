@@ -7,7 +7,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            imagesURL: [["../images/lavender.jpg", "lavender"], ["../images/lavender.jpg", "another lavender"]], // "../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg","../images/lavender.jpg"],
+            imagesURL: [["../images/lavender.jpg", "lavender"], ["../images/lavender.jpg", "another lavender"]], 
             images:[],
             isWelcomePage: true,
             isLastPage: false,
@@ -96,7 +96,6 @@ class App extends Component {
         let imagesAll = [];
         listings.forEach( listing => {
             let imgArr = listing.Images;
-            // let imgTitle = listing.title.toLowerCase().split(" ").slice(0, 2).join(" ");
             let imgTitle = listing.title.toLowerCase().split(" ").slice(0, 1).join(" ");
             let img = [imgArr[0].url_fullxfull, imgTitle];
             imagesAll.push(img);

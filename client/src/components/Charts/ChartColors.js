@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-class Chart extends Component {
+class ChartColors extends Component {
     constructor(props) {
         super(props);
     }
@@ -34,4 +34,4 @@ class Chart extends Component {
 }
 
 
-export default Chart;
+export default ChartColors;

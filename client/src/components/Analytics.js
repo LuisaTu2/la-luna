@@ -1,29 +1,30 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Chart from "./Chart";
-import ChartTaxonomyViewsLikes from "./ChartTaxonomyViewsLikes"
-// import ChartUsersGeo from "./ChartUsersGeo"
-import ChartGeo from "./ChartGeo"
+import ChartColors from "./Charts/ChartColors";
+import ChartViewsLikes from "./Charts/ChartViewsLikes";
+import ChartGeo from "./ChartGeo";
 
 class Analytics extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            plotData: {},
+            showTaxonomyColor: false, 
             showTaxonomyViewsLikes: false,
-            ViewsLikes:[]
+            showGeo :false, 
+            ViewsLikes:[],
+            plotData: {}
         }
         
-        this.query = this.query.bind(this);
+        this.queryColors = this.queryColors.bind(this);
         this.taxonomyColorMapping = this.taxonomyColorMapping.bind(this);
         this.queryViewsLikes = this.queryViewsLikes.bind(this);
         this.plotTaxonomyViewsLikes = this.plotTaxonomyViewsLikes.bind(this);
+        this.queryGeo = this.queryGeo.bind(this);
     }
 
-    query(){
+    queryColors(){
         let queryData = {"selection":event.target.value};
-        console.log(queryData);
         let self = this;
         $.ajax({
             type: "POST",
@@ -52,13 +53,16 @@ class Analytics extends Component {
         });
         
         this.setState({
-            plotData: tcmap
+            plotData: tcmap, 
+            showTaxonomyColor: true, 
+            showTaxonomyViewsLikes: false,
+            showGeo: false, 
         })
 
     }
 
     queryViewsLikes(){
-        let queryData = {"selection":event.target.value};
+        let queryData = {"selection": event.target.value};
         console.log(queryData);
         let self = this;
         $.ajax({
@@ -87,8 +91,19 @@ class Analytics extends Component {
         let likes = likesDataArr;
         let vl = [views, likes, taxonomy];
         this.setState({
+            showTaxonomyColor: false, 
             showTaxonomyViewsLikes: true,
+            showGeo: false, 
             ViewsLikes: vl
+        })
+    }
+
+    queryGeo(){
+        console.log(event.target.value);
+        this.setState({
+            showTaxonomyColor: false, 
+            showTaxonomyViewsLikes: false,
+            showGeo: true, 
         })
     }
 
@@ -97,12 +112,14 @@ class Analytics extends Component {
        
         return (
                 <div className="analyticsContainer"> 
-                    <button onClick={this.query} value="taxonomy_color"> Taxonomy vs Color </button>
-                    <button onClick={this.queryViewsLikes} value="views_likes_taxonomy"> Views and Likes per Category </button>
-                    <button value="usersGeo"> Users Geographical distribution </button>
-                    <Chart plottingData={this.state.plotData}/>
-                    { this.state.showTaxonomyViewsLikes ?  <ChartTaxonomyViewsLikes vlData={this.state.ViewsLikes}/> : null }
-                    <ChartGeo />
+                    <div className="analyticsButtonsContainer" >
+                        <button onClick={this.queryColors} value="taxonomy_color" className="analyticsButton"> category by color </button>
+                        <button onClick={this.queryViewsLikes} value="views_likes_taxonomy" className="analyticsButton"> views {String.fromCharCode( "f00f" )} likes </button>
+                        <button onClick={this.queryGeo} value="usersGeo" className="analyticsButton"> users geographical distribution </button>
+                    </div>
+                    { this.state.showTaxonomyColor ? <ChartColors plottingData={this.state.plotData}/> : null }
+                    { this.state.showTaxonomyViewsLikes ?  <ChartViewsLikes vlData={this.state.ViewsLikes}/> : null }
+                    { this.state.showGeo ? <ChartGeo /> : null }
                 </div>
         )
     }

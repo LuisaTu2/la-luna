@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import {VictoryPie, VictoryLegend, VictoryTooltip} from 'victory';
 
 
-class ChartTaxonomyViewsLikes extends Component {
+class ChartViewsLikes extends Component {
     constructor(props) {
         super(props);
     }
@@ -39,5 +39,5 @@ class ChartTaxonomyViewsLikes extends Component {
 }
 
 
-export default ChartTaxonomyViewsLikes;
+export default ChartViewsLikes;
 
