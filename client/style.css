@@ -340,6 +340,13 @@ html, body, #root, #app {
         overflow: scroll;
     }
 
+    .chartUsersGeo{
+        height:700px;
+        width:100%;
+        background-color: rgb(215, 236, 216);
+        padding-top: 100px;
+    }
+
 }
 /* @media (min-width:851px) and (max-width:1300px)  */
 /* @media (min-width:851px) and (max-width:1300px)  */

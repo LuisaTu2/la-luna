@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Chart from "./Chart";
 import ChartTaxonomyViewsLikes from "./ChartTaxonomyViewsLikes"
+import ChartUsersGeo from "./ChartUsersGeo"
 
 class Analytics extends Component {
     constructor(props) {
@@ -97,8 +98,10 @@ class Analytics extends Component {
                 <div className="analyticsContainer"> 
                     <button onClick={this.query} value="taxonomy_color"> Taxonomy vs Color </button>
                     <button onClick={this.queryViewsLikes} value="views_likes_taxonomy"> Views and Likes per Category </button>
+                    <button value="usersGeo"> Users Geographical distribution </button>
                     <Chart plottingData={this.state.plotData}/>
                     { this.state.showTaxonomyViewsLikes ?  <ChartTaxonomyViewsLikes vlData={this.state.ViewsLikes}/> : null }
+                    <ChartUsersGeo />
                 </div>
         )
     }
