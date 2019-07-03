@@ -36,7 +36,7 @@ html, body, #root, #app {
 @media (max-width:360px){
 
     #header {
-        height: 8%;
+        height: 60px;
         position: fixed;
         display: flex;
         flex-direction: row;
@@ -52,6 +52,7 @@ html, body, #root, #app {
         /* background-color: rgb(240, 110, 160); */
         /* overflow: auto; */
         /* padding-top: 10%; */
+        padding-top: 60px;
         scroll-behavior: smooth;
     }
 
@@ -65,7 +66,7 @@ html, body, #root, #app {
     .contentImages{
         display: flex;
         flex-direction: column;
-        padding-top: 70px;
+        /* padding-top: 70px; */
         min-height: 700px;
     }
 
@@ -121,7 +122,7 @@ html, body, #root, #app {
     .welcomePageContainer{
         width: 100%;
         min-height: 500px;
-        padding-top: 100px;  
+        padding-top: 40px;  
     }
 
     .welcomePageText{
@@ -135,7 +136,7 @@ html, body, #root, #app {
     .lastPageContainer{
         width: 100%;
         min-height: 500px;
-        padding-top: 100px;  
+        padding-top: 40px;  
     }
 
     .lastPageText{
@@ -324,10 +325,7 @@ html, body, #root, #app {
         min-height: 660px;
         background-color: #3a3737;
         color: greenyellow;
-        padding-top: 60px;
         padding-bottom: 12%;
-        /* padding-left: 2.5%;
-        padding-right: 2.5%; */
     }
 
     .analyticsButtonsContainer{
@@ -338,15 +336,12 @@ html, body, #root, #app {
     }
 
     .analyticsButton{
-        /* background-color: #f7f4f4; */
         background-color: #2fa6bb;
-        /* color: rgb(62, 235, 68); */
         color: #e7fae8;
         font-size: 1.2em;
         height: 80px;
         width: 33.33%;
         text-align: center;
-        /* font-weight: bold; */
         font-family: 'Cormorant Infant', serif;
     }
 
@@ -364,8 +359,6 @@ html, body, #root, #app {
 
     .taxonomyColorLabel{
         width: 92%;
-        /* color: rgb(235, 220, 220); */
-        /* color: "#f38d06"; */
         color: white;
         padding-top: 15px;
         padding-left: 14px;
@@ -394,7 +387,6 @@ html, body, #root, #app {
     .chartViewsLikesContainer{
         width: 100%;
         background-color: #e2d4e2;
-        /* min-height: 500px; */
         display: flex;
         flex-direction: column;
         overflow: scroll;
@@ -404,9 +396,6 @@ html, body, #root, #app {
         width: 100%;
         margin: 0%;
         padding: 5%;
-        /* display: flex;
-        flex-direction: row;
-        justify-content: flex-start; */
         background-color: #3a3737;
         color: whitesmoke;
     }
@@ -428,10 +417,10 @@ html, body, #root, #app {
     }
 
     .chartUsersGeo{
-        height:700px;
-        width:100%;
+        height: 700px;
+        width: 100%;
         background-color: rgb(215, 236, 216);
-        padding-top: 100px;
+        padding-top: 40px;
     }
 
     .chartGeo{
