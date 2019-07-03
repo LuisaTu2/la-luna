@@ -5,6 +5,7 @@ import LastPage from "./components/Pages/LastPage"
 import Images from "./components/Images/Images";
 import AnalyticsPage from "./components/Pages/AnalyticsPage";
 import Menu from "./components/Menu/Menu";
+import Footer from "./components/Footer/Footer";
 
 class App extends Component {
     constructor(props) {
@@ -34,7 +35,6 @@ class App extends Component {
 
     checkboxHandler(){     
         let isCheckedFlag = !this.state.isChecked;
-        console.log("checkBox Handler", this.state.isChecked, isCheckedFlag);
         this.setState({
             isChecked: isCheckedFlag    
         })
@@ -138,20 +138,10 @@ class App extends Component {
                 <div id="content">
                     { this.state.showComponents[0] ? <WelcomePage />  : null}
                     { this.state.showComponents[1] ? <LastPage /> : null }
-                    { this.state.showComponents[2] ? <Images imagesURLArr={this.state.imagesURL} 
-                                                        // isWelcomePageImages={this.state.isWelcomePage} 
-                                                        // isLastPageImages={this.state.isLastPage} 
-                                                        />  
-                                                        : null}
+                    { this.state.showComponents[2] ? <Images imagesURLArr={this.state.imagesURL} /> : null}
                     { this.state.showComponents[3] ? <AnalyticsPage /> : null }
                    
-                    <div id="footer">
-                        <div className="paginationContainer">
-                            <a href="#" className="paginationBtn previous round" onClick={this.paginationHandler.bind(this, "previous")} >&#8249;</a>
-                            <a href="#" className="paginationBtn next round" onClick={this.paginationHandler.bind(this, "next")}>&#8250;</a>
-                        </div>
-                        <div className="footerText"> Crafted by LuisaTu2 </div>
-                    </div>  
+                    <Footer pagHandler={this.paginationHandler}/>
                 </div>
 
             </div>

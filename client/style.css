@@ -24,7 +24,7 @@ html, body, #root, #app {
 #content{
     display: flex;
     flex-direction: column;
-    min-height: 80%;
+    min-height: 100%;
 }
 
 #footer{

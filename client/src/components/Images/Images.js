@@ -12,10 +12,7 @@ class Images extends Component {
         return (
             <div className="contentImages"> 
                 {   imagesURL.map( (imgURL, ix) => {
-                    return <Image imageURL={imgURL[0]} 
-                    // isWelcomePageImage={this.props.isWelcomePageImages} 
-                    // isLastPageImage={this.props.isLastPageImages} 
-                    title={imgURL[1]}/>
+                    return <Image imageURL={imgURL[0]} title={imgURL[1]}/>
                 })}
             </div>
         )
