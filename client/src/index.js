@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import WelcomePage from "./components/Pagination/WelcomePage"
-import LastPage from "./components/Pagination/LastPage"
+import WelcomePage from "./components/Pages/WelcomePage"
+import LastPage from "./components/Pages/LastPage"
 import Images from "./components/Images/Images";
-import Analytics from "./components/Analytics";
+import AnalyticsPage from "./components/Pages/AnalyticsPage";
+import Menu from "./components/Menu/Menu";
 
 class App extends Component {
     constructor(props) {
@@ -12,12 +13,8 @@ class App extends Component {
             imagesURL: [], 
             images:[],
             showComponents: [1, 0, 0, 0], //[isWelcomePage, isLastPage, isContentActive, isAnalytics]
-            // isWelcomePage: true,
-            // isContentActive: false, 
-            // isLastPage: false,
-            // isAnalytics: false, 
             firstPageIx: 1,
-            checkbox: false,
+            isChecked: false,
             values:[["craft_supplies","Craft Supplies and Tools"], 
                     ["jewelry","Jewelry"],
                     ["clothing","Clothing"],
@@ -27,17 +24,19 @@ class App extends Component {
                     ["analytics", "Analytics"]],
         };
 
-        this.submitData = this.submitData.bind(this);
-        this.processData = this.processData.bind(this);
         this.checkboxHandler = this.checkboxHandler.bind(this);
         this.paginationHandler = this.paginationHandler.bind(this);
         this.updateImages = this.updateImages.bind(this);
+        this.getTaxonomyData = this.getTaxonomyData.bind(this);
+        this.setTaxonomyData = this.setTaxonomyData.bind(this);
+        this.getAnalyticsData = this.getAnalyticsData.bind(this);
     };
 
-    checkboxHandler(){
-        let isChecked = !this.state.checkbox;
+    checkboxHandler(){     
+        let isCheckedFlag = !this.state.isChecked;
+        console.log("checkBox Handler", this.state.isChecked, isCheckedFlag);
         this.setState({
-            checkbox: isChecked
+            isChecked: isCheckedFlag    
         })
     }
 
@@ -47,9 +46,7 @@ class App extends Component {
         } else {
             if( v === "previous" && this.state.images.length === 0 ) {
                 this.setState({
-                    showComponents: [1, 0, 0, 0]
-                    // isLastPage: false,
-                    // isWelcomePage: true                
+                    showComponents: [1, 0, 0, 0]               
                 })
             } else {
                 let newPageIx = v === "next" ? Math.min(this.state.firstPageIx + 10, this.state.images.length) : Math.max(this.state.firstPageIx - 10, 1);
@@ -72,56 +69,39 @@ class App extends Component {
                 firstPageIx: firstPage,
                 imagesURL: imagesURLUpdated,
                 showComponents: [0, 1, 0, 0]
-                // isLastPage : true,
-                // isContentActive:false,
-                // isWelcomePage:false, 
-                // isAnalytics: false
             })
         } else {
             this.setState({
                 firstPageIx: firstPage,
                 imagesURL: imagesURLUpdated,
                 showComponents: [0, 0, 1, 0]
-                // isLastPage : false,
-                // isContentActive: true,
-                // isWelcomePage: false, 
-                // isAnalytics: false
             })    
         } 
     }
 
-    submitData(selection){
+    getTaxonomyData(selection){
         this.checkboxHandler();
         this.setState({
             firstPageIx: 1,
-            isWelcomePage: false
+            showComponents: [0, 0, 1, 0]
         });
-        if(selection === "analytics"){
-            this.setState({
-                showComponents: [0, 0, 0, 1]
-            })
-        } else {
-            this.setState({
-                showComponents: [0, 0, 1, 0]
-            })
-            let userData = {"taxonomy": selection};
-            let self = this;
-            $.ajax({
-                type: "POST",
-                url: "/data",
-                data: JSON.stringify(userData),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function(data, status, jqXHR){
-                    // console.log("RETRIEVED DATA: ", data, status, jqXHR);
-                    self.processData(data);
-                }           
-            }); // End of $.ajax call  
-        }
-    }; // end of submitData function
+        let userData = {"taxonomy": selection};
+        let self = this;
+        $.ajax({
+            type: "POST",
+            url: "/data",
+            data: JSON.stringify(userData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data, status, jqXHR){
+                // console.log("RETRIEVED DATA: ", data, status, jqXHR);
+                self.setTaxonomyData(data);
+            }           
+        }); // End of $.ajax call  
+    }; // end of getTaxonomyData function
 
 
-    processData(dataJSON){
+    setTaxonomyData(dataJSON){
         let listings = JSON.parse(dataJSON);
         let imagesAll = [];
         listings.forEach( listing => {
@@ -134,40 +114,36 @@ class App extends Component {
         this.setState({
                 images:imagesAll
             }, this.updateImages)
-    }; // end of processData function
+    }; // end of setTaxonomyData function
 
+    getAnalyticsData(selection){
+        this.checkboxHandler();
+        this.setState({
+            showComponents: [0, 0, 0, 1]
+        })
+    }
 
 
     render() {
+        let callbackFunctions = [this.getTaxonomyData, this.getAnalyticsData];
 
         return (
             <div id="app">
-
-                <div id="header">            
-                    <nav role="navigation">
-                        <div id="menuToggle">
-                            <input type="checkbox" checked={this.state.checkbox} onChange={this.checkboxHandler}/>       
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <ul id="menu">
-                                {   this.state.values.map( v => {
-                                        let val = v[0]; let menuItemHTML = v[1]; 
-                                        let analyticsStyle = v[0] === "analytics" ? ".menuItemAnalytics" : "";
-                                        return  <a href="#" onClick={this.submitData.bind(this, val)} className={"menuItem " + analyticsStyle }><li>{menuItemHTML}</li></a>
-                                    })
-                                }
-                            </ul>
-                        </div>
-                    </nav>
+                <div id="header">  
+                    <Menu   isMenuChecked={this.state.isChecked} onChangeHandler={this.checkboxHandler} 
+                            menuItems={this.state.values}  callbacks={callbackFunctions} />          
                     <div id="pageTitle">La Luna</div>
                 </div>
 
                 <div id="content">
                     { this.state.showComponents[0] ? <WelcomePage />  : null}
-                    { this.state.showComponents[1] ? <LastPage/> : null }
-                    { this.state.showComponents[2] ? <Images imagesURLArr={this.state.imagesURL} isWelcomePageImages={this.state.isWelcomePage} isLastPageImages={this.state.isLastPage}/>  : null}
-                    { this.state.showComponents[3] ? <Analytics /> : null }
+                    { this.state.showComponents[1] ? <LastPage /> : null }
+                    { this.state.showComponents[2] ? <Images imagesURLArr={this.state.imagesURL} 
+                                                        // isWelcomePageImages={this.state.isWelcomePage} 
+                                                        // isLastPageImages={this.state.isLastPage} 
+                                                        />  
+                                                        : null}
+                    { this.state.showComponents[3] ? <AnalyticsPage /> : null }
                    
                     <div id="footer">
                         <div className="paginationContainer">

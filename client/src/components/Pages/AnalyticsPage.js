@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import ChartColors from "./Charts/ChartColors";
-import ChartViewsLikes from "./Charts/ChartViewsLikes";
-import ChartGeo from "./Charts/ChartGeo";
+import ChartColors from "../Charts/ChartColors";
+import ChartViewsLikes from "../Charts/ChartViewsLikes";
+import ChartGeo from "../Charts/ChartGeo";
 
-class Analytics extends Component {
+class AnalyticsPage extends Component {
 
     constructor(props) {
         super(props);
@@ -17,8 +17,8 @@ class Analytics extends Component {
         }
         
         this.ajaxRequest = this.ajaxRequest.bind(this);
-        this.taxonomyColorMapping = this.taxonomyColorMapping.bind(this);
-        this.getViewsLikesData = this.getViewsLikesData.bind(this);
+        this.setTaxonomyData = this.setTaxonomyData.bind(this);
+        this.setViewsLikesData = this.setViewsLikesData.bind(this);
         this.queryGeo = this.queryGeo.bind(this);
     }
 
@@ -27,9 +27,9 @@ class Analytics extends Component {
         let queryData = {"selection": event.target.value};
         let callback; let s = queryData.selection;
         if(s === "taxonomy_color"){
-            callback = this.taxonomyColorMapping;
+            callback = this.setTaxonomyData;
         } else if ( s === "views_likes_taxonomy" ){
-            callback = this.getViewsLikesData;
+            callback = this.setViewsLikesData;
         }
         $.ajax({
             type: "POST",
@@ -45,7 +45,7 @@ class Analytics extends Component {
     } // end of ajaxRequest function
 
 
-    taxonomyColorMapping(data){
+    setTaxonomyData(data){
         let tcmap = {};
         let tcData = JSON.parse(data);
         
@@ -63,10 +63,10 @@ class Analytics extends Component {
             plotData: tcmap, 
             showComponents: [1, 0, 0]
         })
-    } // end of taxonomyColorMapping
+    } // end of setTaxonomyData
 
 
-    getViewsLikesData(d){
+    setViewsLikesData(d){
         let plotData = JSON.parse(d);
         let taxonomy = Object.keys(plotData.data[0]).sort();
         let views = []; let likes = []; let indexColor = {};
@@ -110,4 +110,4 @@ class Analytics extends Component {
 }
 
 
-export default Analytics;
+export default AnalyticsPage;
