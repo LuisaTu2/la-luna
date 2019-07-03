@@ -107,7 +107,7 @@ class App extends Component {
         listings.forEach( listing => {
             let imgArr = listing.Images;
             let imgTitle = listing.title.toLowerCase().split(" ").slice(0, 1).join(" ");
-            let img = [imgArr[0].url_75x75, imgTitle];
+            let img = [imgArr[0].url_170x135, imgTitle];
             imagesAll.push(img);
         });
         console.log(imagesAll.length);

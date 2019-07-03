@@ -1,14 +1,6 @@
 // *********************************************************************** //
 // Defining variables
 // *********************************************************************** //
-
-let taxonomyMapping = { "craft_supplies":'Craft Supplies & Tools',
-                        "jewelry":'Jewelry',
-                        "clothing": "Clothing",
-                        "home_living": "Home & Living",
-                        "art_collectibles": "Art & Collectibles",
-                        "accessories": "Accessories"     
-                    };
 let taxonomyIdMap = {}; 
 let taxonomyIdMap1 = {};
 

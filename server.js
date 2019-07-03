@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 // BUILDING LISTINGS TABLE
 app.get("/buildListingsTable", (req, res) => {
     console.log("Building Listings Table...");
-    let url = "https://openapi.etsy.com/v2/listings/active?fields=category_path,title,user_id&limit=100&includes=Images(url_75x75)&"
+    let url = "https://openapi.etsy.com/v2/listings/active?fields=category_path,title,user_id&limit=100&includes=Images(url_170x135)&"
     etsyClientFunctions.etsyClientRequests(url, maxListingsPerPage, maxRequestsPerSecond, "listings");  
 });
 
