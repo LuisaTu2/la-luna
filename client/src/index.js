@@ -40,7 +40,7 @@ class App extends Component {
         let isCheckedFlag = !this.state.isChecked;
         this.setState({
             isChecked: isCheckedFlag    
-            })
+        })
     }
 
     paginationHandler(v){
@@ -52,7 +52,7 @@ class App extends Component {
 
         if(this.state.showComponents[0] && v === "next"){
             this.showNewComponents([0, 1, 0, 0]);
-        } else if( this.state.showComponents[1] && v === "previous" && this.state.images.length === 0 ){
+        } else if( this.state.showComponents[1] && v === "previous"){
             this.showNewComponents([1, 0, 0, 0]);
         } else if( this.state.showComponents[2] ){
             let newNextPage = (this.state.firstPageIx + 10 ) >= this.state.images.length ? this.state.firstPageIx : (this.state.firstPageIx + 10);
