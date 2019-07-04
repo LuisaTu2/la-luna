@@ -27,7 +27,14 @@ function buildCollection(url, listings, mongoCollection){
         // Adding listings with unique taxonomy_id
         listings.forEach( listing => {
             let uniqueKey = String(listing.taxonomy_id) + listing.title;
-            if(!taxonomyIdMap[uniqueKey]){
+            let adult = ["sexy","nipple","cock", "erotic", "orgasm"];
+            let hasAdult = false;
+            adult.forEach(w => {
+                if(listing.description.includes(w) || listing.title.includes(w) ){
+                    hasAdult = true;
+                }
+            })
+            if(!taxonomyIdMap[uniqueKey] && !hasAdult){
                 taxonomyIdMap[uniqueKey] = 1;
                 collection.insertOne(listing, (err, res) => {
                     if(err){
@@ -68,22 +75,15 @@ function getListings(err, listings, res){
     res.json(JSON.stringify(listings));
 }
 
-// function getColorsData(err, listings, res){
-//     err ? console.log(err) : null; 
-//     res.json(JSON.stringify(listings));
-// }
-
 function getViewsLikesData(err, listings, res){
     err ? console.log(err) : null; 
     let taxonomyViewsMap = {};
     let taxonomyLikesMap = {};
     let taxonomyViewsLikes = [];
     listings.forEach( listing => {
-        // if(!listing.error_messages){
-            let t = listing.taxonomy_path[0]; let v = listing.views; let l = listing.num_favorers;
-            taxonomyViewsMap[t] ? taxonomyViewsMap[t] += v : taxonomyViewsMap[t] = v;
-            taxonomyLikesMap[t] ? taxonomyLikesMap[t] += l : taxonomyLikesMap[t] = l;
-        // }
+        let t = listing.taxonomy_path[0]; let v = listing.views; let l = listing.num_favorers;
+        taxonomyViewsMap[t] ? taxonomyViewsMap[t] += v : taxonomyViewsMap[t] = v;
+        taxonomyLikesMap[t] ? taxonomyLikesMap[t] += l : taxonomyLikesMap[t] = l;
     });
     taxonomyViewsLikes = {"data":[taxonomyViewsMap, taxonomyLikesMap]};
     res.json(JSON.stringify(taxonomyViewsLikes));

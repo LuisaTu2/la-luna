@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 // BUILDING LISTINGS TABLE
 app.get("/buildListingsTable", (req, res) => {
     console.log("Building Listings Table...");
-    let url = "https://openapi.etsy.com/v2/listings/active?fields=category_path,title,user_id&limit=100&includes=Images(url_170x135)&"
+    let url = "https://openapi.etsy.com/v2/listings/active?fields=category_path,description,tags,title,user_id&limit=100&includes=Images(url_170x135)&"
     etsyClientFunctions.etsyClientRequests(url, maxListingsPerPage, maxRequestsPerSecond, "listings");  
 });
 
@@ -50,7 +50,7 @@ app.get("/buildListingsUsersTable", (req, res) => {
 // Routing
 // *********************************************************************** //
 app.get('/home', (req, res) => {
-        console.log("Hello there!");   
+        console.log("Hello there");   
         res.sendFile(path.join(__dirname, 'client/index.html'));
     }
 );
@@ -60,7 +60,7 @@ app.post("/data", (req, res) =>{
     let taxonomyJSON = req.body;
     let taxonomyLookup = taxonomyMapping[taxonomyJSON.taxonomy];
     let taxonomyPath = {"taxonomy_path": taxonomyLookup};
-    console.log("Taxonomy selection and mapping: ", taxonomyJSON, taxonomyLookup);
+    // console.log("Taxonomy selection and mapping: ", taxonomyJSON, taxonomyLookup);
     mongoDBClientFunctions.MongoDBClientConnect({"selection":"taxonomy"}, "listings", res, taxonomyPath)
 }); // end of app.post
 
