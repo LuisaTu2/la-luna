@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Image from "./Image"
+import Image from "./Image";
+import LoaderHOC from "../../HOC/LoaderHOC";
+
 
 class Images extends Component {
     constructor(props) {
         super(props);
+        
     }
-    
+        
     render() {
         let imagesURL = this.props.imagesURLArr;
         return (
@@ -20,5 +23,5 @@ class Images extends Component {
 }
 
 
-export default Images;
+export default LoaderHOC(Images);
 

@@ -5,7 +5,7 @@ const request = require('request');
 const mongoDBClientFunctions = require("./mongoDBClient");
 // const apiKeys = require("../apiKeys");
 const apiKeys = { "etsyApiKey" : "dvb11s3or2x3v911bdfef9vg" }
-
+const timeInterval = 1e4;
 
 // *********************************************************************** //
 // Requests and Rendering for building Collections
@@ -21,7 +21,7 @@ function etsyClientRequests( uri, maxListingsPerPage, maxRequestsPerSecond, mong
                         let listings = JSON.parse(body).results;  
                         mongoDBClientFunctions.buildCollection( url, listings, mongoCollection );
                     })
-            }, batch*1e4 );
+            }, batch*timeInterval );
     }
 }
 

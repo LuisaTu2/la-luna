@@ -11,13 +11,14 @@ let users = new Set();
 const mongoDBClientFunctions = require("./modules/mongoDBClient");
 const etsyClientFunctions = require("./modules/etsyClient");
 const maxListingsPerPage = 100; 
-const maxRequestsPerSecond = 10;
+const maxRequestsPerSecond = 8;
 let taxonomyMapping = { "craft_supplies":'Craft Supplies & Tools',
                         "jewelry":'Jewelry',
                         "clothing": "Clothing",
                         "home_living": "Home & Living",
                         "art_collectibles": "Art & Collectibles",
-                        "accessories": "Accessories"     
+                        "weddings": "Weddings"
+                        // "accessories": "Accessories"     
                     };
 
 // *********************************************************************** //

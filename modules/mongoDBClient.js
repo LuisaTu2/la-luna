@@ -2,8 +2,6 @@
 // Defining variables
 // *********************************************************************** //
 let taxonomyIdMap = {}; 
-let taxonomyIdMap1 = {};
-
 
 // *********************************************************************** //
 // Connecting to MongoDB 
@@ -27,13 +25,18 @@ function buildCollection(url, listings, mongoCollection){
         // Adding listings with unique taxonomy_id
         listings.forEach( listing => {
             let uniqueKey = String(listing.taxonomy_id) + listing.title;
-            let adult = ["sexy","nipple","cock", "erotic", "orgasm"];
+            let adult = ["sexy","nipple","cock", "erotic", "orgasm", "mature", "flogger", "chastity", "BDSM", "penis", "lingerie", "kinky", "labia", "butt", "butt plug", "bondage", "fetish", "pussy", "labia", "torture"];
             let hasAdult = false;
             adult.forEach(w => {
-                if(listing.description.includes(w) || listing.title.includes(w) ){
+                let wCap = w.charAt(0).toUpperCase() + w.slice(1);
+                let wUpper = w.toUpperCase();
+                if( listing.description.includes(w) || listing.title.includes(w) || 
+                    listing.description.includes(wCap) || listing.title.includes(wCap) ||
+                    listing.description.includes(wUpper) || listing.title.includes(wUpper) 
+                ){
                     hasAdult = true;
                 }
-            })
+            });
             if(!taxonomyIdMap[uniqueKey] && !hasAdult){
                 taxonomyIdMap[uniqueKey] = 1;
                 collection.insertOne(listing, (err, res) => {
