@@ -49,7 +49,7 @@ class App extends Component {
 
     paginationHandler(v){            
         if( this.state.showComponents[2] ){
-            let newNextPage = (this.state.firstPageIx + 10 ) >= this.state.images.length ? this.state.firstPageIx : (this.state.firstPageIx + 10);
+            let newNextPage = (this.state.firstPageIx + 9 ) > this.state.images.length ? this.state.firstPageIx : (this.state.firstPageIx + 10);
             let newPageIx = v === "next" ? newNextPage : Math.max(this.state.firstPageIx - 10, 1);
             // old  logic: let newPageIx = v === "next" ? Math.min(this.state.firstPageIx + 10, this.state.images.length ) : Math.max(this.state.firstPageIx - 10, 1);
             this.setState({
