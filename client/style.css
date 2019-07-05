@@ -257,15 +257,18 @@ html, body, #root, #app {
     .paginationBtn{
         text-decoration: none;
         margin: 2% 1%;
-        background-color: #4CAF50;
         color: #eb2eeb;
         display: inline-block;
         padding: 8px 16px;
     }
 
     .paginationBtn:hover{
-        background-color: #ddd;
-        color: black;
+        /* background-color: #ddd;
+        color: black; */
+    }
+    
+    .disablePaginationButton{
+        color: #e05718; 
     }
 
     .previous {
@@ -281,6 +284,7 @@ html, body, #root, #app {
     .round {
         border-radius: 50%;
     }
+
 
     .footerText{
         height: 30px;
