@@ -44,8 +44,7 @@ class App extends Component {
         })
     }
 
-    paginationHandler(v){
-        
+    paginationHandler(v){      
         let newShowComponents = [];
         let prevBtnFrozenFlag;
         let nextBtnFrozenFlag;
@@ -170,7 +169,7 @@ class App extends Component {
                     { this.state.showComponents[1] ? <LastPage /> : null }
                     { this.state.showComponents[2] ? <Images imagesURLArr={this.state.imagesURL} /> : null}
                     { this.state.showComponents[3] ? <AnalyticsPage /> : null }
-                    <Footer ispagBtnFrozen={this.state.isPaginationButtonFrozen} pagHandler={this.paginationHandler} />
+                    <Footer  pagHandler={this.paginationHandler} />
                 </div>
 
             </div>

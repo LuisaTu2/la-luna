@@ -7,9 +7,10 @@ class Footer extends Component {
     }
     
     render() {
-        let isBtnFrozen = this.props.isbtnFrozen;
-        let prevClick = isBtnFrozen ? null : this.props.pagHandler.bind(this, "previous");
-        let nextClick = isBtnFrozen ? null : this.props.pagHandler.bind(this, "next");
+        let isbtnFrozen = this.props.isBtnFrozen;
+        console.log(isBtnFrozen);
+        let prevClick = isbtnFrozen ? null : this.props.pagHandler.bind(this, "previous");
+        let nextClick = isbtnFrozen ? null : this.props.pagHandler.bind(this, "next");
 
         return (
             <div id="footer">
