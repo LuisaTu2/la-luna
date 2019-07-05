@@ -12,7 +12,7 @@ class Footer extends Component {
         let nextClick = this.props.pagHandler.bind(this, "next");
         let disableStylePrevious = this.props.disableBtns[0] ? " disablePaginationButton" : "";
         let disableStyleNext = this.props.disableBtns[1] ? " disablePaginationButton" : "";
-        console.log("Hide buttons", this.props.hideBtns, "\nDisable buttons props",  this.props.disableBtns, "\nPrev", disableStylePrevious, "\nNext", disableStyleNext);
+        // console.log("Hide buttons", this.props.hideBtns, "\nDisable buttons props",  this.props.disableBtns, "\nPrev", disableStylePrevious, "\nNext", disableStyleNext);
 
         return (
             <div id="footer">

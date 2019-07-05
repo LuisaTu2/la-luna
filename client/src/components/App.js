@@ -6,6 +6,7 @@ import Images from "./Images/Images";
 import AnalyticsPage from "./Pages/AnalyticsPage";
 import Menu from "./Menu/Menu";
 import Footer from "./Footer/Footer";
+import ClickOutsideAlerter from "../ClickOutsideAlerter/ClickOutsideAlerter";
 
 
 class App extends Component {
@@ -37,7 +38,8 @@ class App extends Component {
         this.getHomePage = this.getHomePage.bind(this);
     };
 
-    checkboxHandler(){     
+    checkboxHandler(){  
+        console.log("FIRING CHECKBOX HANDLER")   ;
         let isCheckedFlag = !this.state.isChecked;
         this.setState({
             isChecked: isCheckedFlag    
@@ -148,8 +150,20 @@ class App extends Component {
         return (
             <div id="app">           
                 <div id="header">  
-                    <Menu   isMenuChecked={this.state.isChecked} onChangeHandler={this.checkboxHandler} 
-                            menuItems={this.state.values}  callbacks={callbackFunctions} />          
+                    { 
+                        this.state.isChecked ? 
+                        <ClickOutsideAlerter clickAlert={this.checkboxHandler}>
+                            <Menu   isMenuChecked={this.state.isChecked} 
+                                    onChangeHandler={this.checkboxHandler} 
+                                    menuItems={this.state.values}  
+                                    callbacks={callbackFunctions} /> 
+                        </ClickOutsideAlerter>
+                        : 
+                        <Menu   isMenuChecked={this.state.isChecked} 
+                                onChangeHandler={this.checkboxHandler} 
+                                menuItems={this.state.values}  
+                                callbacks={callbackFunctions} /> 
+                    }
                     <div id="pageTitle" onClick={this.getHomePage}>La Luna</div>
                 </div>
 
