@@ -35,7 +35,6 @@ class App extends Component {
         this.getAnalyticsData = this.getAnalyticsData.bind(this);
         this.getHomePage = this.getHomePage.bind(this);
         this.showNewComponents = this.showNewComponents.bind(this);
-        console.log("CONSTRUCTOR");
     };
 
     checkboxHandler(){     
@@ -153,15 +152,7 @@ class App extends Component {
             imagesURL: []
         })
     }
-
-    componentDidMount() {
-        console.log("COMPONENT DID MOUNT.");
-    }
-
-    componentDidUpdate(){
-        console.log("COMPONENT DID UPDATE.");
-    }
-      
+     
 
     render() {
         let callbackFunctions = [this.getTaxonomyData, this.getAnalyticsData];

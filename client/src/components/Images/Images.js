@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Image from "./Image";
-import LoaderHOC from "../../HOC/LoaderHOC";
+import LoaderHocImages from "../../HOC/LoaderHocImages";
+// import Loader from "../Pages/Loader";
 
 
 class Images extends Component {
@@ -12,16 +13,16 @@ class Images extends Component {
         
     render() {
         let imagesURL = this.props.imagesURLArr;
-        return (
-            <div className="contentImages"> 
-                {   imagesURL.map( (imgURL, ix) => {
-                    return <Image imageURL={imgURL[0]} title={imgURL[1]}/>
-                })}
-            </div>
-        )
+        let returnObj = 
+                        // this.props.isActive ? 
+                        <div className="contentImages"> 
+                            {   imagesURL.map( (imgURL, ix) => { return <Image imageURL={imgURL[0]} title={imgURL[1]}/> })}
+                        </div> 
+                        // : <Loader />;
+        return ( returnObj )
     }
 }
 
 
-export default LoaderHOC(Images);
-
+export default LoaderHocImages(Images);
+// export default Images;

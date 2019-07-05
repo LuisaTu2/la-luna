@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import LoaderHocImage from "../../HOC/LoaderHocImage";
 
 class Image extends Component {
     constructor(props) {
@@ -7,21 +8,18 @@ class Image extends Component {
     }
     
     render() {
-        let conditional = !this.props.isWelcomePageImage && !this.props.isLastPageImage;
+        
         return (
                 <div className="contentImageContainer"> 
-                    <img src={this.props.imageURL} alt={this.props.title} className={"contentImage" + (conditional ? " shadow" : "" ) }/> 
-                    { conditional ? 
+                    <img src={this.props.noImage || this.props.imageURL} alt={this.props.title} className={"contentImage shadow" }/> 
                         <div className="contentImageMiddle">
                             <div className="contentImageMiddleText"> {this.props.title} </div>
-                        </div> :
-                         ""}
-  
+                        </div> 
                 </div>
         )
     }
 }
 
 
-export default Image;
+export default LoaderHocImage(Image);
 
