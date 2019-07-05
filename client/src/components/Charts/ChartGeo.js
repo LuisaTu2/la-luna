@@ -13,7 +13,7 @@ class ChartGeo extends Component {
     }
     
     projection() {
-        console.log("PROJECTION!");
+        // console.log("PROJECTION!");
         return geoMercator()
                .scale(100)
                .translate([300, 150])

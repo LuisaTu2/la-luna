@@ -15,6 +15,7 @@ class ChartViewsLikes extends Component {
         let views = this.props.vlData[0]; 
         let likes = this.props.vlData[1]; 
         let taxonomy = this.props.vlData[2];
+        console.log(views, likes, taxonomy);
 
         let pieLegend =  {fontSize:"12px",color:"#0c616e", position: 'bottom', onItemClick: {toggleDataSeries: true},  horizontalAlign: 'left', itemMargin:{horizontal:5, vertical:5}};
    
@@ -55,13 +56,13 @@ class ChartViewsLikes extends Component {
 
                 <div className="pieChartLegend" >
 
-                    {/* { taxonomy.map( (t, ix) => {
+                    { taxonomy.map( (t, ix) => {
                             return (<div className="pieChartLegendElt"> 
                                         <span className="pieDot"  style={{backgroundColor: colors[ix]}}></span>
                                         {t.toLowerCase()} 
                                     </div>)
                         }) 
-                    } */}
+                    }
                 </div>
             </div>
         )
