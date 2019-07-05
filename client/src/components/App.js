@@ -45,8 +45,7 @@ class App extends Component {
     }
 
 
-    paginationHandler(v){      
-        console.log(v, this.state.showComponents);       
+    paginationHandler(v){            
         if( this.state.showComponents[2] ){
             let newNextPage = (this.state.firstPageIx + 10 ) >= this.state.images.length ? this.state.firstPageIx : (this.state.firstPageIx + 10);
             let newPageIx = v === "next" ? newNextPage : Math.max(this.state.firstPageIx - 10, 1);
@@ -64,7 +63,6 @@ class App extends Component {
 
 
     updateImages(){
-        console.log("UPDATE IMAGES", firstPage);
         let firstPage = this.state.firstPageIx;
         let disablePaginationButtonsFlag;
         // let lastPage = Math.min(firstPage + 10, this.state.images.length);  
@@ -80,8 +78,6 @@ class App extends Component {
         } else {
             disablePaginationButtonsFlag = [0, 0];
         }
-
-        console.log(firstPage, lastPage, imagesURLUpdated.length, disablePaginationButtonsFlag);
 
         this.setState({
             firstPageIx: firstPage,

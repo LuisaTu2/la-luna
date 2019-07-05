@@ -8,13 +8,10 @@ class LastPage extends Component {
     }
     
     render() {
-        return (
-                <div className="lastPageContainer"> 
+        return  <div className="lastPageContainer"> 
                     <div className="lastPageText"> You have reached the last page! </div> 
                     <img src={"../../../images/cat_yarn.jpg"} alt="cat_yarn" className={"contentImage shadow"}/> 
- 
                 </div>
-        )
     }
 }
 

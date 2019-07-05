@@ -5,7 +5,6 @@ import ChartViewsLikes from "../Charts/ChartViewsLikes";
 import ChartGeo from "../Charts/ChartGeo";
 
 class AnalyticsPage extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
