@@ -20,7 +20,8 @@ class Menu extends Component {
                             {   
                                 this.props.menuItems.map( v => {
                                     let val = v[0]; let menuItemHTML = v[1]; 
-                                    let analyticsStyle = (val === "analytics") ? "analyticsStyle" : ""; 
+                                    // let analyticsStyle = (val === "analytics") ? "analyticsStyle" : ""; 
+                                    let analyticsStyle = "";
                                     // let callback = (val === "analytics") ? this.getAnalyticsData.bind(this, val) : this.getTaxonomyData.bind(this, val);
                                     let callback = (val === "analytics") ? this.props.callbacks[1].bind(this, val) : this.props.callbacks[0].bind(this, val);
                                     return (    <a href="#" onClick={ callback } className={"menuItem"}>

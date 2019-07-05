@@ -15,7 +15,6 @@ class ChartColors extends Component {
             colors.sort();
             sortedData[k] = colors;
         })
-        console.log(data);
 
         // Create items array
         let items = Object.keys(data).map( k => {
@@ -27,7 +26,6 @@ class ChartColors extends Component {
             return second[1] - first[1];
         });
   
-        console.log(items);
 
         return (
                 <div className="taxonomyColorBox"> 

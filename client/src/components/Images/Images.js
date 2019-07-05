@@ -18,4 +18,3 @@ class Images extends Component {
 
 
 export default LoaderHocImages(Images);
-// export default Images;

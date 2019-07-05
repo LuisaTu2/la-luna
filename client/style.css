@@ -112,7 +112,7 @@ html, body, #root, #app {
     /* PAGINATION */
     .welcomePageContainer{
         width: 100%;
-        min-height: 500px;
+        min-height: 600px;
         padding-top: 40px;  
     }
 
@@ -122,6 +122,7 @@ html, body, #root, #app {
         font-size: 5em;
         width: 50%;
         padding-left: 25%;
+        color: #504d4d;
     }
 
     .lastPageContainer{
@@ -152,7 +153,8 @@ html, body, #root, #app {
 
     .menuItem {
         text-decoration: none;
-        color: #3a3737;
+        /* color: #3a3737; */
+        color: #504d4d;
         transition: color 0.3s ease;
     }
 
@@ -173,22 +175,7 @@ html, body, #root, #app {
         -webkit-user-select: none;
         user-select: none;
     }
-
-    /* #menuToggle:hover {
-        animation: none;
-      }
-      
-      @-webkit-keyframes menuToggle {
-        0% { -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4); }
-        70% { -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0); }
-        100% { -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0); }
-      }
-      @keyframes menutToggle {
-        0% { -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);  box-shadow: 0 0 0 0 rgba(204,169,44, 0.4); }
-        70% { -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0); box-shadow: 0 0 0 10px rgba(204,169,44, 0); }
-        100% { -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0); box-shadow: 0 0 0 0 rgba(204,169,44, 0); }
-      } */
-      
+    
       
     #menuToggle input {
         display: block;
@@ -322,26 +309,72 @@ html, body, #root, #app {
     .analyticsContainer{
         width: 100%;
         min-height: 660px;
-        background-color: #3a3737;
-        color: greenyellow;
+        background-color: #153a60;
         padding-bottom: 12%;
+        display: flex;
+        flex-direction: column;
+
     }
 
+    .analyticsButtonFirst{
+        width: 100%;
+        height: 80px;
+        font-size: 1.5em;
+        padding-bottom: 10px;
+        margin: 0%;
+        text-align: center;
+        font-family: 'Cormorant Infant', serif;
+        /* background-color: #103b63; */
+        background-color: #082540;
+        color:  #f4f6f8;
+        border: none;
+    }
+
+
     .analyticsButtonsContainer{
-        height: 20%;
+        height: 60px;
+        padding-bottom: 16px;
+        width: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
     }
 
     .analyticsButton{
-        background-color: #2fa6bb;
-        color: #e7fae8;
+        /* background-color: #103b63; */
+        background-color: #153a60;
+        border: none; 
+        color:  #f4f6f8;
         font-size: 1.2em;
         height: 80px;
         width: 33.33%;
         text-align: center;
         font-family: 'Cormorant Infant', serif;
+    }
+
+    .analyicsFirstPageText{
+        width: 80%;
+        background-color: #f4f6f8;
+        margin: 0%;
+        padding: 30% 10% 100% 10%;
+        color: #153a60;
+        text-align: center;
+        font-size: 2em;
+        font-family: 'Cormorant Infant', serif;
+    }
+
+    .analyticsChartsContainer{
+        width: 100%;
+        margin: 0%;
+        padding: 0%;
+        /* background-color: #2fa6bb; */
+    }
+
+    .analyticsImage{
+        width: 100%;
+        margin: 0%;
+        padding: 0%;
+        transform: rotate(180deg);
     }
 
     .taxonomyColorBox{
@@ -396,7 +429,8 @@ html, body, #root, #app {
         width: 100%;
         margin-top: 5%;
         padding: 7% 5%;
-        background-color: #3a3737;
+        /* background-color: #3a3737; */
+        background-color: #153a60;
         color: whitesmoke;
     }
 
@@ -441,7 +475,8 @@ html, body, #root, #app {
         /* visibility: hidden; */
         /* background-color: #f7fafc;   */
         /* background-color: #103d5a;   */
-        background-color: #023b60;
+        /* background-color: #023b60; */
+        background-color: white;
         /* z-index: 99; */
         display: flex;
         justify-content: center;

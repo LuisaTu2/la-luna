@@ -39,7 +39,7 @@ class App extends Component {
     };
 
     checkboxHandler(){  
-        console.log("FIRING CHECKBOX HANDLER")   ;
+        // console.log("FIRING CHECKBOX HANDLER");
         let isCheckedFlag = !this.state.isChecked;
         this.setState({
             isChecked: isCheckedFlag    
