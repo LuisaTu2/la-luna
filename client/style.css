@@ -167,7 +167,8 @@ html, body, #root, #app {
     #menuToggle{
         display: block;
         position: relative;
-        padding-left: 20%;
+        /* padding-left: 20%; */
+        padding-left: 10px;
         z-index: 1;        
         -webkit-user-select: none;
         user-select: none;
