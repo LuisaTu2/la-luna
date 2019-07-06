@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Image from "./Image";
 import LoaderHocImages from "../../HOC/LoaderHocImages";
+import "./Images.css";
 
 class Images extends Component {
     constructor(props) {

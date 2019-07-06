@@ -1,0 +1,8 @@
+@media (max-width: 360px){
+    .contentImages{
+        display: flex;
+        flex-direction: column;
+        min-height: 700px;
+        padding-bottom: 10%;
+    }
+}

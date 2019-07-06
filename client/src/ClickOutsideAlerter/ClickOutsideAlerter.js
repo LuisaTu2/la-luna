@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import "./ClickOutsideAlerter.css"
 
 /* Component that alerts if you click outside of it  */
 export default class OutsideAlerter extends Component {

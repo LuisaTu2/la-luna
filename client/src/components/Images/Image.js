@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import LoaderHocImage from "../../HOC/LoaderHocImage";
+import "./Image.css";
 
 class Image extends Component {
     constructor(props) {

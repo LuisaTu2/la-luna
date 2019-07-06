@@ -1,4 +1,13 @@
 @media (max-width:360px){
+    
+    .chartViewsLikesContainer{
+        width: 100%;
+        background-color: #e2d4e2;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        padding-top: 5%;
+    }
 
     .pieChartLegend {
         width: 100%;
