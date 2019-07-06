@@ -1,0 +1,21 @@
+@media (max-width: 360px) {
+    #header {
+        height: 60px;
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #a70cb5;
+        z-index: 3;
+    }
+
+    .content{
+        padding-top: 60px;
+        scroll-behavior: smooth;
+    }
+
+    #pageTitle{
+        font-size: 2.5em;
+        flex-grow: 1;
+    }
+}

@@ -1,0 +1,16 @@
+@media (max-width:360px){
+
+    .chartUsersGeo{
+        height: 700px;
+        width: 100%;
+        background-color: rgb(215, 236, 216);
+        padding-top: 40px;
+    }
+
+    .chartGeo{
+        background-color: rgb(215, 236, 216);
+        overflow: scroll;
+        padding-top: 10%;
+    }
+
+}

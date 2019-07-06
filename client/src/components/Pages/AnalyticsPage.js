@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import ChartColors from "../Charts/ChartColors";
 import ChartViewsLikes from "../Charts/ChartViewsLikes";
 import ChartGeo from "../Charts/ChartGeo";
+import "./AnalyticsPage.css";
 
 
 class AnalyticsPage extends Component {
@@ -74,8 +75,6 @@ class AnalyticsPage extends Component {
         
         this.setState({
             plotData: tcmap,
-            // viewsLikes: [],
-            // getData: [],
             showComponents: [0, 1, 0, 0],
             fetchingData: false
         })
@@ -83,7 +82,6 @@ class AnalyticsPage extends Component {
 
 
     setViewsLikesData(d){
-        console.log("DATA FROM setVIEWS LIKES" , d);
         let viewsLikesData = JSON.parse(d);
         let taxonomy = Object.keys(viewsLikesData.data[0]).sort();
         let views = []; let likes = []; let indexColor = {};
@@ -96,23 +94,18 @@ class AnalyticsPage extends Component {
         let vl = [views, likes, taxonomy];
         this.setState({
             viewsLikes: vl,
-            // plotData: {},
-            // getData: [],
             showComponents: [0, 0, 1, 0],
             fetchingData: false
         })
     }
 
     queryGeo(){
-        console.log(event.target.value);    
+        // console.log(event.target.value);    
         this.setState({
             showComponents: [0, 0, 0, 1]
-            // viewsLikes: [],
-            // plotData: {},
-            // getData: [1],
+
         })
     }
-
 
     
     render() {

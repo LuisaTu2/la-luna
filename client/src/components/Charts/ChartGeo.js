@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
+import "./ChartGeo.css";
 
 class ChartGeo extends Component {
 
@@ -13,7 +14,6 @@ class ChartGeo extends Component {
     }
     
     projection() {
-        // console.log("PROJECTION!");
         return geoMercator()
                .scale(100)
                .translate([300, 150])

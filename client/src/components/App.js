@@ -7,7 +7,7 @@ import AnalyticsPage from "./Pages/AnalyticsPage";
 import Menu from "./Menu/Menu";
 import Footer from "./Footer/Footer";
 import ClickOutsideAlerter from "../ClickOutsideAlerter/ClickOutsideAlerter";
-
+import "./App.css";
 
 class App extends Component {
     constructor(props) {

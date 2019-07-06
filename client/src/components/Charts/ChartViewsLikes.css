@@ -1,0 +1,26 @@
+@media (max-width:360px){
+
+    .pieChartLegend {
+        width: 100%;
+        margin-top: 5%;
+        padding: 7% 5%;
+        /* background-color: #3a3737; */
+        background-color: #153a60;
+        color: whitesmoke;
+    }
+
+    .pieChartLegendElt {
+        width: 45%;
+        float: left;
+        margin: 0%;
+        padding-top: 5px;
+    }
+
+    .pieDot {
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        margin-right: 5px;
+        display: inline-block;
+    }
+}

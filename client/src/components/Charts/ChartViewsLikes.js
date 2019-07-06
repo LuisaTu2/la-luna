@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import ReactApexChart from 'react-apexcharts';
+import "./ChartViewsLikes.css";
 // import {VictoryPie, VictoryLegend, VictoryTooltip} from 'victory';
 // import PieChart from 'react-minimal-pie-chart';
 
@@ -15,8 +16,6 @@ class ChartViewsLikes extends Component {
         let views = this.props.vlData[0]; 
         let likes = this.props.vlData[1]; 
         let taxonomy = this.props.vlData[2];
-        console.log(views, likes, taxonomy);
-
         let pieLegend =  {fontSize:"12px",color:"#0c616e", position: 'bottom', onItemClick: {toggleDataSeries: true},  horizontalAlign: 'left', itemMargin:{horizontal:5, vertical:5}};
    
         const colors = [ "#EFBCD5", "#4B4644", "#38B3A2", "#0795C7", "#F8E963", 

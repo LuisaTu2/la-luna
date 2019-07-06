@@ -34,25 +34,7 @@ html, body, #root, #app {
 @media (max-width:360px){
 /* @media (max-width: 768px){ */
 
-    #header {
-        height: 60px;
-        position: fixed;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        background-color: #a70cb5;
-        z-index: 3;
-    }
-
-    .content{
-        padding-top: 60px;
-        scroll-behavior: smooth;
-    }
-
-    #footer{
-        background: #f1bcb6;
-        padding: 0%;
-    }
+ 
 
     /* PICTURES */
     .contentImages{
@@ -109,124 +91,7 @@ html, body, #root, #app {
         z-index: -1;
     }
 
-    /* PAGINATION */
-    .welcomePageContainer{
-        width: 100%;
-        min-height: 600px;
-        padding-top: 40px;  
-    }
 
-    .welcomePageText{
-        font-family: 'Amatic SC', cursive;
-        text-align: center;
-        font-size: 5em;
-        width: 50%;
-        padding-left: 25%;
-        color: #504d4d;
-    }
-
-    .lastPageContainer{
-        width: 100%;
-        min-height: 500px;
-        padding-top: 40px;  
-    }
-
-    .lastPageText{
-        font-family: 'Cutive Mono', monospace;
-        text-align: center;
-        font-size: 2em;
-        padding-left: 20%;
-        padding-right: 20%;
-    }
-
-    .lastPageImage{
-        width:100%;
-        height: 60%
-    }
-
-
-    /* Hamburger button styling */
-    #pageTitle{
-        font-size: 2.5em;
-        flex-grow: 1;
-    }
-
-    .menuItem {
-        text-decoration: none;
-        /* color: #3a3737; */
-        color: #504d4d;
-        transition: color 0.3s ease;
-    }
-
-    .menuItem:hover{
-        color: rgb(211, 13, 96);
-    }
-
-    nav{
-        width: 18%;
-    }
-
-    #menuToggle{
-        display: block;
-        position: relative;
-        /* padding-left: 20%; */
-        padding-left: 10px;
-        z-index: 1;        
-        -webkit-user-select: none;
-        user-select: none;
-    }
-    
-      
-    #menuToggle input {
-        display: block;
-        width: 40px;
-        height: 32px;
-        position: absolute;
-        top: -8px;
-        left: 4.5px;
-        cursor: pointer;
-        opacity: 0; /* hide this */
-        z-index: 2; /* and place it over the hamburger */
-        -webkit-touch-callout: none;
-    }
-
-    #menuToggle span {
-        display: block;
-        width: 30px;
-        height: 3px;
-        margin-bottom: 5px;
-        position: relative;
-        background: rgb(248, 221, 248); 
-        border-radius: 2px;
-        z-index: 1;
-        transform-origin: 4px 0px;
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                    opacity 0.55s ease;
-    }
-
-    #menuToggle span:first-child {
-        transform-origin: 0% 0%;
-    }
-
-    #menuToggle span:nth-last-child(2) {
-        transform-origin: 0% 100%;
-    }
-
-    #menuToggle input:checked ~ span {
-        opacity: 1;
-        transform: rotate(45deg) translate(-2px, -1px);
-        background: #bbb6b6;
-    }
-
-    #menuToggle input:checked ~ span:nth-last-child(3) {
-        opacity: 0;
-        transform: rotate(0deg) scale(0.2, 0.2);
-    }
-
-    #menuToggle input:checked ~ span:nth-last-child(2) {
-        transform: rotate(-45deg) translate(0, -1px);
-    }
 
     .clickOutsideMenu{
         padding-left: 10px;
@@ -235,185 +100,9 @@ html, body, #root, #app {
         width: 0px;
     }
 
-    #menu {
-        position: absolute;
-        width: 200px;
-        margin: -70px 0 0 -50px;
-        padding: 50px;
-        padding-top: 95px;
-        background: #f7dbee;
-        list-style-type: none;
-        -webkit-font-smoothing: antialiased;
-        transform-origin: 0% 0%;
-        transform: translate(-100%, 0);
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-    }
-
-    #menu li {
-        padding: 10px 0px 10px 5px;
-        font-size: 20px;    
-    }
-
-    #menuToggle input:checked ~ ul{
-        transform: none;
-    }
-
-    /* Pagination buttons  */
-    .paginationContainer{
-        padding-left: 38%;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        margin: 0%;
-    }
-
-    .paginationBtn{
-        text-decoration: none;
-        border: 1px solid #999999;
-        background-color: #a70cb5;
-        color: white;
-        margin: 2% 1%;
-        display: inline-block;
-        padding: 8px 16px;
-    }
-
-
-    
-    .disablePaginationButton{
-        border: 1px solid #999999;
-        background-color: #cccccc;
-        color: #666666;
-    }
-
-
-    .round {
-        border-radius: 50%;
-    }
-
-
-    .footerText{
-        height: 30px;
-        color: greenyellow;
-        background-color: #504d4d;
-        margin:0%;
-        text-align: center;
-        padding-top: 3%;
-    }
-
-
-    /* Analytics Section */
     .analyticsStyle{
         color: greenyellow !important; 
         background-color: #504d4d !important;
-    }
-
-    .analyticsContainer{
-        width: 100%;
-        min-height: 660px;
-        background-color: #153a60;
-        padding-bottom: 12%;
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    .analyticsButtonFirst{
-        width: 100%;
-        height: 80px;
-        font-size: 1.5em;
-        padding-bottom: 10px;
-        margin: 0%;
-        text-align: center;
-        font-family: 'Cormorant Infant', serif;
-        /* background-color: #103b63; */
-        background-color: #082540;
-        color:  #f4f6f8;
-        border: none;
-    }
-
-
-    .analyticsButtonsContainer{
-        height: 60px;
-        padding-bottom: 16px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .analyticsButton{
-        /* background-color: #103b63; */
-        background-color: #153a60;
-        border: none; 
-        color:  #f4f6f8;
-        font-size: 1.2em;
-        height: 80px;
-        width: 33.33%;
-        text-align: center;
-        font-family: 'Cormorant Infant', serif;
-    }
-
-    .analyicsFirstPageText{
-        width: 80%;
-        background-color: #f4f6f8;
-        margin: 0%;
-        padding: 30% 10% 100% 10%;
-        color: #153a60;
-        text-align: center;
-        font-size: 2em;
-        font-family: 'Cormorant Infant', serif;
-    }
-
-    .analyticsChartsContainer{
-        width: 100%;
-        margin: 0%;
-        padding: 0%;
-        /* background-color: #2fa6bb; */
-    }
-
-    .analyticsImage{
-        width: 100%;
-        margin: 0%;
-        padding: 0%;
-        transform: rotate(180deg);
-    }
-
-    .taxonomyColorBox{
-        width: 95%;
-        padding-left: 5%;
-        padding-top: 7%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .taxonomyColorContainer{
-        width: 100%;
-    }
-
-    .taxonomyColorLabel{
-        width: 92%;
-        color: white;
-        padding-top: 15px;
-        padding-left: 14px;
-        margin: 0%;
-        height: 60px;
-        /* display: none; */
-        position: absolute;
-        font-size: 1.5em;
-    }
-
-    .taxonomyColorPalette{
-        width: 90%;
-        padding: 0%;
-        margin: 0%;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .taxonomyColorDot{
-        width: 12px;
-        height: 60px; 
-        margin: 0%; 
-        padding: 0%;
     }
 
     .chartViewsLikesContainer{
@@ -424,44 +113,7 @@ html, body, #root, #app {
         overflow: scroll;
         padding-top: 5%;
     }
-
-    .pieChartLegend{
-        width: 100%;
-        margin-top: 5%;
-        padding: 7% 5%;
-        /* background-color: #3a3737; */
-        background-color: #153a60;
-        color: whitesmoke;
-    }
-
-    .pieChartLegendElt{
-        width: 45%;
-        float: left;
-        margin: 0%;
-        padding-top: 5px;
-    }
-
-    .pieDot{
-        height: 15px;
-        width: 15px;
-        border-radius: 50%;
-        margin-right: 5px;
-        display: inline-block;
-    }
-
-    .chartUsersGeo{
-        height: 700px;
-        width: 100%;
-        background-color: rgb(215, 236, 216);
-        padding-top: 40px;
-    }
-
-    .chartGeo{
-        background-color: rgb(215, 236, 216);
-        overflow: scroll;
-        padding-top: 10%;
-    }
-
+ 
     .loader{
         position: fixed;
         /* position: relative; */
@@ -486,24 +138,6 @@ html, body, #root, #app {
     }
 
     
-    .chartsLoader{
-        position: fixed;
-        width: 100%;
-        margin: 0%;
-        padding: 0% 0% 0% 0%;
-        padding-bottom: 700px;
-        left: 0;
-        background-color: #153a60;
-        z-index: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        animation: load8 1.1s infinite linear;
-        transition: opacity 0.3s;
-    }
-
-
-
 }
 
 
