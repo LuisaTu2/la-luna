@@ -8,7 +8,7 @@
         height: 170px;
         margin: 2.5px auto; 
         padding: 2%;
-        border-radius: 3%;
+        border-radius: 10px;
         opacity: 1;
         display: block;
         backface-visibility: hidden;
@@ -50,7 +50,7 @@
 
 
 
-@media (min-width:360px) and (max-width: 768px){
+@media (min-width:361px) and (max-width: 768px){
     .contentImageContainer{
         position: relative;
         display: inline-grid;
@@ -58,7 +58,7 @@
     }
 
     .contentImage{  
-        border-radius: 10px;
+        border-radius: 3%;
         opacity: 1;
         display: grid;
         backface-visibility: hidden;
