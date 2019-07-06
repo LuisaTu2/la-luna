@@ -2,18 +2,30 @@
 
     .loader{
         position: fixed;
-        /* position: relative; */
-        /* top: 60px;  */
-        /* height: 539px; */
-        /* height: 640px; */
         width: 100%;
         margin: 0%;
         padding: 40% 0% 70% 0%;
         left: 0;
-        /* visibility: hidden; */
-        /* background-color: #f7fafc;   */
-        /* background-color: #103d5a;   */
-        /* background-color: #023b60; */
+        background-color: white;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: load8 1.1s infinite linear;
+        transition: opacity 0.3s;
+    }
+    
+}
+
+
+@media (min-width:361px) and (max-width: 768px){
+
+    .loader{
+        position: fixed;
+        width: 100%;
+        margin: 0%;
+        padding: 20% 0% 70% 0%;
+        left: 0;
         background-color: white;
         z-index: 1;
         display: flex;

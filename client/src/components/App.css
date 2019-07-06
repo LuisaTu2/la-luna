@@ -60,11 +60,10 @@
     .content{
         /* height: 300px;  */
         width: 100%;
-        margin-top: 350px;
-        background-color: green;
+        margin-top: 300px;
+        /* background-color: green; */
         scroll-behavior: smooth;
         position: absolute;
- 
     }
 
     #pageTitle{
@@ -77,6 +76,15 @@
     }
 
 }
+
+
+
+
+
+
+
+
+ /* LATER */
 
 
 @media (min-width:769px) and (max-width: 1024px){

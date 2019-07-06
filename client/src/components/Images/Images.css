@@ -10,9 +10,9 @@
 
 @media (min-width:361px) and (max-width: 768px){
     .contentImages{
-        display: flex;
-        flex-direction: column;
-        min-height: 700px;
-        padding-bottom: 10%;
+        /* background-color: rgb(98, 185, 156); */
+        width: 90%;
+        padding: 0% 5% 5% 5%;
+        min-height: 800px;
     }
 }
