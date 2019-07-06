@@ -64,6 +64,105 @@
     }
 
     .analyticsImage{
+        display: none;
+    }
+
+    .chartsLoader{
+        position: fixed;
+        width: 100%;
+        margin: 0%;
+        padding: 0% 0% 0% 0%;
+        padding-bottom: 700px;
+        left: 0;
+        background-color: #153a60;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: load8 1.1s infinite linear;
+        transition: opacity 0.3s;
+    }
+
+    
+
+
+
+}
+
+
+
+
+
+
+
+@media (min-width:361px) and (max-width: 768px){
+
+    .analyticsContainer{
+        width: 100%;
+        min-height: 660px;
+        background-color: #153a60;
+        padding-bottom: 12%;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+
+    .analyticsButtonFirst{
+        width: 100%;
+        height: 80px;
+        font-size: 1.5em;
+        padding-bottom: 10px;
+        margin: 0%;
+        text-align: center;
+        font-family: 'Cormorant Infant', serif;
+        /* background-color: #103b63; */
+        background-color: #082540;
+        color:  #f4f6f8;
+        border: none;
+    }
+
+
+    .analyticsButtonsContainer{
+        height: 60px;
+        padding-bottom: 16px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .analyticsButton{
+        /* background-color: #103b63; */
+        background-color: #153a60;
+        border: none; 
+        color:  #f4f6f8;
+        font-size: 1.2em;
+        height: 80px;
+        width: 33.33%;
+        text-align: center;
+        font-family: 'Cormorant Infant', serif;
+    }
+
+    .analyicsFirstPageText{
+        width: 80%;
+        background-color: #f4f6f8;
+        margin: 0%;
+        padding: 30% 10% 100% 10%;
+        color: #153a60;
+        text-align: center;
+        font-size: 2em;
+        font-family: 'Cormorant Infant', serif;
+    }
+
+    .analyticsChartsContainer{
+        width: 100%;
+        margin: 0%;
+        padding: 0%;
+        /* background-color: #2fa6bb; */
+    }
+
+    .analyticsImage{
         width: 100%;
         margin: 0%;
         padding: 0%;

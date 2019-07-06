@@ -62,7 +62,7 @@
         /* height: 300px;  */
         width: 100%;
         margin-top: 300px;
-        /* background-color: green; */
+        background-color: green;
         scroll-behavior: smooth;
         position: absolute;
     }
