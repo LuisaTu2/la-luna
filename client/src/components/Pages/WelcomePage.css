@@ -24,6 +24,10 @@
         color: #504d4d;
     }
 
+    .welcomePageImageHide{
+        display: none
+    }
+
 }
 
 @media (min-width:361px) and (max-width: 768px){
@@ -32,10 +36,11 @@
         width: 90%;
         margin-left: 5%;
         margin-right: 5%;
+        margin-bottom: 20%;
         min-height: 600px;
-        padding-top: -60px;  
         display: flex;
         flex-direction: column;
+        /* background-color: rgb(144, 206, 144); */
     }
 
     .welcomePageText1{
@@ -52,10 +57,24 @@
         font-size: 2.5em;
         width: 100%;
         color: #504d4d;
+        padding-bottom: 10%;
     }
 
-    .welcomePageImageHide{
-        display: none;
+
+    .welcomePageWeb{
+        width: 70%;
+        min-height: 170px;
+        max-height: 390px;
+        margin: 2.5px auto; 
+        padding: 3%;
+        border-radius: 10px;
+        opacity: 1;
+        display: block;
+        backface-visibility: hidden;
+        transition: .8s ease;
     }
+
+
+
 }
 

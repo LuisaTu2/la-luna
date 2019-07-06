@@ -42,6 +42,52 @@
         border-radius: 50%;
     }
 
+}
+
+
+@media (min-width:361px) and (max-width: 768px){
+
+    #footer{
+        background: #f1bcb6;
+        padding: 0%;
+    }
+    
+    .footerText{
+        height: 30px;
+        color: greenyellow;
+        background-color: #504d4d;
+        margin:0%;
+        text-align: center;
+        padding-top: 3%;
+    }
+
+    .paginationContainer{
+        padding-left: 38%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin: 0%;
+    }
+
+    .paginationBtn{
+        text-decoration: none;
+        border: 1px solid #999999;
+        background-color: #a70cb5;
+        color: white;
+        margin: 2% 1%;
+        display: inline-block;
+        padding: 8px 16px;
+    }
+   
+    .disablePaginationButton{
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+    }
+
+    .round {
+        border-radius: 50%;
+    }
+
 
 
 }

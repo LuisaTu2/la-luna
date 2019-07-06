@@ -6,3 +6,13 @@
         padding-bottom: 10%;
     }
 }
+
+
+@media (min-width:361px) and (max-width: 768px){
+    .contentImages{
+        display: flex;
+        flex-direction: column;
+        min-height: 700px;
+        padding-bottom: 10%;
+    }
+}
