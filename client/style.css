@@ -30,9 +30,8 @@ html, body, #root, #app {
     flex-direction: column;
 }
 
-
+/* 
 @media (max-width:0px){
-/* @media (max-width: 768px){ */
 
     #header {
         height: 60px;
@@ -54,7 +53,6 @@ html, body, #root, #app {
         padding: 0%;
     }
 
-    /* PICTURES */
     .contentImages{
         display: flex;
         flex-direction: column;
@@ -109,7 +107,6 @@ html, body, #root, #app {
         z-index: -1;
     }
 
-    /* PAGINATION */
     .welcomePageContainer{
         width: 100%;
         min-height: 600px;
@@ -145,7 +142,6 @@ html, body, #root, #app {
     }
 
 
-    /* Hamburger button styling */
     #pageTitle{
         font-size: 2.5em;
         flex-grow: 1;
@@ -153,7 +149,6 @@ html, body, #root, #app {
 
     .menuItem {
         text-decoration: none;
-        /* color: #3a3737; */
         color: #504d4d;
         transition: color 0.3s ease;
     }
@@ -169,7 +164,6 @@ html, body, #root, #app {
     #menuToggle{
         display: block;
         position: relative;
-        /* padding-left: 20%; */
         padding-left: 10px;
         z-index: 1;        
         -webkit-user-select: none;
@@ -185,8 +179,8 @@ html, body, #root, #app {
         top: -8px;
         left: 4.5px;
         cursor: pointer;
-        opacity: 0; /* hide this */
-        z-index: 2; /* and place it over the hamburger */
+        opacity: 0; 
+        z-index: 2; 
         -webkit-touch-callout: none;
     }
 
@@ -258,7 +252,6 @@ html, body, #root, #app {
         transform: none;
     }
 
-    /* Pagination buttons  */
     .paginationContainer{
         padding-left: 38%;
         padding-top: 5px;
@@ -300,7 +293,6 @@ html, body, #root, #app {
     }
 
 
-    /* Analytics Section */
     .analyticsStyle{
         color: greenyellow !important; 
         background-color: #504d4d !important;
@@ -324,7 +316,6 @@ html, body, #root, #app {
         margin: 0%;
         text-align: center;
         font-family: 'Cormorant Infant', serif;
-        /* background-color: #103b63; */
         background-color: #082540;
         color:  #f4f6f8;
         border: none;
@@ -341,7 +332,6 @@ html, body, #root, #app {
     }
 
     .analyticsButton{
-        /* background-color: #103b63; */
         background-color: #153a60;
         border: none; 
         color:  #f4f6f8;
@@ -367,7 +357,6 @@ html, body, #root, #app {
         width: 100%;
         margin: 0%;
         padding: 0%;
-        /* background-color: #2fa6bb; */
     }
 
     .analyticsImage{
@@ -396,7 +385,6 @@ html, body, #root, #app {
         padding-left: 14px;
         margin: 0%;
         height: 60px;
-        /* display: none; */
         position: absolute;
         font-size: 1.5em;
     }
@@ -442,18 +430,10 @@ html, body, #root, #app {
 
     .loader{
         position: fixed;
-        /* position: relative; */
-        /* top: 60px;  */
-        /* height: 539px; */
-        /* height: 640px; */
         width: 100%;
         margin: 0%;
         padding: 40% 0% 70% 0%;
         left: 0;
-        /* visibility: hidden; */
-        /* background-color: #f7fafc;   */
-        /* background-color: #103d5a;   */
-        /* background-color: #023b60; */
         background-color: white;
         z-index: 1;
         display: flex;
@@ -462,12 +442,7 @@ html, body, #root, #app {
         animation: load8 1.1s infinite linear;
         transition: opacity 0.3s;
     }
-
-    
-
-
-
-}
+} */
 
 
 /* @media (min-width:851px) and (max-width:1300px)  */
