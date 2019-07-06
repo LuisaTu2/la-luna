@@ -6,24 +6,25 @@ html, body, #root, #app {
     min-width: 360px;
 }
 
-#header,.content, footer {
+#pageTitle{
+    font-family: 'Dancing Script', cursive;
+    color: rgb(247, 243, 243);
+    min-width: 200px;
+}
+
+/* #header,.content, footer {
     width: 100%;
     margin: 0%;
     padding: 0%;
 }
 
-#pageTitle{
-    font-family: 'Dancing Script', cursive;
-    color: rgb(247, 243, 243);
-    padding-left: 12%;
-    min-width: 200px;
-}
+
 
 .content{
     display: flex;
     flex-direction: column;
     min-height: 539px;
-}
+} */
 
 #footer{
     display: flex;
@@ -35,14 +36,7 @@ html, body, #root, #app {
 /* @media (max-width: 768px){ */
 
 
-/* 
-    .analyticsStyle{
-        color: greenyellow !important; 
-        background-color: #504d4d !important;
-    } */
-
  
-    
 }
 
 

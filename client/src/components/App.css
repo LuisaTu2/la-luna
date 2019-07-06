@@ -1,4 +1,24 @@
 @media (max-width: 360px) {
+
+    #header,.content, footer {
+        width: 100%;
+        margin: 0%;
+        padding: 0%;
+    }
+    
+    #pageTitle{
+        font-family: 'Dancing Script', cursive;
+        color: rgb(247, 243, 243);
+        padding-left: 12%;
+        min-width: 200px;
+    }
+    
+    .content{
+        display: flex;
+        flex-direction: column;
+        min-height: 539px;
+    }
+
     #header {
         height: 60px;
         position: fixed;
@@ -18,4 +38,39 @@
         font-size: 2.5em;
         flex-grow: 1;
     }
+}
+
+
+@media (min-width:361px) and (max-width: 768px){
+    #app{
+        display: flex;
+        flex-direction: column;
+    }
+    #header {
+        height: 100px;
+        position: fixed;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;  
+        background-color: #a70cb5;
+        z-index: 3;
+        width: 100%;
+        height: 170px;
+    }
+
+    .content{
+        padding-top: 150px;
+        background-color: green;
+        scroll-behavior: smooth;
+    }
+
+    #pageTitle{
+        width: 100%;
+        /* height: 150px; */
+        padding: 10px;
+        margin: 0%;
+        font-size: 2.5em;
+        text-align: center;
+    }
+
 }
