@@ -42,32 +42,71 @@
 
 
 @media (min-width:361px) and (max-width: 768px){
+    
     #app{
         display: flex;
         flex-direction: column;
     }
+
     #header {
-        height: 100px;
-        position: fixed;
+        /* position: fixed; */
         display: flex;
         flex-direction: column-reverse;
         align-items: center;  
         background-color: #a70cb5;
-        z-index: 3;
         width: 100%;
-        height: 170px;
     }
 
     .content{
-        padding-top: 150px;
+        height: 300px; 
+        margin-top: 350px;
         background-color: green;
         scroll-behavior: smooth;
+        position: absolute;
+ 
     }
 
     #pageTitle{
         width: 100%;
-        /* height: 150px; */
-        padding: 10px;
+        height: 60px;
+        padding-top: 10px;
+        margin: 0%;
+        font-size: 2.5em;
+        text-align: center;
+    }
+
+}
+
+
+@media (min-width:769px) and (max-width: 1024px){
+    
+    #app{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #header {
+        /* position: fixed; */
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;  
+        /* background-color: #a70cb5; */
+        background-color: #4d75be;
+        width: 100%;
+    }
+
+    .content{
+        height: 300px; 
+        margin-top: 400px;
+        background-color: green;
+        scroll-behavior: smooth;
+        position: absolute;
+    }
+
+    #pageTitle{
+        width: 100%;
+        height: 60px;
+        padding-top: 10px;
         margin: 0%;
         font-size: 2.5em;
         text-align: center;

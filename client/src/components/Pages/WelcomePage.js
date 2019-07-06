@@ -10,8 +10,9 @@ class WelcomePage extends Component {
     render() {
 
             return <div className="welcomePageContainer"> 
-                        <div className="welcomePageText"> SUMMER IS HERE! </div> 
-                        <img src={"../../../images/lavender.jpg"} alt="lavender" className={"contentImage shadow" }/>  
+                        <div className="welcomePageText1"> SUMMER IS HERE! </div> 
+                        <div className="welcomePageText2"> Browse Esty listings by category! </div>
+                        <img src={"../../../images/lavender.jpg"} alt="lavender" className={"contentImage shadow welcomePageImageHide" }/>  
                     </div>       
     }
 }

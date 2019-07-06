@@ -6,7 +6,7 @@
         padding-top: 40px;  
     }
 
-    .welcomePageText{
+    .welcomePageText1{
         font-family: 'Amatic SC', cursive;
         text-align: center;
         font-size: 5em;
@@ -14,23 +14,48 @@
         padding-left: 25%;
         color: #504d4d;
     }
+
+    .welcomePageText2{
+        font-family: 'Amatic SC', cursive;
+        text-align: center;
+        font-size: 2.5em;
+        width: 50%;
+        padding-left: 25%;
+        color: #504d4d;
+    }
+
 }
 
 @media (min-width:361px) and (max-width: 768px){
         
     .welcomePageContainer{
-        width: 100%;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
         min-height: 600px;
-        padding-top: 40px;  
+        padding-top: -60px;  
+        display: flex;
+        flex-direction: column;
     }
 
-    .welcomePageText{
+    .welcomePageText1{
         font-family: 'Amatic SC', cursive;
         text-align: center;
         font-size: 5em;
-        width: 50%;
-        padding-left: 25%;
+        width: 100%;
         color: #504d4d;
+    }
+
+    .welcomePageText2{
+        font-family: 'Amatic SC', cursive;
+        text-align: center;
+        font-size: 2.5em;
+        width: 100%;
+        color: #504d4d;
+    }
+
+    .welcomePageImageHide{
+        display: none;
     }
 }
 
