@@ -80,17 +80,10 @@
 
 }
 
-
-
-
-
-
-
-
  /* LATER */
 
 
-@media (min-width:769px) and (max-width: 1500px){
+@media (min-width:769px) {
     
     #app{
         display: flex;

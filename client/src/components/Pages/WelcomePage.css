@@ -1,3 +1,25 @@
+.welcomePageText1{
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+    font-size: 5em;
+    width: 50%;
+    padding-left: 25%;
+    color: #504d4d;
+}
+
+
+.welcomePageText2{
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+    font-size: 2.5em;
+    width: 50%;
+    padding-left: 25%;
+    color: #504d4d;
+}
+
+
+
+
 @media (max-width:360px){
         
     .welcomePageContainer{
@@ -6,23 +28,8 @@
         padding-top: 40px;  
     }
 
-    .welcomePageText1{
-        font-family: 'Amatic SC', cursive;
-        text-align: center;
-        font-size: 5em;
-        width: 50%;
-        padding-left: 25%;
-        color: #504d4d;
-    }
 
-    .welcomePageText2{
-        font-family: 'Amatic SC', cursive;
-        text-align: center;
-        font-size: 2.5em;
-        width: 50%;
-        padding-left: 25%;
-        color: #504d4d;
-    }
+
 
     .welcomePageImageHide{
         display: none
@@ -54,19 +61,13 @@
     }
 
     .welcomePageText1{
-        font-family: 'Amatic SC', cursive;
-        text-align: center;
-        font-size: 5em;
-        width: 100%;
-        color: #504d4d;
+        padding-left: 0%;
     }
 
     .welcomePageText2{
-        font-family: 'Amatic SC', cursive;
-        text-align: center;
-        font-size: 2.5em;
         width: 100%;
         color: #504d4d;
+        padding-left: 0%;
     }
 
 
@@ -86,7 +87,7 @@
 
 
 
-@media (min-width:769px) and (max-width: 1500px){
+@media (min-width:769px) {
         
     .welcomePageContainer{
         width: 90%;
@@ -101,32 +102,21 @@
     }
 
     .welcomePageText1{
-        font-family: 'Amatic SC', cursive;
-        text-align: center;
-        font-size: 5em;
         width: 100%;
-        color: #504d4d;
+        padding-left: 0%;
     }
 
     .welcomePageText2{
-        font-family: 'Amatic SC', cursive;
-        text-align: center;
-        font-size: 2.5em;
         width: 100%;
-        color: #504d4d;
         padding: 1% 0% 5% 0%;
     }
 
 
     .welcomePageWeb{
         width: 30%;
-        /* min-height: 170px;
-        max-height: 390px;
-        margin: 2.5px auto;  */
         padding: 1.6%;
         border-radius: 3%;
         opacity: 1;
-        /* display: block; */
         backface-visibility: hidden;
         transition: .8s ease;
         height: 300px;
