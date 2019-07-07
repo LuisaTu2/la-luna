@@ -20,7 +20,7 @@ class App extends Component {
             disablePaginationButtons: [1, 0],
             firstPageIx: 1,
             isChecked: false,
-            values:[["craft_supplies","Craft Supplies and Tools"], 
+            values:[["craft_supplies","Craft Supplies & Tools"], 
                     ["jewelry","Jewelry"],
                     ["clothing","Clothing"],
                     ["home_living","Home and Living"],

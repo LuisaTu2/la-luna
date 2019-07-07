@@ -92,5 +92,58 @@
         display: none;
     }
 
+}
+
+
+
+@media (min-width: 769px) and (max-width: 1500px){
+
+    #footer{
+        /* background: #f1bcb6; */
+        padding: 0%;
+    }
+    
+    .footerText{
+        height: 50px;
+        color: greenyellow;
+        background-color: #504d4d;
+        margin: 0%;
+        text-align: center;
+        padding-top: 2%;
+        /* padding-bottom: 3%; */
+        font-size: 1.5em;
+    }
+
+    .paginationContainer{
+        padding-left: 45px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin: 0%;
+    }
+
+    .paginationBtn{
+        text-decoration: none;
+        border: 1px solid #999999;
+        background-color: #a70cb5;
+        color: white;
+        margin: 2% 0.5%;
+        display: inline-block;
+        padding: 8px 16px;
+    }
+   
+    .disablePaginationButton{
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+    }
+
+    .round {
+        border-radius: 50%;
+    }
+
+    .footerAnalyticsStyle{
+        /* display: none; */
+    }
+
 
 }

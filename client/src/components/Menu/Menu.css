@@ -156,7 +156,7 @@
 }
 
 
-@media (min-width:769px) and (max-width: 1024px){
+@media (min-width:769px) and (max-width: 1500px){
 
     nav{
         width: 100%;
@@ -183,18 +183,19 @@
         padding: 0% 5%;
         width: 90%;
         background: #e0cfdb;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 
     .menuItem {
-        display: inline-grid;
         text-decoration: none;
         color: #4e82e9;
         font-size: 22px; 
         list-style: none;
-        flex-grow: 1;
         padding: 1%;
-        margin: 2%;
-        
+        width: 14.2%;
+        text-align: center;        
     }
 
     #menu li {

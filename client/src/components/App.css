@@ -90,7 +90,7 @@
  /* LATER */
 
 
-@media (min-width:769px) and (max-width: 1024px){
+@media (min-width:769px) and (max-width: 1500px){
     
     #app{
         display: flex;
@@ -108,8 +108,7 @@
     }
 
     .content{
-        height: 300px; 
-        margin-top: 400px;
+        margin-top: 200px;
         /* background-color: green; */
         scroll-behavior: smooth;
         position: absolute;
