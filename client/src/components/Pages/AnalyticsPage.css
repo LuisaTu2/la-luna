@@ -97,7 +97,7 @@
 @media (min-width:361px) {
     
     .analyticsContainer{
-        transform: translateY(-230px);
+        transform: translateY(-150px);
     }
 
     .analyticsButtonsContainer{
@@ -176,7 +176,7 @@
 @media (min-width: 769px){
 
     .analyticsContainer{
-        transform: translateY(-130px);
+        transform: translateY(-80px);
     }
 
     .analyticsButton{
