@@ -1,3 +1,7 @@
+.contentAnalyticsStyle{
+    background-color: #153a60;
+}
+
 @media (max-width: 360px) {
 
     #header,.content, footer {

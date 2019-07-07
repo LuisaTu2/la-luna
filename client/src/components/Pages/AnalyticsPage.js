@@ -123,9 +123,13 @@ class AnalyticsPage extends Component {
                         { this.state.fetchingData ? chartsLoader : null }
                         { this.state.showComponents[0] 
                                 ? 
-                                <span>
-                                    <div className="analyicsFirstPageText"> Explore Etsy Data {"\n&\n"} Analytics </div>
+                                <span className="analyticsFirstPage">
                                     <img src="../../../images/analytics.jpg" className="analyticsImage" />
+                                    <span className="analyticsFirstPageAlign">
+                                        <span> </span>
+                                        <div className="analyicsFirstPageText"> Explore Etsy Data {"\n&\n"} Analytics </div>
+                                        <span> </span>
+                                    </span>
                                 </span> 
                                 : 
                                 null }

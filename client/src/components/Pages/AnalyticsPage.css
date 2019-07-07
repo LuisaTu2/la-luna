@@ -104,24 +104,47 @@
         height: 50px;
     }
 
-    .analyicsFirstPageText{
-        width: 20%;
-        text-align: center;
-        color:white;
-        margin: 0%;
-        font-size: 1.5em;
-        font-family: 'Cormorant Infant', serif;
-        padding-left: 77%;
-        transform: translateY(15%);
-        position: absolute;
-        z-index: 2;
+    .analyticsFirstPage{
+        width: 100%;
+        display: flex;
+        direction: row;
     }
 
     .analyticsImage{
-        width: 100%;
+        width: 70%;
         margin: 0%;
         padding: 0%;
         transform: rotate(180deg);
+    }
+
+    .analyticsFirstPageAlign{
+        width: 30%;
+        margin: 0%;
+        padding: 0%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .analyticsFirstPageAlign span{
+        width: 100%;
+        height: 30%;
+        /* background-color: red; */
+        background-color: #085c80;
+        border-color:  #085c80;
+    }
+
+    .analyicsFirstPageText{
+        /* width: 100%; */
+        height: 40%;
+        text-align: center;
+        color:white;
+        margin: 0%;
+        padding: 5% 0%;
+        font-size: 1em;
+        font-family: 'Cormorant Infant', serif;
+        background-color: #085c80;
+        border-color:  #085c80;
+        z-index: 2;
     }
 
     .chartsLoader{
@@ -131,16 +154,29 @@
 }
 
 
+@media (min-width: 373px){
+    .analyicsFirstPageText{
+        padding: 5%;
+    }
+}
+
+@media (min-width: 450px){
+    .analyicsFirstPageText{
+        font-size: 1.5em;
+    }
+}
+
+@media (min-width: 700px){
+    .analyicsFirstPageText{
+        font-size: 2em;
+    }
+}
+
+
 @media (min-width: 769px){
 
     .analyticsContainer{
         transform: translateY(-130px);
-    }
-
-    .analyicsFirstPageText{
-        width: 15%;
-        font-size: 250%;
-        transform: translateY(50%);
     }
 
     .analyticsButton{
@@ -149,11 +185,8 @@
 }
 
 
-@media (min-width: 1024px){
+@media (min-width: 1640px){
 
-    .analyicsFirstPageText{
-        font-size: 500%;
-    }
 }
 
 

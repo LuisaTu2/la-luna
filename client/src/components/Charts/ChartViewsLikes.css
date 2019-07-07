@@ -1,10 +1,16 @@
+.pieChartLegend {
+    margin-top: 5%;
+    padding: 7% 5%;
+    background-color: #153a60;
+    color: whitesmoke;
+}
+
 .pieChartLegendElt {
     width: 45%;
     float: left;
     margin: 0%;
     padding-top: 5px;
 }
-
 
 .pieDot {
     height: 15px;
@@ -14,62 +20,46 @@
     display: inline-block;
 }
 
-
-@media (max-width:360px){
-    
-    .chartViewsLikesContainer{
-        width: 100%;
-        background-color: #e2d4e2;
-        display: flex;
-        flex-direction: column;
-        overflow: scroll;
-        padding-top: 5%;
-    }
-
-    .pieChartLegend {
-        width: 100%;
-        margin-top: 5%;
-        padding: 7% 5%;
-        /* background-color: #3a3737; */
-        background-color: #153a60;
-        color: whitesmoke;
-    }
-
-
-
-}
-
-@media (min-width:361px) {
-
-    .chartsAnalyticsWeb{
-        padding: 5% 10%;
-    }
-    
-    .chartViewsLikesContainer{
-        width: 100%;
-        background-color: #e2d4e2;
-        display: flex;
-        flex-direction: column;
-        overflow: scroll;
-        padding-top: 5%;
-    }
-
-    .pieChartLegend {
-        width: 100%;
-        margin-top: 5%;
-        padding: 7% 5%;
-        background-color: #153a60;
-        color: whitesmoke;
-    }
-
+.chartViewsLikesContainer{
+    background-color: #e2d4e2;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    padding-top: 5%;
 }
 
 
-@media (min-width: 769px) {
-    
+@media (min-width: 400px) {
+    .chartViewsLikesContainer{
+        padding: 5% 10% 0% 10%;
+    }
+
+    .pieChartLegend {
+        margin: 5% 1%;
+        padding: 5% 0% 5% 10%;
+    }   
+}
+
+
+@media (min-width: 600px) {
+    .chartViewsLikesContainer {
+        padding: 5% 20% 0% 20%;
+    }    
+}
+
+
+@media (min-width: 755px) {
+
+    .chartViewsLikesContainer {
+        padding: 0%;
+    }       
     .chartsAnalyticsWeb{
         display: flex;
-        padding-left: 30%;
-        padding-top: 2%;
+        padding: 5% 0% 0% 10%;
     }
+
+    .pieChartLegend {
+        margin: 5%;
+        padding: 5% 0% 5% 15%;
+    }  
 }
