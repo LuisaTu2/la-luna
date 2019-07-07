@@ -40,6 +40,10 @@
 }
 
 @media (min-width:361px) {
+
+    .chartsAnalyticsWeb{
+        padding: 5% 10%;
+    }
     
     .chartViewsLikesContainer{
         width: 100%;
@@ -54,14 +58,18 @@
         width: 100%;
         margin-top: 5%;
         padding: 7% 5%;
-        /* background-color: #3a3737; */
         background-color: #153a60;
         color: whitesmoke;
     }
 
-    .chartsAnalyticsContainer{
+}
+
+
+@media (min-width: 769px) {
+    
+    .chartsAnalyticsWeb{
         display: flex;
         padding-left: 30%;
-        padding-top: 5%;
+        padding-top: 2%;
     }
 }

@@ -143,8 +143,7 @@
         font-size: 22px; 
         list-style: none;
         flex-grow: 1;
-        padding: 1%;
-        margin: 2%;
+        margin: 0.5%;
         
     }
 
@@ -161,7 +160,7 @@
 
     .menuItem {
         width: 14.2%;
-        text-align: center;        
+        text-align: center;     
     }
 
 }

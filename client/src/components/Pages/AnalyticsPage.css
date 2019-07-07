@@ -1,3 +1,12 @@
+.analyticsContainer{
+    width: 100%;
+    min-height: 1000px;
+    background-color: #153a60;
+    display: flex;
+    flex-direction: column;
+}
+
+
 .analyticsButtonFirst{
     width: 100%;
     height: 80px;
@@ -60,12 +69,7 @@
 @media (max-width:360px){
 
     .analyticsContainer{
-        width: 100%;
-        min-height: 800px;
-        background-color: #153a60;
         padding-bottom: 12%;
-        display: flex;
-        flex-direction: column;
     }
 
     .analyticsButtonsContainer{
@@ -93,10 +97,6 @@
 @media (min-width:361px) {
     
     .analyticsContainer{
-        width: 100%;
-        min-height: 1000px;
-        display: flex;
-        flex-direction: column;
         transform: translateY(-230px);
     }
 
@@ -128,16 +128,12 @@
         padding: 10% 0% 90% 0%;
     }
 
-    .contentAnalyticsStyle{
-        background-color: #153a60;
-    }
 }
 
 
 @media (min-width: 769px){
 
     .analyticsContainer{
-        min-height: 900px;
         transform: translateY(-130px);
     }
 
