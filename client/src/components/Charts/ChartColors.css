@@ -42,7 +42,7 @@
 }
 
 
-@media (min-width:361px) and (max-width: 768px){
+@media (min-width:361px) and (max-width: 1500px){
     
     .taxonomyColorBox{
         width: 98%;
@@ -86,47 +86,3 @@
 }
 
 
-
-@media (min-width: 769px) and (max-width: 1500px){
-    
-    .taxonomyColorBox{
-        width: 80%;
-        padding: 10%;
-        display: flex;
-        flex-direction: column;
-        background-color: #153a60;
-    }
-
-    .taxonomyColorContainer{
-        width: 100%;
-    }
-
-    .taxonomyColorLabel{
-        width: 92%;
-        color: white;
-        padding-top: 15px;
-        padding-left: 14px;
-        margin: 0%;
-        height: 60px;
-        /* display: none; */
-        position: absolute;
-        font-size: 1.5em;
-    }
-
-    .taxonomyColorPalette{
-        width: 90%;
-        padding: 0%;
-        margin: 0%;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .taxonomyColorDot{
-        width: 12px;
-        height: 60px; 
-        margin: 0%; 
-        padding: 0%;
-    }
-
-
-}
