@@ -28,9 +28,6 @@
         padding-top: 40px;  
     }
 
-
-
-
     .welcomePageImageHide{
         display: none
     }
@@ -104,6 +101,7 @@
     .welcomePageText1{
         width: 100%;
         padding-left: 0%;
+        padding-top: 7%;
     }
 
     .welcomePageText2{

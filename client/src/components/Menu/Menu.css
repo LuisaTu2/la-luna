@@ -103,8 +103,7 @@
 
 }
 
-
-@media (min-width:361px) and (max-width: 768px){
+@media(min-width:361px){
 
     nav{
         width: 100%;
@@ -125,7 +124,11 @@
     #menuToggle span {
         display: none;
     }
-    
+
+    .menuItemAnalytics{
+        width: 100%;
+    }
+
     #menu {
         margin: 0%;
         padding: 0% 5%;
@@ -143,11 +146,6 @@
         padding: 1%;
         margin: 2%;
         
-    }
-
-
-    .menuItemAnalytics{
-        width: 100%;
     }
 
 }
