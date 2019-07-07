@@ -30,40 +30,23 @@
     padding: 0%;
 }
 
-
-
-@media (max-width:360px){
-
-    .taxonomyColorBox{
-        width: 95%;
-        padding-left: 5%;
-        padding-top: 7%;
-        display: flex;
-        flex-direction: column;
-    }
+.taxonomyColorBox{
+    width: 95%;
+    padding-left: 5%;
+    padding-top: 7%;
+    display: flex;
+    flex-direction: column;
 }
 
 
-@media (min-width:361px) and (max-width: 768px){
-    
-    .taxonomyColorBox{
-        width: 98%;
-        padding: 10% 1%;
-        display: flex;
-        flex-direction: column;
-        background-color: #153a60;
-    }
-}
-
-
-@media (min-width:769px) {
+@media (min-width:361px) {
     
     .taxonomyColorBox{
         width: 80%;
         padding: 10%;
-        display: flex;
-        flex-direction: column;
         background-color: #153a60;
     }
 }
+
+
 
