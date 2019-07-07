@@ -50,8 +50,10 @@ class ChartViewsLikes extends Component {
         return (
             <div className="chartViewsLikesContainer"> 
 
-                <ReactApexChart options={ optViews } series={ views } type="pie" />
-                <ReactApexChart options={ optLikes } series={ likes } type="pie" />
+                <span className="chartsAnalyticsWeb">
+                    <ReactApexChart options={ optViews } series={ views } type="pie" />
+                    <ReactApexChart options={ optLikes } series={ likes } type="pie" />
+                </span>
 
                 <div className="pieChartLegend" >
 

@@ -28,6 +28,15 @@
         display: none
     }
 
+    .contentFirstImage{  
+        border-radius: 3%;
+        opacity: 1;
+        display: grid;
+        backface-visibility: hidden;
+        width: 90%;
+        margin: 5%;
+    }
+
 }
 
 

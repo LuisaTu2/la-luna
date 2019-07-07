@@ -102,8 +102,8 @@
         display: flex;
         flex-direction: column-reverse;
         align-items: center;  
-        /* background-color: #a70cb5; */
-        background-color: #4d75be;
+        background-color: #a70cb5;
+        /* background-color: #4d75be; */
         width: 100%;
     }
 

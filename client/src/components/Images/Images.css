@@ -8,7 +8,7 @@
 }
 
 
-@media (min-width:361px) and (max-width: 768px){
+@media (min-width:361px) and (max-width: 1500px){
     .contentImages{
         /* background-color: rgb(98, 185, 156); */
         width: 90%;
