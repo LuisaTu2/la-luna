@@ -56,13 +56,13 @@
         height: 30px;
         color: greenyellow;
         background-color: #504d4d;
-        margin:0%;
+        margin: 0%;
         text-align: center;
         padding-top: 3%;
     }
 
     .paginationContainer{
-        padding-left: 38%;
+        padding-left: 45px;
         padding-top: 5px;
         padding-bottom: 5px;
         margin: 0%;
@@ -73,7 +73,7 @@
         border: 1px solid #999999;
         background-color: #a70cb5;
         color: white;
-        margin: 2% 1%;
+        margin: 2% 0.5%;
         display: inline-block;
         padding: 8px 16px;
     }
@@ -88,6 +88,9 @@
         border-radius: 50%;
     }
 
+    .footerAnalyticsStyle{
+        display: none;
+    }
 
 
 }

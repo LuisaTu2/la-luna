@@ -146,9 +146,10 @@ class App extends Component {
 
     render() {
         let callbackFunctions = [this.getTaxonomyData, this.getAnalyticsData];
+        let contentAnalyticsStyle = this.state.showComponents[3] ? "contentAnalyticsStyle" : "";
 
         return (
-            <div id="app">           
+            <div id="app" >           
                 <div id="header">  
                     { 
                         this.state.isChecked ? 
@@ -167,14 +168,15 @@ class App extends Component {
                     <div id="pageTitle" onClick={this.getHomePage}>La Luna</div>
                 </div>
 
-                <div className="content">
+                <div className={"content " + contentAnalyticsStyle}>
                     { this.state.showComponents[0] ? <WelcomePage />  : null}
                     { this.state.showComponents[1] ? <LastPage /> : null }
                     { this.state.showComponents[2] ? <Images imagesURLArr={this.state.imagesURL} /> : null}
                     { this.state.showComponents[3] ? <AnalyticsPage /> : null }
                     <Footer pagHandler={ this.paginationHandler } 
                             hideBtns={ this.state.hidePaginationButtons }
-                            disableBtns={ this.state.disablePaginationButtons } />
+                            disableBtns={ this.state.disablePaginationButtons } 
+                            />
                 </div>
 
             </div>

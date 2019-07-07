@@ -120,12 +120,19 @@ class AnalyticsPage extends Component {
                         <button onClick={this.queryGeo} value="usersGeo" className="analyticsButton"> users geo distribution </button>
                     </div>
                     <div className="analyticsChartsContainer">
-                        <img src="../../../images/analytics.jpg" className="analyticsImage" />
                         { this.state.fetchingData ? chartsLoader : null }
-                        { this.state.showComponents[0] ? <span><div className="analyicsFirstPageText"> Explore Etsy data analysis! </div></span> : null }
+                        { this.state.showComponents[0] 
+                                ? 
+                                <span>
+                                    <div className="analyicsFirstPageText"> Explore Etsy Data {"\n&\n"} Analytics </div>
+                                    <img src="../../../images/analytics.jpg" className="analyticsImage" />
+                                </span> 
+                                : 
+                                null }
                         { this.state.showComponents[1] ? <ChartColors plottingData={this.state.plotData}/> : null }
                         { this.state.showComponents[2] ? <ChartViewsLikes vlData={this.state.viewsLikes}/> : null }
                         { this.state.showComponents[3] ? <ChartGeo /> : null }
+                        
                     </div>
                 </div>
         )

@@ -60,9 +60,10 @@
 
     .content{
         /* height: 300px;  */
+        min-width: 360px;
         width: 100%;
         margin-top: 300px;
-        background-color: green;
+        /* background-color: green; */
         scroll-behavior: smooth;
         position: absolute;
     }
@@ -75,6 +76,7 @@
         font-size: 2.5em;
         text-align: center;
     }
+    
 
 }
 
