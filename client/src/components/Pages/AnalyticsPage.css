@@ -62,7 +62,7 @@
 @media (max-width:360px){
     .analyticsContainer{
         width: 100%;
-        min-height: 660px;
+        min-height: 800px;
         background-color: #153a60;
         padding-bottom: 12%;
         display: flex;
