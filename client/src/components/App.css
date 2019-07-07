@@ -21,6 +21,8 @@
         display: flex;
         flex-direction: column;
         min-height: 539px;
+        padding-top: 60px;
+        scroll-behavior: smooth;
     }
 
     #header {
@@ -31,11 +33,6 @@
         align-items: center;
         background-color: #a70cb5;
         z-index: 3;
-    }
-
-    .content{
-        padding-top: 60px;
-        scroll-behavior: smooth;
     }
 
     #pageTitle{
@@ -64,7 +61,7 @@
     .content{
         min-width: 360px;
         width: 100%;
-        margin-top: 300px;
+        margin-top: 220px;
         scroll-behavior: smooth;
         position: absolute;
     }
@@ -85,7 +82,7 @@
 @media (min-width:769px) {
 
     .content{
-        margin-top: 200px;
+        margin-top: 150px;
     }
 
 }
