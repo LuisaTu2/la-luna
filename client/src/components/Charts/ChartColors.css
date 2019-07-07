@@ -49,4 +49,13 @@
 }
 
 
+@media (min-width:769px) {
+    
+    .taxonomyColorBox{
+        width: 80%;
+        padding: 5% 10%;
+        background-color: #153a60;
+    }
+}
+
 

@@ -200,8 +200,6 @@
         flex-direction: column;
         transform: translateY(-130px);
     }
-
-
  
     .analyticsButtonsContainer{
         height: 50px;
@@ -210,7 +208,6 @@
     .analyticsButton{
         font-size: 1.5em;
     }
-
 
     .analyticsImage{
         width: 100%;
