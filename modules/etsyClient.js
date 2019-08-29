@@ -3,8 +3,7 @@
 // *********************************************************************** //
 const request = require('request');
 const mongoDBClientFunctions = require("./mongoDBClient");
-// const apiKeys = require("../apiKeys");
-const apiKeys = { "etsyApiKey" : "dvb11s3or2x3v911bdfef9vg" }
+const apiKeys = require("../apiKeys");
 const timeInterval = 1e4;
 
 // *********************************************************************** //
