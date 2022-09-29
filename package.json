@@ -12,7 +12,7 @@
   "dependencies": {
     "apexcharts": "^3.8.1",
     "d3-geo": "^1.11.6",
-    "d3-scale": "^3.0.0",
+    "d3-scale": "^4.0.2",
     "express": "^4.17.1",
     "mongodb": "^3.2.7",
     "react": "^16.8.6",
